@@ -1,5 +1,11 @@
 <?php
 
+if (!isset($_SERVER['PATH_INFO'])) {
+    // abort 404
+    header('HTTP/1.0 404 Not Found');
+    exit;
+}
+
 $path = explode('/', $_SERVER['PATH_INFO']);
 $base = '';
 for ($i=1,$l=count($path);$i<$l;$i++) {
