@@ -17,6 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $body = json_decode($body, true);
 }
 
+require '../helpers/helper.php';
+// prepare tokens
+verify_token('');
+
 $microservice = __DIR__ . '/../microservices' . $base . '.php';
 
 if (!file_exists($microservice)) {
