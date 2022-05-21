@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        },
+        "files": [
+            "src/Auth.php",
+            "src/helper.php"
+        ]
+    },
+    "require": {
+        "rbdwllr/reallysimplejwt": "^4.0"
+    }
+}
