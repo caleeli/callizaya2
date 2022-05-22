@@ -28,6 +28,7 @@ abstract class ResourceBase
     public function __construct($handler, $params)
     {
         $this->handler = $handler;
+        $GLOBALS['connection'] = $handler->getConnection();
         $this->definition = json_decode(file_get_contents($params['definition']), true);
     }
 
@@ -92,7 +93,7 @@ abstract class ResourceBase
         foreach ($params as $key => $value) {
             if (is_array($value)) {
                 $var = preg_quote(':' . $key);
-                $sql = \preg_replace_callback('/('.$var.')\b(.?)/', function ($matches) use (&$params, $value) {
+                $sql = preg_replace_callback('/('.$var.')\b(.?)/', function ($matches) use (&$params, $value) {
                     if ($matches[2] === '.') {
                         return $matches[1] . '.';
                     } else {
@@ -112,6 +113,18 @@ abstract class ResourceBase
     {
         $expression = new QueryExpression($string, $this->request);
         return $expression->hasRequiredParams($params);
+    }
+
+    protected function hasRequiredSQLParams($query, array $params)
+    {
+        preg_match_all('/:([a-zA-Z0-9_]+)/', $query, $matches);
+        $variables = $matches[1];
+        foreach ($variables as $variable) {
+            if (!array_key_exists($variable, $params)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     protected function model($model)

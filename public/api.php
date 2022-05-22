@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     header('Access-Control-Allow-Headers: Content-Type,Authorization,X-Requested-With');
     return;
 }
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'PUT') {
     $body = file_get_contents('php://input');
     $_POST = json_decode($body, true);
 }

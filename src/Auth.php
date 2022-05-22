@@ -55,6 +55,15 @@ final class Auth
 
     public static function run($microservice, array $path_params)
     {
+        if (isset(self::$config['authorization']) && self::$config['authorization'] === 'bearer_token') {
+            $token = substr($_SERVER['HTTP_AUTHORIZATION'], 7);
+            $valid = self::validate_token($token);
+            if (!$valid) {
+                header('HTTP/1.0 401 Unauthorized');
+                exit;
+            }
+            $_SESSION = self::payload_token($token);
+        }
         if (!file_exists($microservice)) {
             header('HTTP/1.0 404 Not Found');
             exit;

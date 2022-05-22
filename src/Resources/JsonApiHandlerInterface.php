@@ -2,8 +2,12 @@
 
 namespace App\Resources;
 
+use PDO;
+
 interface JsonApiHandlerInterface
 {
+    public function getConnection() : PDO;
+
     public function index(string $query, array $params);
 
     public function show(string $query, array $params);

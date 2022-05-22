@@ -1,20 +1,38 @@
 <?php
 
+use App\Resources\JsonApiHandler;
+use App\Resources\JsonApiResource;
+
 /**
- * Verify Authorization header
+ * Get session from request
  */
-function verify_authentication()
+function session($request, $token = null)
 {
-    //$headers = get_headers($URL);
-    $authorization = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
-    $bearer = explode(' ', $authorization);
-    if (count($bearer) !== 2) {
-        header('HTTP/1.0 401 Unauthorized');
-        exit;
+    return (object) $_SESSION;
+}
+
+/**
+ * Get a resource model
+ *
+ * @param string $model
+ * @param PDO $connection
+ *
+ * @return JsonApiResource|EndpointResource
+ */
+function model($model)
+{
+    global $connection;
+    $handler = new JsonApiHandler($connection);
+    $service_config = json_decode(file_get_contents('./' . $model . '.json'), true);
+    // find json_api in transform_response
+    $model_config = null;
+    foreach ($service_config['transform_response'] as $model_config) {
+        if ($model_config['action'] === 'json_api') {
+            break;
+        }
     }
-    $token = $bearer[1];
-    if (!verify_token($token)) {
-        header('HTTP/1.0 401 Unauthorized');
-        exit;
+    if (!$model_config) {
+        throw new Exception('No json_api for ".$model." in transform_response');
     }
+    return new JsonApiResource($handler, $model_config);
 }

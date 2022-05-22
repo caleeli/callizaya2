@@ -6,6 +6,8 @@ use Exception;
 
 class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
 {
+    public $request;
+
     public function run(array $path_params)
     {
         switch ($_SERVER['REQUEST_METHOD']) {
@@ -39,7 +41,16 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
                     return $this->show($id, $options);
                 }
                 break;
-        }
+                case 'POST':
+                    return [
+                        'data' => $this->store($_POST),
+                    ];
+                case 'PUT':
+                    $id = $path_params[1];
+                    return [
+                        'data' => $this->update($id, $_POST),
+                    ];
+            }
     }
 
     public function index(array $options = [])
@@ -106,9 +117,16 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
             if (!$this->hasRequiredParams($value, $params)) {
                 continue;
             }
-            $set[] = "$name = " . $this->parseExpressionsInQuery($value, $params);
+            if ($this->definition['ui'][$name]['type'] === 'json' && isset($params[$name])) {
+                $params[$name] = json_encode($params[$name]);
+            }
+            $setAttribute = "$name = " . $this->parseExpressionsInQuery($value, $params);
+            if ($this->hasRequiredSQLParams($setAttribute, $params)) {
+                $set[] = $setAttribute;
+            }
         }
         $set = implode(',', $set);
+        $params['id'] = $id;
         $sql = "UPDATE `{$this->definition['table']}` SET {$set} WHERE {$this->definition['id']} = :id";
         return $this->handler->update($sql, $params);
     }
@@ -180,7 +198,27 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
         }
         // Prepare the statement
         $query = "SELECT $distinct $select FROM $from WHERE $where $order $limit $offset";
-        return [$query, $params];
+        return [$query, $this->reduceParams($query, $params)];
+    }
+
+    /**
+     * Reduce params to only the ones that are required by the query
+     *
+     * @param string $query
+     * @param array $params
+     *
+     * @return array
+     */
+    private function reduceParams($query, array $params)
+    {
+        $matches = [];
+        preg_match_all('/:([a-zA-Z0-9_]+)/', $query, $matches);
+        $variables = $matches[1];
+        // Filter params by $variables
+        $params = array_filter($params, function ($key) use ($variables) {
+            return in_array($key, $variables);
+        }, ARRAY_FILTER_USE_KEY);
+        return $params;
     }
 
     private function parseFilter(string $filter, array &$params)
