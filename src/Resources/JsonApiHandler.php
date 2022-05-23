@@ -2,6 +2,7 @@
 
 namespace App\Resources;
 
+use Exception;
 use PDO;
 
 class JsonApiHandler implements JsonApiHandlerInterface
@@ -25,7 +26,11 @@ class JsonApiHandler implements JsonApiHandlerInterface
     public function index(string $query, array $params)
     {
         $stmt = $this->connection->prepare($query);
-        $stmt->execute($params);
+        $success = $stmt->execute($params);
+        if (!$success) {
+            $errorInfo = $stmt->errorInfo();
+            throw new Exception($errorInfo[2], $errorInfo[0]);
+        }
         $exams = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $exams;
     }
@@ -33,17 +38,23 @@ class JsonApiHandler implements JsonApiHandlerInterface
     public function show(string $query, array $params)
     {
         $stmt = $this->connection->prepare($query);
-        $stmt->execute($params);
-        $stmt->execute();
-        $exam = $stmt->fetch();
+        $success = $stmt->execute($params);
+        if (!$success) {
+            $errorInfo = $stmt->errorInfo();
+            throw new Exception($errorInfo[2], $errorInfo[0]);
+        }
+        $exam = $stmt->fetch(PDO::FETCH_ASSOC);
         return $exam;
     }
 
     public function store(string $query, array $params)
     {
         $stmt = $this->connection->prepare($query);
-        $stmt->execute($params);
-        $stmt->execute();
+        $success = $stmt->execute($params);
+        if (!$success) {
+            $errorInfo = $stmt->errorInfo();
+            throw new Exception($errorInfo[2], $errorInfo[0]);
+        }
         return [
             'id' => $this->connection->lastInsertId(),
         ];
@@ -52,8 +63,14 @@ class JsonApiHandler implements JsonApiHandlerInterface
     public function update(string $query, array $params)
     {
         $stmt = $this->connection->prepare($query);
-        $stmt->execute($params);
-        $stmt->execute();
+        if (!$stmt) {
+            throw new Exception('Failed to prepare statement: ' . $query);
+        }
+        $success = $stmt->execute($params);
+        if (!$success) {
+            $errorInfo = $stmt->errorInfo();
+            throw new Exception($errorInfo[2], $errorInfo[0]);
+        }
         return [
             'id' => $params['id'],
         ];
@@ -62,8 +79,11 @@ class JsonApiHandler implements JsonApiHandlerInterface
     public function delete(string $query, array $params)
     {
         $stmt = $this->connection->prepare($query);
-        $stmt->execute($params);
-        $stmt->execute();
+        $success = $stmt->execute($params);
+        if (!$success) {
+            $errorInfo = $stmt->errorInfo();
+            throw new Exception($errorInfo[2], $errorInfo[0]);
+        }
         return [
             'id' => $params['id'],
         ];
