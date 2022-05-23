@@ -4,8 +4,6 @@ namespace App\Resources;
 
 use App\Expressions\Expression;
 use App\Expressions\QueryExpression;
-use Exception;
-use PDOStatement;
 use Workerman\Protocols\Http\Request;
 
 abstract class ResourceBase
@@ -30,6 +28,7 @@ abstract class ResourceBase
         $this->handler = $handler;
         $GLOBALS['connection'] = $handler->getConnection();
         $this->definition = json_decode(file_get_contents($params['definition']), true);
+        $this->definition['name'] = $this->definition['name'] ?? basename($params['definition'], '.json');
     }
 
     protected function evaluate($expression, array $variables = [])
