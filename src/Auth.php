@@ -15,8 +15,12 @@ final class Auth
         chdir(dirname($config_file));
         if (file_exists('.env')) {
             self::$env = parse_ini_file('.env');
+            foreach (self::$env as $key => $value) {
+                $_ENV[$key] = $value;
+            }
         }
         self::$secret = getenv('SECRET');
+        $_ENV['md5_secret'] = md5(self::$secret);
         putenv('SECRET=');
         unset($_SERVER['SECRET']);
         if (file_exists($config_file)) {
