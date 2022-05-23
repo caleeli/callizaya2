@@ -284,6 +284,12 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
 
     private function formatRow(array $row, array $options)
     {
+        // convert json attributes to array
+        foreach ($row as $name => $value) {
+            if (isset($this->definition['ui'][$name]) && $this->definition['ui'][$name]['type'] === 'json' && is_string($value)) {
+                $row[$name] = json_decode($value);
+            }
+        }
         $result = [
             'id' => $row['id'] ?? null,
             'type' => $this->definition['table'],
