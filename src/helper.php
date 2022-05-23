@@ -136,3 +136,8 @@ function convert_jpg($path, $quality=100, $max_width = null, $max_height = null)
     imagedestroy($image);
     imagedestroy($new_image);
 }
+
+function send_email($to, $subject, $body, $from = null)
+{
+    return Auth::send_mail($to, $subject, $body, $from);
+}

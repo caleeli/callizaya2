@@ -1,15 +1,21 @@
 <?php
 
 use App\Resources\JsonApiResource;
+use PHPMailer\PHPMailer\PHPMailer;
 use ReallySimpleJWT\Token;
 
 final class Auth
 {
     private static $secret;
     private static $config = [];
+    private static $env = [];
 
     public static function init($config_file)
     {
+        chdir(dirname($config_file));
+        if (file_exists('.env')) {
+            self::$env = parse_ini_file('.env');
+        }
         self::$secret = getenv('SECRET');
         putenv('SECRET=');
         unset($_SERVER['SECRET']);
@@ -75,7 +81,6 @@ final class Auth
         header('Access-Control-Allow-Credentials: true');
         header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE');
         header('Access-Control-Allow-Headers: Content-Type,Authorization,X-Requested-With');
-        chdir(dirname($microservice));
         $response = require $microservice;
         if (!empty(self::$config['transform_response'])) {
             $response = self::transform_response($response, $path_params);
@@ -157,5 +162,23 @@ final class Auth
         }
         $value = $new_value;
         return $response;
+    }
+
+    public static function send_mail($to, $subject, $body, $from = null)
+    {
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->Host = self::$env['SMTP_HOST'];
+        $mail->SMTPAuth = true;
+        $mail->Username = self::$env['SMTP_USER'];
+        $mail->Password = self::$env['SMTP_PASS'];
+        $mail->SMTPSecure = self::$env['SMTP_SECURE'];
+        $mail->Port = self::$env['SMTP_PORT'];
+        $mail->setFrom($from ?: self::$env['SMTP_FROM'], self::$env['SMTP_FROM_NAME']);
+        $mail->addAddress($to);
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $body;
+        $mail->send();
     }
 }
