@@ -41,16 +41,21 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
                     return $this->show($id, $options);
                 }
                 break;
-                case 'POST':
-                    return [
-                        'data' => $this->store($_POST),
-                    ];
-                case 'PUT':
-                    $id = $path_params[1];
-                    return [
-                        'data' => $this->update($id, $_POST),
-                    ];
-            }
+            case 'POST':
+                return [
+                    'data' => $this->store($_POST),
+                ];
+            case 'PUT':
+                $id = $path_params[1];
+                return [
+                    'data' => $this->update($id, $_POST),
+                ];
+            case 'DELETE':
+                $id = $path_params[1];
+                return [
+                    'data' => $this->delete($id),
+                ];
+        }
     }
 
     public function index(array $options = [])
@@ -131,7 +136,7 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
         return $this->handler->update($sql, $this->reduceParams($sql, $params));
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         $sql = "DELETE FROM `{$this->definition['table']}` WHERE {$this->definition['id']} = :id";
         return $this->handler->delete($sql, ['id' => $id]);

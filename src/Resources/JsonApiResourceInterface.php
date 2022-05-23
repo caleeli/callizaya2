@@ -27,5 +27,5 @@ interface JsonApiResourceInterface
     /**
      * Elimina un elemento de la tabla
      */
-    public function destroy($id);
+    public function delete($id);
 }
