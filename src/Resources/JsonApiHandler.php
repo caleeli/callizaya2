@@ -26,6 +26,9 @@ class JsonApiHandler implements JsonApiHandlerInterface
     public function index(string $query, array $params)
     {
         $stmt = $this->connection->prepare($query);
+        if (!$stmt) {
+            throw new Exception('Failed to prepare statement: ' . $query);
+        }
         $success = $stmt->execute($params);
         if (!$success) {
             $errorInfo = $stmt->errorInfo();
@@ -38,6 +41,9 @@ class JsonApiHandler implements JsonApiHandlerInterface
     public function show(string $query, array $params)
     {
         $stmt = $this->connection->prepare($query);
+        if (!$stmt) {
+            throw new Exception('Failed to prepare statement: ' . $query);
+        }
         $success = $stmt->execute($params);
         if (!$success) {
             $errorInfo = $stmt->errorInfo();
@@ -50,6 +56,9 @@ class JsonApiHandler implements JsonApiHandlerInterface
     public function store(string $query, array $params)
     {
         $stmt = $this->connection->prepare($query);
+        if (!$stmt) {
+            throw new Exception('Failed to prepare statement: ' . $query);
+        }
         $success = $stmt->execute($params);
         if (!$success) {
             $errorInfo = $stmt->errorInfo();
@@ -79,6 +88,9 @@ class JsonApiHandler implements JsonApiHandlerInterface
     public function delete(string $query, array $params)
     {
         $stmt = $this->connection->prepare($query);
+        if (!$stmt) {
+            throw new Exception('Failed to prepare statement: ' . $query);
+        }
         $success = $stmt->execute($params);
         if (!$success) {
             $errorInfo = $stmt->errorInfo();
