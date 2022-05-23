@@ -92,7 +92,7 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
             eval($this->definition['events']['creating']);
         }
         $sql = "INSERT INTO `{$this->definition['table']}` ({$columns}) VALUES ({$values})";
-        return $this->handler->store($sql, $params);
+        return $this->handler->store($sql, $this->reduceParams($sql, $params));
     }
 
     private function getDefaultValues()
@@ -128,7 +128,7 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
         $set = implode(',', $set);
         $params['id'] = $id;
         $sql = "UPDATE `{$this->definition['table']}` SET {$set} WHERE {$this->definition['id']} = :id";
-        return $this->handler->update($sql, $params);
+        return $this->handler->update($sql, $this->reduceParams($sql, $params));
     }
 
     public function destroy($id)
