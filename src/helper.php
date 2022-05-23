@@ -36,3 +36,103 @@ function model($model)
     }
     return new JsonApiResource($handler, $model_config);
 }
+
+/**
+ * Upload and process a file
+ * @param string $options
+ *
+ * @return string
+ */
+function upload($options)
+{
+    $field = $options['field'] ?? 'file';
+    $path = $options['path'] ?? '';
+    $allowed = $options['allowed'] ?? ['jpg', 'jpeg', 'png'];
+    $max_file_size = $options['max_file_size'] ?? 10485760;
+    $convert = $options['convert'] ?? null;
+    // trim path
+    $path = trim($path, '/');
+    $storage_path = __DIR__ . '/../public/storage/' . ($path ? $path . '/' : '');
+    if (!isset($_FILES[$field])) {
+        throw new Exception('No file uploaded to field "' . $field . '"');
+    }
+    $file = $_FILES[$field];
+    $file_name = $file['name'];
+    $file_tmp = $file['tmp_name'];
+    $file_size = $file['size'];
+    $file_error = $file['error'];
+    $file_ext = explode('.', $file_name);
+    $file_ext = strtolower(end($file_ext));
+    if (in_array($file_ext, $allowed)) {
+        if ($file_error === 0) {
+            if ($file_size <= $max_file_size) {
+                if ($convert && $convert['to'] === 'jpg') {
+                    convert_jpg($file_tmp, $convert['quality'] ?? 80, $convert['max_width'] ?? null, $convert['max_height'] ?? null);
+                    $file_ext = 'jpg';
+                }
+                $file_name_new = uniqid('', true) . '.' . $file_ext;
+                $file_destination = $storage_path . $file_name_new;
+                if (move_uploaded_file($file_tmp, $file_destination)) {
+                    $url_base = explode('api.php/', $_SERVER['SCRIPT_URI'], 2)[0];
+                    return [
+                        'path' => $file_name_new,
+                        'filename' => $file_name,
+                        'url' => $url_base . 'storage/' . ($path ? $path . '/' : '') . $file_name_new,
+                    ];
+                }
+            } else {
+                throw new Exception('File is too big');
+            }
+        } else {
+            throw new Exception('File upload error');
+        }
+    } else {
+        throw new Exception('File extension not allowed');
+    }
+    return false;
+}
+
+function convert_jpg($path, $quality=100, $max_width = null, $max_height = null)
+{
+    $image_format = exif_imagetype($path);
+    if ($image_format === IMAGETYPE_JPEG) {
+        $image = imagecreatefromjpeg($path);
+    } elseif ($image_format === IMAGETYPE_PNG) {
+        $image = imagecreatefrompng($path);
+    } elseif ($image_format === IMAGETYPE_GIF) {
+        $image = imagecreatefromgif($path);
+    } elseif ($image_format === IMAGETYPE_BMP) {
+        $image = imagecreatefrombmp($path);
+    } elseif ($image_format === IMAGETYPE_WEBP) {
+        $image = imagecreatefromwebp($path);
+    } else {
+        throw new Exception('Unsupported image format');
+    }
+    $image_width = imagesx($image);
+    $image_height = imagesy($image);
+    $image_ratio = $image_width / $image_height;
+    if ($max_width && $max_height) {
+        $max_ratio = $max_width / $max_height;
+        if ($image_ratio > $max_ratio) {
+            $new_width = $max_width;
+            $new_height = $max_width / $image_ratio;
+        } else {
+            $new_width = $max_height * $image_ratio;
+            $new_height = $max_height;
+        }
+    } elseif ($max_width) {
+        $new_width = $max_width;
+        $new_height = $max_width / $image_ratio;
+    } elseif ($max_height) {
+        $new_width = $max_height * $image_ratio;
+        $new_height = $max_height;
+    } else {
+        $new_width = $image_width;
+        $new_height = $image_height;
+    }
+    $new_image = imagecreatetruecolor($new_width, $new_height);
+    imagecopyresampled($new_image, $image, 0, 0, 0, 0, $new_width, $new_height, $image_width, $image_height);
+    imagejpeg($new_image, $path, $quality);
+    imagedestroy($image);
+    imagedestroy($new_image);
+}
