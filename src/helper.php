@@ -6,7 +6,7 @@ use App\Resources\JsonApiResource;
 /**
  * Get session from request
  */
-function session($request, $token = null)
+function session()
 {
     return (object) $_SESSION;
 }
@@ -140,4 +140,12 @@ function convert_jpg($path, $quality=100, $max_width = null, $max_height = null)
 function send_email($to, $subject, $body, $from = null)
 {
     return Auth::send_mail($to, $subject, $body, $from);
+}
+
+function view(string $path, array $data): string
+{
+    ob_start();
+    extract($data);
+    include $path;
+    return ob_get_clean();
 }
