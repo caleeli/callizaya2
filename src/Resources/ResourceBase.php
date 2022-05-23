@@ -129,7 +129,7 @@ abstract class ResourceBase
 
     protected function model($model)
     {
-        return model($model, $this->connection, $this->request);
+        return model($model);
     }
 
     public function getDefinition()
