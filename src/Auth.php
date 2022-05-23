@@ -12,6 +12,7 @@ final class Auth
     {
         self::$secret = getenv('SECRET');
         putenv('SECRET=');
+        unset($_SERVER['SECRET']);
         if (file_exists($config_file)) {
             self::$config = json_decode(file_get_contents($config_file), true);
         }
@@ -76,7 +77,7 @@ final class Auth
         header('Access-Control-Allow-Headers: Content-Type,Authorization,X-Requested-With');
         chdir(dirname($microservice));
         $response = require $microservice;
-        if (self::$config['transform_response']) {
+        if (!empty(self::$config['transform_response'])) {
             $response = self::transform_response($response, $path_params);
         }
         echo json_encode($response);
