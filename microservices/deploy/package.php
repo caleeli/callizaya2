@@ -1,7 +1,7 @@
 <?php
 
 // verify auth
-if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == 5) {
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
     // do something
 } else {
     header('HTTP/1.0 401 Unauthorized');
