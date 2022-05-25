@@ -1,6 +1,13 @@
 <?php
 
-verify_authentication();
+// verify auth
+if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == 5) {
+    // do something
+} else {
+    header('HTTP/1.0 401 Unauthorized');
+    echo 'Unauthorized';
+    exit;
+}
 
 // copy uploaded file to public/uploads
 $target_dir = realpath(__DIR__ . "/../") . '/';
