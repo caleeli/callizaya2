@@ -73,11 +73,11 @@ function upload($options)
                 $file_name_new = uniqid('', true) . '.' . $file_ext;
                 $file_destination = $storage_path . $file_name_new;
                 if (move_uploaded_file($file_tmp, $file_destination)) {
-                    $url_base = explode('api.php/', $_SERVER['SCRIPT_URI'], 2)[0];
+                    $base_url = $_ENV['BASE_URL'] ?? explode('/api.php/', $_SERVER['SCRIPT_URI'], 2)[0];
                     return [
                         'path' => $file_name_new,
                         'filename' => $file_name,
-                        'url' => $url_base . 'storage/' . ($path ? $path . '/' : '') . $file_name_new,
+                        'url' => $base_url . '/storage/' . ($path ? $path . '/' : '') . $file_name_new,
                     ];
                 }
             } else {
