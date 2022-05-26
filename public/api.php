@@ -2,7 +2,7 @@
 
 if (!isset($_SERVER['PATH_INFO'])) {
     // abort 404
-    header('HTTP/1.0 404 Not Found');
+    http_response_code(404);
     exit;
 }
 
@@ -10,7 +10,7 @@ $path = explode('/', $_SERVER['PATH_INFO']);
 for ($i=0,$l=count($path);$i<$l;$i++) {
     if ($path[$i] === '...') {
         // abort 404
-        header('HTTP/1.0 404 Not Found');
+        http_response_code(404);
         exit;
     }
 }
@@ -19,7 +19,7 @@ $base = '/'.$path[1].'/'.$path[2];
 
 // IF IS POST GET BODY
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    header('HTTP/1.0 200 OK');
+    http_response_code(200);
     header('Content-Type: application/json');
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Credentials: true');

@@ -4,7 +4,7 @@
 if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
     // do something
 } else {
-    header('HTTP/1.0 401 Unauthorized');
+    http_response_code(401);
     echo 'Unauthorized';
     exit;
 }
