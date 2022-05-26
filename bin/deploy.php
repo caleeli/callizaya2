@@ -31,7 +31,9 @@ foreach ($files as $name => $file) {
         $filePath = $file->getRealPath();
         $relativePath = substr($filePath, strlen($folder));
         // Add current file to archive
-        $zip->addFile($filePath, $relativePath);
+        if (substr(basename($filePath), 0, 1) !== '.') {
+            $zip->addFile($filePath, $relativePath);
+        }
     }
 }
 
