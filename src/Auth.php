@@ -109,6 +109,19 @@ final class Auth
         return $response;
     }
 
+    private static function fe_encrypt($response)
+    {
+        $plain_text = json_encode($response);
+        $salt = openssl_random_pseudo_bytes(256);
+        $iv = openssl_random_pseudo_bytes(16);
+        $iterations = 999;
+        $key = hash_pbkdf2("sha512", $_ENV['fe_secret'], $salt, $iterations, 64);
+        $encrypted_data = openssl_encrypt($plain_text, 'aes-256-cbc', hex2bin($key), OPENSSL_RAW_DATA, $iv);
+        $data = ["cipher" => base64_encode($encrypted_data), "iv" => bin2hex($iv), "salt" => bin2hex($salt)];
+
+        return $data;
+    }
+
     private static function jwt_token($response, $params)
     {
         $payload = self::dot_notation_get($response, $params['target']);
