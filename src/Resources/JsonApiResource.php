@@ -60,6 +60,7 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
 
     public function index(array $options = [])
     {
+        $options = $this->handler->indexing($options);
         list($query, $params) = $this->prepareQuery($options);
         return [
             'data' => $this->formatRows($this->handler->index($query, $params), $options),
@@ -68,6 +69,7 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
 
     public function show($id, array $options = [])
     {
+        list($id, $options) = $this->handler->showing($id, $options);
         $options['params']['id'] = $id;
         list($query, $params) = $this->prepareQuery($options, true);
         $row = $this->handler->show($query, $params);
@@ -81,6 +83,7 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
 
     public function store(array $data)
     {
+        $data = $this->handler->storing($data);
         $columns = [];
         $values = [];
         $params = $data['data']['attributes'];
@@ -114,6 +117,7 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
 
     public function update($id, array $data)
     {
+        list($id, $data) = $this->handler->updating($id, $data);
         $set = [];
         if (!isset($data['data']) || !isset($data['data']['attributes'])) {
             throw new Exception('Invalid data, expected {data:{attributes:{...}}}', 400);
@@ -140,6 +144,7 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
 
     public function delete($id)
     {
+        $id = $this->handler->deleting($id);
         $table = $this->definition['table'] ?: $this->definition['name'];
         $sql = "DELETE FROM `{$table}` WHERE {$this->definition['id']} = :id";
         return $this->handler->delete($sql, ['id' => $id]);

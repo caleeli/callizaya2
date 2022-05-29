@@ -18,6 +18,31 @@ class JsonApiHandler implements JsonApiHandlerInterface
         $this->connection = $connection;
     }
 
+    public function indexing(array $options)
+    {
+        return $options;
+    }
+
+    public function showing(string $id, array $options)
+    {
+        return [$id, $options];
+    }
+
+    public function storing(array $data)
+    {
+        return $data;
+    }
+
+    public function updating(string $id, array $data)
+    {
+        return [$id, $data];
+    }
+
+    public function deleting(string $id)
+    {
+        return $id;
+    }
+
     public function getConnection() : PDO
     {
         return $this->connection;
