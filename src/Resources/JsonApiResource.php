@@ -162,6 +162,7 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
         if (isset($this->definition['join'])) {
             $from .= ' ' . $this->definition['join'];
         }
+        $from = $this->parseExpressionsInQuery($from, $params);
         // Prepare the $select of the query
         if (!$fields || in_array('id', $fields)) {
             $select = [
