@@ -184,14 +184,20 @@ final class Auth
     public static function send_mail($to, $subject, $body, $from = null)
     {
         $mail = new PHPMailer(true);
-        $mail->isSMTP();
-        $mail->Host = self::$env['SMTP_HOST'];
-        $mail->SMTPAuth = true;
-        $mail->Username = self::$env['SMTP_USER'];
-        $mail->Password = self::$env['SMTP_PASS'];
-        $mail->SMTPSecure = self::$env['SMTP_SECURE'];
-        $mail->Port = self::$env['SMTP_PORT'];
-        $mail->setFrom($from ?: self::$env['SMTP_FROM'], self::$env['SMTP_FROM_NAME']);
+        if (self::$env['MAIL_DRIVER'] === 'sendmail') {
+            $mail->isSendmail();
+            $mail->Host = self::$env['MAIL_HOST'];
+            $mail->setFrom($from ?: self::$env['MAIL_FROM'], self::$env['MAIL_FROM_NAME']);
+        } else {
+            $mail->isSMTP();
+            $mail->Host = self::$env['SMTP_HOST'];
+            $mail->SMTPAuth = true;
+            $mail->Username = self::$env['SMTP_USER'];
+            $mail->Password = self::$env['SMTP_PASS'];
+            $mail->SMTPSecure = self::$env['SMTP_SECURE'];
+            $mail->Port = self::$env['SMTP_PORT'];
+            $mail->setFrom($from ?: self::$env['SMTP_FROM'], self::$env['SMTP_FROM_NAME']);
+        }
         $mail->addAddress($to);
         $mail->isHTML(true);
         $mail->Subject = $subject;
