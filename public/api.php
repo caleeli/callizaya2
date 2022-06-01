@@ -37,4 +37,13 @@ $microservice = __DIR__ . '/../microservices' . $base . '.php';
 $config = __DIR__ . '/../microservices' . $base . '.json';
 
 Auth::init($config);
-Auth::run($microservice, $path_params);
+try {
+    Auth::run($microservice, $path_params);
+} catch (Exception $e) {
+    if ($e->getCode() >= 401 && $e->getCode() < 500) {
+        http_response_code($e->getCode());
+        echo json_encode(['error' => $e->getMessage()]);
+        exit;
+    }
+    throw $e;
+}
