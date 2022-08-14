@@ -185,8 +185,10 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
             $where = [
                 '1=1',
             ];
-            foreach ($this->definition['where'] as $whereClause) {
-                $where[] = $this->parseExpressionsInQuery($whereClause, $params);
+            if (isset($this->definition['where'])) {
+                foreach ($this->definition['where'] as $whereClause) {
+                    $where[] = $this->parseExpressionsInQuery($whereClause, $params);
+                }
             }
             if (isset($options['filter'])) {
                 foreach ($options['filter'] as $filter) {

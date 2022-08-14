@@ -4,6 +4,7 @@ namespace App\Resources;
 
 use App\Expressions\Expression;
 use App\Expressions\QueryExpression;
+use PDO;
 use Workerman\Protocols\Http\Request;
 
 abstract class ResourceBase
@@ -11,7 +12,7 @@ abstract class ResourceBase
     /**
      * @var array
      */
-    protected $definition;
+    protected $definition = [];
 
     /**
      * @var Request
@@ -25,10 +26,30 @@ abstract class ResourceBase
 
     public function __construct($handler, $params)
     {
-        $this->handler = $handler;
-        $GLOBALS['connection'] = $handler->getConnection();
-        $this->definition = json_decode(file_get_contents($params['definition']), true);
-        $this->definition['name'] = $this->definition['name'] ?? basename($params['definition'], '.json');
+        if (is_string($handler)) {
+            $GLOBALS['connection'] = $this->getConnection();
+            $this->handler = new PDOResource($GLOBALS['connection'], new $handler);
+            $this->definition = $this->handler->getDefinition();
+        } else {
+            $this->handler = is_string($handler) ? new $handler($params) : $handler;
+            $GLOBALS['connection'] = method_exists($handler, 'getConnection') ? $handler->getConnection() : $this->getConnection();
+            if (isset($params['definition'])) {
+                $this->definition = json_decode(file_get_contents($params['definition']), true);
+                $this->definition['name'] = $this->definition['name'] ?? basename($params['definition'], '.json');
+            }
+        }
+    }
+
+    public function getConnection()
+    {
+        if (empty($_ENV['DB_CONNECTION'])) {
+            return null;
+        }
+        if (isset($_ENV['DB_USER'])) {
+            return new PDO($_ENV['DB_CONNECTION'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
+        } else {
+            return new PDO($_ENV['DB_CONNECTION']);
+        }
     }
 
     protected function evaluate($expression, array $variables = [])
