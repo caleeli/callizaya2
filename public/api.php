@@ -16,6 +16,7 @@ for ($i=0,$l=count($path);$i<$l;$i++) {
 }
 $path_params = array_slice($path, 2);
 $base = '/'.$path[1].'/'.$path[2];
+$_PATH = $path_params;
 
 // IF IS POST GET BODY
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
@@ -27,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     header('Access-Control-Allow-Headers: Content-Type,Authorization,X-Requested-With');
     return;
 }
-if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'PUT') {
+if (($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'PUT') && isset($_SERVER['CONTENT_TYPE']) && $_SERVER['CONTENT_TYPE'] === 'application/json') {
     $body = file_get_contents('php://input');
     $_POST = json_decode($body, true);
 }
@@ -36,14 +37,26 @@ require __DIR__ . '/../vendor/autoload.php';
 $microservice = __DIR__ . '/../microservices' . $base . '.php';
 $config = __DIR__ . '/../microservices' . $base . '.json';
 
-Auth::init($config);
+// set_error_handler to throw exceptions
+set_error_handler(function ($errno, $errstr, $err_file, $err_line) {
+    throw new ErrorException($errstr, $errno, 0, $err_file, $err_line);
+});
+
 try {
+    Auth::init($config);
     Auth::run($microservice, $path_params);
 } catch (Exception $e) {
     if ($e->getCode() >= 401 && $e->getCode() < 500) {
         http_response_code($e->getCode());
-        echo json_encode(['error' => $e->getMessage()]);
-        exit;
+    } else {
+        http_response_code(500);
     }
-    throw $e;
+    error_log($e);
+    header('Content-Type: application/json');
+    $response = ['error' => $e->getMessage()];
+    if (isset($e->meta)) {
+        $response['meta'] = $e->meta;
+    }
+    echo json_encode($response);
+    exit;
 }

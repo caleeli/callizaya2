@@ -28,7 +28,7 @@ abstract class ResourceBase
     {
         if (is_string($handler)) {
             $GLOBALS['connection'] = $this->getConnection();
-            $this->handler = new PDOResource($GLOBALS['connection'], new $handler);
+            $this->handler = new PDOResource($GLOBALS['connection'], new $handler($GLOBALS['connection']));
             $this->definition = $this->handler->getDefinition();
         } else {
             $this->handler = is_string($handler) ? new $handler($params) : $handler;
@@ -52,6 +52,13 @@ abstract class ResourceBase
         }
     }
 
+    /**
+     * Evaluates the expression and returns the result.
+     * 
+     * @param string $expression e.g. $variable > 5
+     * @param array $variables e.g. ['variable' => 10]
+     * @return mixed
+     */
     protected function evaluate($expression, array $variables = [])
     {
         $expression = new Expression($expression, $this->request);

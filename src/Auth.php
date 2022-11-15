@@ -89,7 +89,7 @@ final class Auth
         if (!empty(self::$config['transform_response'])) {
             $response = self::transform_response($response, $path_params);
         }
-        echo json_encode($response, JSON_THROW_ON_ERROR);
+        echo json_encode($response, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
     }
 
     private static function transform_response($response, array $path_params)

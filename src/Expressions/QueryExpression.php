@@ -11,6 +11,7 @@ final class QueryExpression implements QueryExpressionInterface
      * @var Expression[]
      **/
     private $expressions = [];
+    private $db_variables = [];
 
     public function __construct(string $expression, $request)
     {
@@ -33,6 +34,9 @@ final class QueryExpression implements QueryExpressionInterface
         }
         $this->expressions = $expressions;
         $this->expression = $expression;
+        // get :db_variables from $expression
+        preg_match_all('/:([a-zA-Z_][a-zA-Z0-9_]*)/', $expression, $matches);
+        $this->db_variables = $matches[1];
     }
 
     public function evaluate(array $variables = [])
@@ -51,8 +55,15 @@ final class QueryExpression implements QueryExpressionInterface
 
     public function hasRequiredParams(array $params):bool
     {
+        // check expressions variables ${$variable}
         foreach ($this->expressions as $name => $expression) {
             if (!$expression->hasRequiredParams($params)) {
+                return false;
+            }
+        }
+        // check db_variables :variable
+        foreach ($this->db_variables as $variable) {
+            if (!isset($params[$variable]) && !isset($this->expressions[$variable])) {
                 return false;
             }
         }

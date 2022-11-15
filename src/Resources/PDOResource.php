@@ -13,12 +13,16 @@ class PDOResource
     protected $connection;
     private $definition = [];
     private $handler;
+    public $returnCreatedRecord = false;
+    public $insertOnUpdate = false;
 
     public function __construct(PDO $connection, $handler)
     {
         $this->connection = $connection;
         $this->definition = (array) $handler;
         $this->handler = $handler;
+        $this->returnCreatedRecord = $this->handler->returnCreatedRecord ?? false;
+        $this->insertOnUpdate = $this->handler->insertOnUpdate ?? false;
     }
 
     public function getConnection() : PDO
@@ -65,7 +69,12 @@ class PDOResource
         $success = $stmt->execute($params);
         if (!$success) {
             $errorInfo = $stmt->errorInfo();
-            throw new Exception($errorInfo[2]);
+            $exception = new Exception($errorInfo[2]);
+            $exception->meta = [
+                'query' => $query,
+                'params' => $params,
+            ];
+            throw $exception;
         }
         $exams = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $exams;
@@ -82,8 +91,8 @@ class PDOResource
             $errorInfo = $stmt->errorInfo();
             throw new Exception($errorInfo[2]);
         }
-        $exam = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $exam;
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row;
     }
 
     public function store(string $query, array $params)
@@ -97,6 +106,7 @@ class PDOResource
             $errorInfo = $stmt->errorInfo();
             throw new Exception($errorInfo[2]);
         }
+
         return [
             'id' => $this->connection->lastInsertId(),
         ];

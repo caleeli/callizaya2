@@ -32,7 +32,8 @@ final class Expression implements ExpressionInterface
             return $result;
         } catch (Throwable $err) {
             restore_error_handler();
-            throw new Exception($err->getMessage() .' in ' . $this->expression, $err->getCode(), $err);
+            //throw new Exception($err->getMessage() .' in ' . $this->expression, $err->getCode(), $err);
+            throw $err;
         }
     }
 

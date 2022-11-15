@@ -22,6 +22,11 @@ function session()
 function model($model)
 {
     global $connection;
+    if (class_exists($model)) {
+        return new JsonApiResource($model, [
+            'action' => 'json_api',
+        ]);
+    }
     $handler = new JsonApiHandler($connection);
     $service_config = json_decode(file_get_contents('./' . $model . '.json'), true);
     // find json_api in transform_response
@@ -53,6 +58,9 @@ function upload($options)
     // trim path
     $path = trim($path, '/');
     $storage_path = __DIR__ . '/../public/storage/' . ($path ? $path . '/' : '');
+    if ($_ENV['STORAGE_PATH']) {
+        $storage_path = $_ENV['STORAGE_PATH'] . '/' . ($path ? $path . '/' : '');
+    }
     if (!isset($_FILES[$field])) {
         throw new Exception('No file uploaded to field "' . $field . '"');
     }
@@ -78,6 +86,7 @@ function upload($options)
                         'path' => $file_name_new,
                         'filename' => $file_name,
                         'url' => $base_url . '/storage/' . ($path ? $path . '/' : '') . $file_name_new,
+                        'filepath' => $file_destination,
                     ];
                 }
             } else {

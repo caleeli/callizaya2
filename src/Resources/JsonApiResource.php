@@ -47,6 +47,11 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
                 ];
             case 'PUT':
                 $id = $path_params[1];
+                if ($id === 'null' && !empty($this->handler->insertOnUpdate)) {
+                    return [
+                        'data' => $this->store($_POST),
+                    ];
+                }
                 return [
                     'data' => $this->update($id, $_POST),
                 ];
@@ -64,7 +69,11 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
         list($query, $params) = $this->prepareQuery($options);
         return [
             'data' => $this->formatRows($this->handler->index($query, $params), $options),
-        ];
+            'meta' => [
+                'query' => $query,
+                'params' => $params,
+            ],
+       ];
     }
 
     public function show($id, array $options = [])
@@ -74,7 +83,12 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
         list($query, $params) = $this->prepareQuery($options, true);
         $row = $this->handler->show($query, $params);
         if ($row === false) {
-            throw new Exception('Not found', 404);
+            $exception = new Exception('Not found', 404);
+            $exception->meta = [
+                'query' => $query,
+                'params' => $params,
+            ];
+            throw $exception;
         }
         return [
             'data' => $this->formatRow($row, $options),
@@ -90,7 +104,13 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
         // get default values
         $defaults = $this->getDefaultValues();
         $params = array_merge($defaults, $params);
+        if (!isset($this->definition['create'])) {
+            throw new Exception('Cannot create resource', 403);
+        }
         foreach ($this->definition['create'] as $name => $value) {
+            if (!$this->hasRequiredParams($value, $params)) {
+                continue;
+            }
             $columns[] = $name;
             $values[] = $this->parseExpressionsInQuery($value, $params);
         }
@@ -101,15 +121,21 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
         }
         $table = $this->definition['table'] ?: $this->definition['name'];
         $sql = "INSERT INTO `{$table}` ({$columns}) VALUES ({$values})";
-        return $this->handler->store($sql, $this->reduceParams($sql, $params));
+        $response = $this->handler->store($sql, $this->reduceParams($sql, $params));
+        if ($this->handler->returnCreatedRecord ?? false) {
+            $response = $this->show($response['id'], $data['options'] ?? [])['data'];
+        }
+        return $response;
     }
 
     private function getDefaultValues()
     {
         $defaults = [];
-        foreach ($this->definition['ui'] as $name => $def) {
-            if (isset($def['default'])) {
-                $defaults[$name] = $def['default'];
+        if (isset($this->definition['ui'])) {
+            foreach ($this->definition['ui'] as $name => $def) {
+                if (isset($def['default'])) {
+                    $defaults[$name] = $def['default'];
+                }
             }
         }
         return $defaults;
@@ -123,11 +149,14 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
             throw new Exception('Invalid data, expected {data:{attributes:{...}}}', 400);
         }
         $params = $data['data']['attributes'];
+        if (!isset($this->definition['update'])) {
+            throw new Exception('Cannot update resource', 403);
+        }
         foreach ($this->definition['update'] as $name => $value) {
             if (!$this->hasRequiredParams($value, $params)) {
                 continue;
             }
-            if ($this->definition['ui'][$name]['type'] === 'json' && isset($params[$name])) {
+            if (isset($this->definition['ui']) && $this->definition['ui'][$name]['type'] === 'json' && isset($params[$name])) {
                 $params[$name] = json_encode($params[$name]);
             }
             $setAttribute = "$name = " . $this->parseExpressionsInQuery($value, $params);
@@ -234,6 +263,12 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
         $params = array_filter($params, function ($key) use ($variables) {
             return in_array($key, $variables);
         }, ARRAY_FILTER_USE_KEY);
+        // If there is a :variable in the query, but no corresponding param
+        foreach ($variables as $variable) {
+            if (!isset($params[$variable])) {
+                throw new Exception("Missing parameter $variable", 400);
+            }
+        }
         return $params;
     }
 
@@ -248,6 +283,14 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
                     throw new Exception('Invalid filter parameters: ' . $filterParamValues);
                 }
                 $paramNames = $paramNames ? explode(',', $paramNames) : [];
+                // trim spaces from param names
+                $paramNames = array_map(function ($name) {
+                    $name = trim($name);
+                    if (\substr($name, 0, 1) === '$') {
+                        $name = \substr($name, 1);
+                    }
+                    return $name;
+                }, $paramNames);
                 // prefix with filterName
                 foreach ($paramNames as $i => $paramName) {
                     $paramNames[$i] = $filterName . '_' . $paramName;
@@ -272,15 +315,15 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
      */
     private function parseSort(array $sort)
     {
-        $sql = '';
+        $sql = [];
         foreach ($sort as $sortItem) {
             // Parse (+/-)?field
             preg_match('/^([+-]?)(.*)$/', $sortItem, $matches);
             $direction = $matches[1] === '-' ? 'DESC' : 'ASC';
             $field = $matches[2];
-            $sql .= $field . ' ' . $direction;
+            $sql[] = $field . ' ' . $direction;
         }
-        return $sql;
+        return implode(', ', $sql);
     }
 
     private function explodeFilter(string $filter)
@@ -310,10 +353,12 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
             'id' => $row['id'] ?? null,
             'type' => $this->definition['table'],
             'attributes' => $row,
-            'relationships' => [],
         ];
-        if (isset($options['include'])) {
-            foreach ($options['include'] as $include) {
+        $include = $options['include'] ?? [];
+        $include = array_merge($include, $this->definition['include'] ?? []);
+        if ($include) {
+            $result['relationships'] = [];
+            foreach ($include as $include) {
                 $result['relationships'][$include] = $this->include($row, $include);
             }
         }
@@ -344,6 +389,10 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
             }
         }
         $model = $this->model($relationship['model']);
+        if (isset($relationship['id'])) {
+            $id = $this->evaluate($relationship['id'], $row);
+            return $model->show($id, $relationship);
+        }
         return $model->index($relationship);
     }
 }
