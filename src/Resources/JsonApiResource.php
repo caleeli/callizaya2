@@ -120,7 +120,7 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
             eval($this->definition['events']['creating']);
         }
         $table = $this->definition['table'] ?: $this->definition['name'];
-        $sql = "INSERT INTO `{$table}` ({$columns}) VALUES ({$values})";
+        $sql = "INSERT INTO {$table} ({$columns}) VALUES ({$values})";
         $response = $this->handler->store($sql, $this->reduceParams($sql, $params));
         if ($this->handler->returnCreatedRecord ?? false) {
             $response = $this->show($response['id'], $data['options'] ?? [])['data'];
@@ -167,7 +167,7 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
         $set = implode(',', $set);
         $params['id'] = $id;
         $table = $this->definition['table'] ?: $this->definition['name'];
-        $sql = "UPDATE `{$table}` SET {$set} WHERE {$this->definition['id']} = :id";
+        $sql = "UPDATE {$table} SET {$set} WHERE {$this->definition['id']} = :id";
         return $this->handler->update($sql, $this->reduceParams($sql, $params));
     }
 
@@ -175,7 +175,7 @@ class JsonApiResource extends ResourceBase implements JsonApiResourceInterface
     {
         $id = $this->handler->deleting($id);
         $table = $this->definition['table'] ?: $this->definition['name'];
-        $sql = "DELETE FROM `{$table}` WHERE {$this->definition['id']} = :id";
+        $sql = "DELETE FROM {$table} WHERE {$this->definition['id']} = :id";
         return $this->handler->delete($sql, ['id' => $id]);
     }
 
