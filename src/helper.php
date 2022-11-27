@@ -2,6 +2,8 @@
 
 use App\Resources\JsonApiHandler;
 use App\Resources\JsonApiResource;
+use Google\Client;
+use Google\Service\Drive;
 
 /**
  * Get session from request
@@ -157,4 +159,38 @@ function view(string $path, array $data): string
     extract($data);
     include $path;
     return ob_get_clean();
+}
+
+/**
+ * Download a file from Google drive.
+ *
+ * Before to use it please run composer command:
+ *
+ * composer require google/apiclient:^2.0
+ *
+ * and setup the Google Drive API credentials path. (env GOOGLE_APPLICATION_CREDENTIALS)
+ *
+ * @param string $file_id
+ *
+ */
+function downloadFile($fileId, $token = null)
+{
+    try {
+        if (!$token) {
+            $token = file_get_contents('token.json');
+        }
+        $client = new Client();
+        $client->setAuthConfig($_ENV['GOOGLE_APPLICATION_CREDENTIALS']);
+        $client->addScope(Drive::DRIVE);
+        $client->setAccessToken($token);
+        // $client->useApplicationDefaultCredentials();
+        $driveService = new Drive($client);
+        $response = $driveService->files->get($fileId, [
+            'alt' => 'media']);
+        error_log(json_encode($response));
+        $content = $response->getBody()->getContents();
+        return $content;
+    } catch (Exception $e) {
+        throw new Exception('An error occurred: ' . $e->getMessage(), 500, $e);
+    }
 }

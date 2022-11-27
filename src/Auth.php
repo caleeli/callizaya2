@@ -17,6 +17,7 @@ final class Auth
             self::$env = parse_ini_file('.env');
             foreach (self::$env as $key => $value) {
                 $_ENV[$key] = $value;
+                putenv("$key=$value");
             }
         }
         self::$secret = getenv('SECRET');
@@ -80,7 +81,18 @@ final class Auth
             exit;
         }
         http_response_code(200);
-        header('Content-Type: application/json');
+        $hasContentType = false;
+        if (isset(self::$config['headers'])) {
+            foreach (self::$config['headers'] as $key => $value) {
+                header("$key: $value");
+                if (strtolower($key) === 'content-type') {
+                    $hasContentType = true;
+                }
+            }
+        }
+        if (!$hasContentType) {
+            header('Content-Type: application/json');
+        }
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Credentials: true');
         header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE');
