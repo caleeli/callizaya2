@@ -1,3 +1,5 @@
 microservices/*
 !microservices/deploy
+!microservices/gdrive
+!microservices/ai
 vendor/
