@@ -46,7 +46,7 @@ function model($model)
 
 /**
  * Upload and process a file
- * @param string $options
+ * @param array $options
  *
  * @return string
  */
@@ -80,7 +80,8 @@ function upload($options)
                     convert_jpg($file_tmp, $convert['quality'] ?? 80, $convert['max_width'] ?? null, $convert['max_height'] ?? null);
                     $file_ext = 'jpg';
                 }
-                $file_name_new = uniqid('', true) . '.' . $file_ext;
+                //$file_name_new = uniqid('', true) . '.' . $file_ext;
+                $file_name_new = uniqid('', true) . '.' . $file_name;
                 $file_destination = $storage_path . $file_name_new;
                 if (move_uploaded_file($file_tmp, $file_destination)) {
                     $base_url = $_ENV['BASE_URL'] ?? explode('/api.php/', $_SERVER['SCRIPT_URI'], 2)[0];
@@ -193,4 +194,9 @@ function downloadFile($fileId, $token = null)
     } catch (Exception $e) {
         throw new Exception('An error occurred: ' . $e->getMessage(), 500, $e);
     }
+}
+
+function env($key, $default = null)
+{
+    return $_ENV[$key] ?? $default;
 }
