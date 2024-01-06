@@ -3,3 +3,4 @@ microservices/*
 !microservices/gdrive
 !microservices/ai
 vendor/
+.env

@@ -200,3 +200,9 @@ function env($key, $default = null)
 {
     return $_ENV[$key] ?? $default;
 }
+
+function path(): array
+{
+    global $_PATH;
+    return $_PATH;
+}
