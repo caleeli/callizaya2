@@ -24,7 +24,6 @@ class Task
     public function execute(string $message)
     {
         $this->status = 'in_progress';
-        $this->initBranch();
         $this->assignedTo->doTask($this, $message);
         $this->status = 'completed';
     }
@@ -58,6 +57,7 @@ class Task
                 'UPDATE tasks SET
                     name = :name,
                     description = :description,
+                    branch = :branch,
                     attachments = :attachments,
                     assigned_to = :assigned_to,
                     status = :status,
@@ -69,6 +69,7 @@ class Task
                 'id' => $this->id,
                 'name' => $this->name,
                 'description' => $this->description,
+                'branch' => $this->branch,
                 'attachments' => json_encode($this->attachments),
                 'assigned_to' => $this->assignedTo->getId(),
                 'status' => $this->status,
@@ -79,13 +80,14 @@ class Task
         }
         $statement = $connection->prepare(
             'INSERT INTO tasks
-                (name, description, attachments, assigned_to, status, chat, meta)
+                (name, description, branch, attachments, assigned_to, status, chat, meta)
             VALUES
-                (:name, :description, :attachments, :assigned_to, :status, :chat, :meta)'
+                (:name, :description, :branch, :attachments, :assigned_to, :status, :chat, :meta)'
         );
         $statement->execute([
             'name' => $this->name,
             'description' => $this->description,
+            'branch' => $this->branch,
             'attachments' => json_encode($this->attachments),
             'assigned_to' => $this->assignedTo->getId(),
             'status' => $this->status,
@@ -187,5 +189,6 @@ class Task
     public function initBranch()
     {
         $this->assignedTo->project->createBranch($this->branch);
+        $this->assignedTo->project->run('php artisan migrate:fresh --seed');
     }
 }

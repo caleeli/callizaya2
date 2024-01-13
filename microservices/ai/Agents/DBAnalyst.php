@@ -63,6 +63,9 @@ class DBAnalyst extends Agent
         // do the work
         $migration_name = date('Y_m_d_His') . '_' . $nameWithoutDate;
         $migration_path = $this->project->path . '/database/migrations/' . $migration_name . '.php';
+        if (substr($content, 0, 5) !== "<?php") {
+            $content = "<?php\n\n" . $content;
+        }
         file_put_contents($migration_path, $content);
 
         // test and commit the work
@@ -84,6 +87,9 @@ class DBAnalyst extends Agent
     {
         // do the work
         $model_path = $this->project->path . '/app/Models/' . $name . '.php';
+        if (substr($content, 0, 5) !== "<?php") {
+            $content = "<?php\n\n" . $content;
+        }
         file_put_contents($model_path, $content);
 
         // test and commit the work
@@ -105,6 +111,9 @@ class DBAnalyst extends Agent
     {
         // do the work
         $factory_path = $this->project->path . '/database/factories/' . $name . '.php';
+        if (substr($content, 0, 5) !== "<?php") {
+            $content = "<?php\n\n" . $content;
+        }
         file_put_contents($factory_path, $content);
 
         // test and commit the work
@@ -117,6 +126,70 @@ class DBAnalyst extends Agent
     }
 
     /**
+     * Crea un controller
+     *
+     * @param string $name Nombre del controller, ej. UserController
+     * @param string $content Code of the controller file
+     */
+    public function create_controller($name, $content): string
+    {
+        // do the work
+        $controller_path = $this->project->path . '/app/Http/Controllers/' . $name . '.php';
+        if (substr($content, 0, 5) !== "<?php") {
+            $content = "<?php\n\n" . $content;
+        }
+        file_put_contents($controller_path, $content);
+
+        // test and commit the work
+        $result = $this->project->testAndCommit("Creando controlador $name");
+        if (!$result[0]) {
+            return $result[1];
+        }
+
+        return "Controlador $name creado exitosamente.";
+    }
+
+    /**
+     * Agrega una ruta web
+     *
+     * @param string $route Route of the page. ej. /route/to/page
+     * @param string $code Code to add to the routes/web.php file ej. Route::get('/route/to/page', [Controller::class, 'method']);
+     */
+    public function add_web_route($route, $code)
+    {
+        $routes_path = $this->project->path . '/routes/web.php';
+        $routes = file_get_contents($routes_path);
+        $routes .= "\n\n" . $code;
+        file_put_contents($routes_path, $routes);
+        $this->project->add($routes_path);
+        $result = $this->project->testAndCommit("Agregando ruta web {$route}");
+        if (!$result[0]) {
+            return $result[1];
+        }
+        return "Ruta web agregada exitosamente.";
+    }
+
+    /**
+     * Agrega una ruta api
+     *
+     * @param string $route Route of the page. ej. /route/to/page
+     * @param string $code Code to add to the routes/api.php file
+     */
+    public function add_api_route($route, $code)
+    {
+        $routes_path = $this->project->path . '/routes/api.php';
+        $routes = file_get_contents($routes_path);
+        $routes .= "\n\n" . $code;
+        file_put_contents($routes_path, $routes);
+        $this->project->add($routes_path);
+        $result = $this->project->testAndCommit("Agregando ruta api {$route}");
+        if (!$result[0]) {
+            return $result[1];
+        }
+        return "Ruta api agregada exitosamente.";
+    }
+
+    /**
      * Crea un feature test
      *
      * @param mixed $name Nombre del test. ej. CrearUsuarioTest
@@ -126,6 +199,9 @@ class DBAnalyst extends Agent
     {
         // do the work
         $test_path = $this->project->path . '/tests/Feature/' . $name . '.php';
+        if (substr($code, 0, 5) !== "<?php") {
+            $code = "<?php\n\n" . $code;
+        }
         file_put_contents($test_path, $code);
 
         // test and commit the work

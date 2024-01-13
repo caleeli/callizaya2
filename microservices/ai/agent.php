@@ -29,13 +29,14 @@ if ($taskId) {
     $task->execute($message);
 } else {
     $task = new Task(
-        name: 'Crea una tabla para registrar los logins de los usuarios',
+        name: 'Agregar los cambios necesarios para registrar los logins de los usuarios',
         description: '',
         branch: 'FOUR-0001',
         assignedTo: $analyst,
         status: 'pending',
     );
     $task->save();
+    $task->initBranch();
     $task->execute($task->name . "\n" . $task->description);
 }
 

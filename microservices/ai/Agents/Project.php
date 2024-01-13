@@ -81,7 +81,37 @@ class Project
 
     public function runTests()
     {
-        return $this->run('php -d xdebug.mode=off vendor/bin/phpunit');
+        [$success, $error] = $this->run('php -d zend_extension=xdebug.so -d xdebug.mode=coverage' .
+            ' -d xdebug.start_with_request=no vendor/bin/phpunit --coverage-text');
+        if (!$success) {
+            return [$success, $error];
+        }
+        // check code coverage is 100%
+        $coverage = $this->getCoverage($error);
+        if (!isset($coverage['percentage'])) {
+            $success = false;
+        }
+        if ($success && $coverage['percentage'] !== '100.00') {
+            return [false, $error . "\n\nCode coverage is {$coverage['percentage']}%. Create tests to cover all code."];
+        }
+        return [$success, $error];
+    }
+
+    private function getCoverage($text)
+    {
+        $lines = explode("\n", $text);
+        $coverage = [];
+        foreach ($lines as $line) {
+            if (preg_match('/^\s*Lines:\s+(\d+.\d+)%\s+\((\d+)\/(\d+)\)$/', $line, $matches)) {
+                $coverage = [
+                    'percentage' => $matches[1],
+                    'covered' => $matches[2],
+                    'total' => $matches[3],
+                ];
+                break;
+            }
+        }
+        return $coverage;
     }
 
     public function createProject()
@@ -120,7 +150,7 @@ class Project
     {
         [$success, $error] = $this->runTests();
         if (!$success) {
-            // $this->commit($message);
+            $this->commit($message);
             return [$success, $error];
         }
         return $this->commit($message);

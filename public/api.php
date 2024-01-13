@@ -62,7 +62,10 @@ try {
     }
     error_log($e);
     header('Content-Type: application/json');
-    $response = ['error' => $e->getMessage()];
+    $response = [
+        'error' => $e->getMessage(),
+        'trace' => $e->getTraceAsString(),
+    ];
     if (isset($e->meta)) {
         $response['meta'] = $e->meta;
     }
