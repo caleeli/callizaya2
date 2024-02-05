@@ -8,6 +8,8 @@ class Task
 {
     public string $id = '';
     public array $attachments = [];
+    public string $callbackChat = '';
+    public string $callbackBearerToken = '';
 
     public function __construct(
         public string $name,
@@ -38,10 +40,30 @@ class Task
         }
         $content = $message['content'];
         if (empty($content) && !empty($message['function_call'])) {
-            $content = $message['function_call']['name'];
-            $content .= '() '. $this->assignedTo->getMethod($content)['description'];
+            $function = $message['function_call']['name'];
+            $params = $message['function_call']['arguments'] ?? '';
+            $params = is_string($params) ? $params : json_encode($params);
+            $content = $this->assignedTo->getMethod($function)['description'] . "\n" .
+                $function . '('.$params.') ';
+            $message['content'] = $content;
         }
         echo "\n{$name}:\n", $content, "\n";
+        if ($this->callbackChat) {
+            // post message to chat callback
+            $ch = curl_init($this->callbackChat);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            $headers = [
+                'Content-Type: application/json',
+                "Authorization: Bearer {$this->callbackBearerToken}",
+            ];
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
+                'message' => $message,
+            ]));
+            curl_exec($ch);
+            curl_close($ch);
+        }
         flush();
     }
 
@@ -94,7 +116,7 @@ class Task
             'chat' => json_encode($this->chat),
             'meta' => json_encode((object) $this->meta),
         ]);
-        return $connection->lastInsertId();
+        return $this->id = $connection->lastInsertId();
     }
 
     public static function find($id, Agent $agent): Task | null
@@ -189,6 +211,7 @@ class Task
     public function initBranch()
     {
         $this->assignedTo->project->createBranch($this->branch);
-        $this->assignedTo->project->run('php artisan migrate:fresh --seed');
+        // $this->assignedTo->project->run('php artisan migrate:fresh --seed');
+        $this->assignedTo->project->run('php artisan migrate');
     }
 }

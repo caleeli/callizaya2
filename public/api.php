@@ -61,7 +61,9 @@ try {
         http_response_code(500);
     }
     error_log($e);
-    header('Content-Type: application/json');
+    if (!headers_sent()) {
+        header('Content-Type: application/json');
+    }
     $response = [
         'error' => $e->getMessage(),
         'trace' => $e->getTraceAsString(),

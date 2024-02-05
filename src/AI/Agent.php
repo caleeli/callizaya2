@@ -11,7 +11,7 @@ abstract class Agent
     private Knowledge $knowledge;
     private string $model = 'gpt-4-1106-preview';
     protected Mustache_Engine $mustache;
-    private AIService $service;
+    protected AIService $service;
     private string $rolDescription;
     private array $methods;
 

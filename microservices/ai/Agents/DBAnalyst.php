@@ -17,6 +17,7 @@ use App\AI\Agent;
  * ```php
  * {{{ knowledge.migration }}}
  * ```
+ * Para las clases Model utiliza como base la clase `App/Models/Model` o `Model`
  */
 class DBAnalyst extends Agent
 {
@@ -198,7 +199,11 @@ class DBAnalyst extends Agent
     public function create_feature_test($name, $code): string
     {
         // do the work
-        $test_path = $this->project->path . '/tests/Feature/' . $name . '.php';
+        $test_path_dir = $this->project->path . '/tests/Feature';
+        if (!file_exists($test_path_dir)) {
+            mkdir($test_path_dir, 0777, true);
+        }
+        $test_path = $test_path_dir . '/' . $name . '.php';
         if (substr($code, 0, 5) !== "<?php") {
             $code = "<?php\n\n" . $code;
         }
@@ -276,5 +281,86 @@ class DBAnalyst extends Agent
             return $result[1];
         }
         return $result[1];
+    }
+
+    /**
+     * Crea un archivo astro y se publica como page
+     *
+     * @param mixed $name Nombre de la pagina. ej. login
+     * @param mixed $content Contenido astro de la página
+     */
+    public function create_astro_page($name, $content): string
+    {
+        // do the work
+        $page_path = $this->project->path . '/src/pages/' . $name . '.astro';
+        file_put_contents($page_path, $content);
+
+        // test and commit the work
+        $result = $this->project->testBuildAndCommit("Creando página $name");
+        if (!$result[0]) {
+            return $result[1];
+        }
+
+        return "Página {$name} creada exitosamente.";
+    }
+
+    /**
+     * Create an PNG asset image in the public directory
+     *
+     * @param string $path Path inside public directory. ej. images/logo.png
+     * @param string $prompt Prompt to generate the image
+     * @param string $size Size of the image. ej. 256x256
+     */
+    public function create_png_image(string $path, string $prompt, string $size)
+    {
+        // if starts with public, remove it
+        if (substr($path, 0, 7) === 'public/' || substr($path, 0, 8) === '/public/') {
+            $path = substr(trim($path. '/'), 6);
+            $pathFixed = true;
+        } else {
+            $pathFixed = false;
+        }
+        $url = $this->service->createImage($prompt);
+        // save image into project
+        $image_path = $this->project->path . '/publicDir/' . trim($path, '/');
+        $dir = dirname($image_path);
+        if (!file_exists($dir)) {
+            mkdir($dir, 0777, true);
+        }
+        file_put_contents($image_path, file_get_contents($url));
+
+        // test and commit the work
+        $result = $this->project->testBuildAndCommit("Creando imagen $path");
+        if (!$result[0]) {
+            return $result[1];
+        }
+
+        // if starts with public, remove it
+        if ($pathFixed) {
+            return "Image {$path} was created succesfully, but path must not start with `/public`.' .
+                ' Change the image path to `$path` in your pages.";
+        }
+        return "Imagen {$path} creada exitosamente en el directorio public";
+    }
+
+    /**
+     * Create a vue page component
+     *
+     * @param mixed $name Page component name. ej. Login
+     * @param mixed $content Page component content
+     */
+    public function create_vue_page($name, $content): string
+    {
+        // do the work
+        $page_path = $this->project->path . '/resources/js/pages/' . $name . '.vue';
+        file_put_contents($page_path, $content);
+
+        // test and commit the work
+        $result = $this->project->testBuildAndCommit("Creando página $name");
+        if (!$result[0]) {
+            return $result[1];
+        }
+
+        return "Página {$name} creada exitosamente.";
     }
 }

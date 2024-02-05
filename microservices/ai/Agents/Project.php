@@ -2,6 +2,8 @@
 
 class Project
 {
+    private string $gitAuthor = '';
+
     public function __construct(
         public string $name,
         public string $path,
@@ -9,9 +11,35 @@ class Project
         public string $userName = 'david',
         public string $userEmail = 'davidcallizaya@gmail.com',
     ) {
+        $this->gitAuthor = escapeshellarg($this->userName . ' <' . $this->userEmail . '>');
     }
 
     public function run($command)
+    {
+        $command = mb_convert_encoding($command, 'ISO-8859-1');
+        $path = realpath($this->path);
+        $base = realpath(__DIR__ . '/../base');
+        $entrypoint = '/home/bun/base/run.sh';
+        $cmd = 'docker run --rm' .
+        ' -v ' . $path . ':/home/bun/app' .
+        ' -v ' . $base . ':/home/bun/base' .
+        ' --entrypoint ' . $entrypoint .
+            ' php_bun';
+        $nvmLoader = 'export PATH="$PATH:/home/david/.bun/bin:home/david/.nvm/versions/node/v20.10.0/bin"' .
+            ' && export NVM_DIR="/home/david/.nvm" && ' .
+            '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' . "\n" .
+            "git config --global user.email " . escapeshellarg($this->userEmail) . "\n" .
+            "git config --global user.name " . escapeshellarg($this->userName) . "\n";
+        file_put_contents($base . '/run.sh', "#!/bin/bash\n$nvmLoader\n$command 2>&1");
+        chmod($base . '/run.sh', 0777);
+        $output = [];
+        $return_var = 0;
+        exec($cmd, $output, $return_var);
+        $success = $return_var === 0;
+        return [$success, $output ? implode("\n", $output) : ''];
+    }
+
+    public function runLocal($command)
     {
         $command = mb_convert_encoding($command, 'ISO-8859-1');
         $cwd = getcwd();
@@ -41,14 +69,14 @@ class Project
         $this->run("git checkout -b {$nameF}");
         $this->run("git add .");
         $message = escapeshellarg("Commit failed branch $name: $message");
-        return $this->run("git commit -m {$message}");
+        return $this->run("git commit --author={$this->gitAuthor} -m {$message}");
     }
 
     public function commit($message)
     {
         $this->run("git add .");
         $message = escapeshellarg($message);
-        return $this->run("git commit -m {$message}");
+        return $this->run("git commit --author={$this->gitAuthor} -m {$message}");
     }
 
     public function add($path)
@@ -62,7 +90,7 @@ class Project
             $branch = $this->getCurrentBranch();
         }
         $message = escapeshellarg($message);
-        $result = $this->run("git commit -m {$message}");
+        $result = $this->run("git commit --author={$this->gitAuthor} -m {$message}");
         if (!$result[0]) {
             return $result;
         }
@@ -127,7 +155,7 @@ class Project
                 "git init && git branch -m {$this->mainBranch} && ".
                 "git config user.name {$userName} && ".
                 "git config user.email {$userEmail} && ".
-                "git add . && git commit -m 'Initial commit'"
+                "git add . && git commit --author={$this->gitAuthor} -m 'Initial commit'"
             );
         }
     }
@@ -149,6 +177,16 @@ class Project
     public function testAndCommit($message): array
     {
         [$success, $error] = $this->runTests();
+        if (!$success) {
+            $this->commit($message);
+            return [$success, $error];
+        }
+        return $this->commit($message);
+    }
+
+    public function testBuildAndCommit($message): array
+    {
+        [$success, $error] = $this->run('bun run build');
         if (!$success) {
             $this->commit($message);
             return [$success, $error];

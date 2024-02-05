@@ -62,6 +62,12 @@ class AIService
         $response = $result['choices'][0]['message'];
         $task->addChatMessage($response);
         if (isset($response['function_call']) && isset($this->functions[$response['function_call']['name']])) {
+            // fix \\u characters
+            if (isset($response['function_call']['arguments'])) {
+                $response['function_call']['arguments'] = str_replace(
+                    '\\\\u', '\\u', $response['function_call']['arguments']
+                );
+            }
             $arguments = json_decode($response['function_call']['arguments'], true);
             if (json_last_error() !== JSON_ERROR_NONE) {
                 $task->addChatMessage([
@@ -178,5 +184,16 @@ class AIService
             'response_format' => 'verbose_json',
         ]);
         return $response->text;
+    }
+
+    public function createImage(string $prompt)
+    {
+        $response = $this->client->images()->create([
+            'model' => 'dall-e-3',
+            'prompt' => $prompt,
+            'n' => 1,
+            'response_format' => 'url',
+        ]);
+        return $response->data[0]->url;
     }
 }
