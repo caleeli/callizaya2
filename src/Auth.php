@@ -68,6 +68,10 @@ final class Auth
     public static function run($microservice, array $path_params)
     {
         if (isset(self::$config['authorization']) && self::$config['authorization'] === 'bearer_token') {
+            if (empty($_SERVER['HTTP_AUTHORIZATION'])) {
+                http_response_code(401);
+                exit;
+            }
             $token = substr($_SERVER['HTTP_AUTHORIZATION'], 7);
             $valid = self::validate_token($token);
             if (!$valid) {
