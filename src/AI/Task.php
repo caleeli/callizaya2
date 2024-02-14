@@ -9,6 +9,7 @@ class Task
     public string $id = '';
     public array $attachments = [];
     public string $callbackChat = '';
+    public string $callbackModel = '';
     public string $callbackBearerToken = '';
 
     public function __construct(
@@ -28,6 +29,9 @@ class Task
         $this->status = 'in_progress';
         $this->assignedTo->doTask($this, $message);
         $this->status = 'completed';
+        $this->updateCBModel([
+            'status' => 'COMPLETADO',
+        ]);
     }
 
     public function addChatMessage(array $message)
@@ -60,11 +64,32 @@ class Task
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
                 'message' => $message,
+                'task' => $this->id,
             ]));
             curl_exec($ch);
             curl_close($ch);
         }
         flush();
+    }
+
+    private function updateCBModel($data)
+    {
+        if (!$this->callbackModel) {
+            return [];
+        }
+        // post message to chat callback
+        $ch = curl_init($this->callbackModel);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        $headers = [
+            'Content-Type: application/json',
+            "Authorization: Bearer {$this->callbackBearerToken}",
+        ];
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        $res = curl_exec($ch);
+        curl_close($ch);
+        return json_decode($res, true);
     }
 
     public function save(): string

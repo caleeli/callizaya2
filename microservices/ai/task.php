@@ -40,6 +40,7 @@ if (!$projectPath) {
 }
 $mainBranch = $_POST['project_main_branch'] ?? null;
 $callbackChat = $_POST['callback_chat'] ?? '';
+$callbackModel = $_POST['callback_model'] ?? '';
 $callbackBearerToken = $_POST['callback_bearer_token'] ?? '';
 
 $project = new Project(
@@ -56,6 +57,7 @@ if ($taskId) {
     }
     $task = Task::find($taskId, $analyst);
     $task->callbackChat = $callbackChat;
+    $task->callbackModel = $callbackModel;
     $task->callbackBearerToken = $callbackBearerToken;
     $task->execute($message);
 } else {
