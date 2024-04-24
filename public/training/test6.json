@@ -1,0 +1,116 @@
+[
+  {
+    "q": "What is Laravel?",
+    "o": ["A PHP library", "A web application framework", "A frontend JavaScript framework", "A database management system"],
+    "a": 1,
+    "r": "Laravel es un marco de aplicación web con una sintaxis elegante y expresiva."
+  },
+  {
+    "q": "Which command is used to create a new Laravel project?",
+    "o": ["npm create project", "composer create-project laravel/laravel", "laravel new", "git clone laravel"],
+    "a": 1,
+    "r": "Para crear un nuevo proyecto de Laravel, se utiliza el comando 'composer create-project laravel/laravel'."
+  },
+  {
+    "q": "What does the 'serve' command do in Laravel?",
+    "o": ["Compiles assets", "Starts the development server", "Runs unit tests", "Installs dependencies"],
+    "a": 1,
+    "r": "El comando 'serve' inicia el servidor de desarrollo local de Laravel."
+  },
+  {
+    "q": "Which database system is configured by default in Laravel?",
+    "o": ["MySQL", "PostgreSQL", "SQLite", "MongoDB"],
+    "a": 2,
+    "r": "Por defecto, Laravel viene configurado para usar SQLite."
+  },
+  {
+    "q": "Which file contains the environment-based configurations for Laravel?",
+    "o": [".env", "web.php", "config.php", "environment.php"],
+    "a": 0,
+    "r": "Las configuraciones basadas en el entorno de Laravel se definen en el archivo '.env'."
+  },
+  {
+    "q": "What is Laravel Sail?",
+    "o": ["A deployment tool", "A command-line interface for Docker", "A package manager", "An IDE plugin"],
+    "a": 1,
+    "r": "Laravel Sail es una interfaz de línea de comandos para interactuar con la configuración predeterminada de Docker de Laravel."
+  },
+  {
+    "q": "Select the features provided by Laravel.",
+    "o": ["Dependency injection", "Real-time event broadcasting", "Native authentication", "ORM", "Automatic testing"],
+    "a": [0, 1, 2, 3],
+    "r": "Laravel ofrece inyección de dependencias, difusión de eventos en tiempo real, autenticación nativa y ORM."
+  },
+  {
+    "q": "What does the 'migrate' command do?",
+    "o": ["Translates application text", "Generates application keys", "Performs database migrations", "Compiles project assets"],
+    "a": 2,
+    "r": "El comando 'migrate' se utiliza para realizar migraciones de bases de datos en Laravel."
+  },
+  {
+    "q": "Which command is used to install Laravel via Composer globally?",
+    "a": "composer global require laravel/installer",
+    "r": "Para instalar Laravel globalmente a través de Composer se utiliza el comando 'composer global require laravel/installer'."
+  },
+  {
+    "q": "Where should Laravel be served from on your web server?",
+    "o": ["The project root directory", "A subdirectory of the web directory", "The public directory", "Any directory"],
+    "a": 2,
+    "r": "Laravel debe servirse desde el directorio 'public' en su servidor web."
+  },
+  {
+    "q": "What is Laravel's primary database abstraction layer called?",
+    "a": "Eloquent",
+    "r": "La capa de abstracción de base de datos primaria de Laravel se llama Eloquent."
+  },
+  {
+    "q": "Which of the following are Laravel starter kits? (Select all that apply)",
+    "o": ["Laravel Breeze", "Laravel Jetstream", "Laravel Spark", "Laravel Wave"],
+    "a": [0, 1, 2],
+    "r": "Los kits de inicio de Laravel incluyen Laravel Breeze, Laravel Jetstream y Laravel Spark."
+  },
+  {
+    "q": "Which file should not be committed to your application's source control?",
+    "a": ".env",
+    "r": "El archivo '.env' no debe comprometerse con el control de fuente de su aplicación debido a que contiene configuraciones sensibles."
+  },
+  {
+    "q": "What Laravel feature allows automatic background job processing?",
+    "o": ["Eloquent", "Blade", "Artisan", "Queues"],
+    "a": 3,
+    "r": "Las colas en Laravel permiten el procesamiento automático de trabajos en segundo plano."
+  },
+  {
+    "q": "Which ORM is included with Laravel?",
+    "a": "Eloquent",
+    "r": "El ORM que incluye Laravel se llama Eloquent."
+  },
+  {
+    "q": "What is Laravel's command-line interface called?",
+    "a": "Artisan",
+    "r": "La interfaz de línea de comandos de Laravel se llama Artisan."
+  },
+  {
+    "q": "Which of these is a Laravel feature for real-time data broadcasting?",
+    "o": ["Horizon", "Echo", "Nexmo", "Cashier"],
+    "a": 1,
+    "r": "Echo es una característica de Laravel para la difusión de datos en tiempo real."
+  },
+  {
+    "q": "What does Laravel use for dependency management?",
+    "o": ["NPM", "Yarn", "Composer", "Maven"],
+    "a": 2,
+    "r": "Laravel utiliza Composer para la gestión de dependencias."
+  },
+  {
+    "q": "Which Laravel service provides authorization functionality?",
+    "o": ["Gates", "Passport", "Policies", "Broadcast"],
+    "a": 2,
+    "r": "Las políticas en Laravel proporcionan funcionalidad de autorización."
+  },
+  {
+    "q": "Which version control system is recommended for Laravel development?",
+    "a": "Git",
+    "r": "Para el desarrollo de Laravel, se recomienda utilizar el sistema de control de versiones Git."
+  }
+]

@@ -1,0 +1,368 @@
+[
+    {
+        "q": "What is the command to create a new Laravel project?",
+        "q_es": "¿Cuál es el comando para crear un nuevo proyecto de Laravel?",
+        "o": [
+            "laravel new project",
+            "composer create-project laravel/laravel projectName",
+            "npm install laravel",
+            "php artisan start project"
+        ],
+        "a": 1,
+        "r": "Para crear un nuevo proyecto de Laravel, el comando correcto es 'composer create-project laravel/laravel projectName'."
+    },
+    {
+        "q": "Which of the following is NOT a feature of Laravel?",
+        "q_es": "¿Cuál de las siguientes NO es una característica de Laravel?",
+        "o": [
+            "MVC Architecture",
+            "ORM Eloquent",
+            "Automatic package discovery",
+            "Native support for AngularJS"
+        ],
+        "a": 3,
+        "r": "Laravel no tiene soporte nativo para AngularJS, aunque puede integrarse manualmente."
+    },
+    {
+        "q": "Select all the correct statements about Laravel migrations.",
+        "q_es": "Seleccione todas las afirmaciones correctas sobre las migraciones de Laravel.",
+        "o": [
+            "Migrations allow version control for your database.",
+            "Migrations update the database in real time.",
+            "Migrations can be rolled back.",
+            "Migrations are optional in Laravel."
+        ],
+        "a": [0, 2, 3],
+        "r": "Las migraciones permiten el control de versiones para tu base de datos, se pueden revertir y son opcionales en Laravel."
+    },
+    {
+        "q": "What does the command 'php artisan migrate' do?",
+        "q_es": "¿Qué hace el comando 'php artisan migrate'?",
+        "o": [
+            "Installs Laravel",
+            "Updates Laravel to a new version",
+            "Creates a new migration file",
+            "Runs the database migrations"
+        ],
+        "a": 3,
+        "r": "El comando 'php artisan migrate' ejecuta las migraciones de la base de datos."
+    },
+    {
+        "q": "Which method would you use to check if a user is authenticated in a blade template?",
+        "q_es": "¿Qué método usarías para verificar si un usuario está autenticado en una plantilla blade?",
+        "o": [
+            "@auth",
+            "@guest",
+            "@user",
+            "@check"
+        ],
+        "a": 0,
+        "r": "El método '@auth' se utiliza en las plantillas blade para verificar si un usuario está autenticado."
+    },
+    {
+        "q": "How do you publish vendor assets in Laravel?",
+        "q_es": "¿Cómo publicas los activos de proveedores en Laravel?",
+        "o": [
+            "php artisan vendor:publish",
+            "npm run dev",
+            "php artisan make:asset",
+            "composer update"
+        ],
+        "a": 0,
+        "r": "Para publicar activos de proveedores en Laravel, se utiliza el comando 'php artisan vendor:publish'."
+    },
+    {
+        "q": "Enter the default HTTP port used by Laravel's development server.",
+        "q_es": "Ingrese el puerto HTTP predeterminado utilizado por el servidor de desarrollo de Laravel.",
+        "a": "8000",
+        "r": "El servidor de desarrollo de Laravel utiliza por defecto el puerto HTTP 8000."
+    },
+    {
+        "q": "What is Laravel Echo used for?",
+        "q_es": "¿Para qué se utiliza Laravel Echo?",
+        "o": [
+            "Database ORM",
+            "Authentication",
+            "Real-time events",
+            "Routing"
+        ],
+        "a": 2,
+        "r": "Laravel Echo se utiliza para eventos en tiempo real."
+    },
+    {
+        "q": "Which package does Laravel use for data validation?",
+        "q_es": "¿Qué paquete utiliza Laravel para la validación de datos?",
+        "o": [
+            "Symfony",
+            "Doctrine",
+            "Illuminate\\Validation",
+            "Carbon"
+        ],
+        "a": 2,
+        "r": "Laravel utiliza el paquete 'Illuminate\\Validation' para la validación de datos."
+    },
+    {
+        "q": "Which command would you use to create a controller named 'UserController' in Laravel?",
+        "q_es": "¿Qué comando usarías para crear un controlador llamado 'UserController' en Laravel?",
+        "o": [
+            "php artisan make:user UserController",
+            "php artisan make:model UserController",
+            "php artisan make:controller UserController",
+            "composer create UserController"
+        ],
+        "a": 2,
+        "r": "Para crear un controlador llamado 'UserController' en Laravel, usarías el comando 'php artisan make:controller UserController'."
+    },
+    {
+        "q": "Multi-select all correct options for types of middleware in Laravel.",
+        "q_es": "Seleccione múltiples todas las opciones correctas para tipos de middleware en Laravel.",
+        "o": [
+            "Route middleware",
+            "Global middleware",
+            "Package middleware",
+            "Group middleware"
+        ],
+        "a": [0, 1, 3],
+        "r": "Los tipos de middleware en Laravel incluyen middleware de ruta, middleware global y middleware de grupo."
+    },
+    {
+        "q": "What is the primary purpose of Laravel's service container?",
+        "q_es": "¿Cuál es el propósito principal del contenedor de servicios de Laravel?",
+        "o": [
+            "To manage class dependencies",
+            "To provide routing capabilities",
+            "To handle user authentication",
+            "To optimize application performance"
+        ],
+        "a": 0,
+        "r": "El propósito principal del contenedor de servicios de Laravel es gestionar las dependencias de clase."
+    },
+    {
+        "q": "In Laravel, how do you access current logged-in user's ID in a controller?",
+        "q_es": "En Laravel, ¿cómo accedes al ID del usuario actualmente conectado en un controlador?",
+        "o": [
+            "auth()->id()",
+            "user()->id",
+            "Auth::user()->id()",
+            "auth()->user()->id"
+        ],
+        "a": 3,
+        "r": "Para acceder al ID del usuario conectado en un controlador de Laravel, usarías 'auth()->user()->id'."
+    },
+    {
+        "q": "Which file is used for database configuration in Laravel?",
+        "q_es": "¿Qué archivo se utiliza para la configuración de la base de datos en Laravel?",
+        "o": [
+            ".env",
+            "config/app.php",
+            "config/database.php",
+            "database.php"
+        ],
+        "a": 2,
+        "r": "El archivo utilizado para la configuración de la base de datos en Laravel es 'config/database.php'."
+    },
+    {
+        "q": "How would you add a new package to a Laravel application?",
+        "q_es": "¿Cómo agregarías un nuevo paquete a una aplicación de Laravel?",
+        "o": [
+            "Use the Laravel Package Builder",
+            "Install via Composer",
+            "Download and include manually",
+            "Add the package in app.js"
+        ],
+        "a": 1,
+        "r": "Para agregar un nuevo paquete a una aplicación de Laravel, lo instalarías mediante Composer."
+    },
+    {
+        "q": "What is the purpose of the 'artisan down' command?",
+        "q_es": "¿Cuál es el propósito del comando 'artisan down'?",
+        "o": [
+            "To update Laravel",
+            "To put the application in maintenance mode",
+            "To create a new database",
+            "To generate app key"
+        ],
+        "a": 1,
+        "r": "El propósito del comando 'artisan down' es poner la aplicación en modo de mantenimiento."
+    },
+    {
+        "q": "Which Laravel feature is used for scheduling tasks?",
+        "q_es": "¿Qué característica de Laravel se utiliza para programar tareas?",
+        "o": [
+            "Eloquent",
+            "Task Scheduler",
+            "Database Migrations",
+            "Blade Templates"
+        ],
+        "a": 1,
+        "r": "La característica de Laravel utilizada para programar tareas es el 'Task Scheduler'."
+    },
+    {
+        "q": "What is Blade in Laravel?",
+        "q_es": "¿Qué es Blade en Laravel?",
+        "o": [
+            "A routing engine",
+            "A template engine",
+            "A database library",
+            "A CSS framework"
+        ],
+        "a": 1,
+        "r": "Blade es el motor de plantillas de Laravel."
+    },
+    {
+        "q": "What does the 'composer require' command do?",
+        "q_es": "¿Qué hace el comando 'composer require'?",
+        "o": [
+            "Updates all packages",
+            "Adds a new package to the project",
+            "Removes a package from the project",
+            "None of the above"
+        ],
+        "a": 1,
+        "r": "El comando 'composer require' agrega un nuevo paquete al proyecto."
+    },
+    {
+        "q": "Select all the correct storage options natively supported by Laravel.",
+        "q_es": "Seleccione todas las opciones de almacenamiento correctamente soportadas de forma nativa por Laravel.",
+        "o": [
+            "Local filesystem",
+            "Amazon S3",
+            "Google Cloud Storage",
+            "FTP servers"
+        ],
+        "a": [0, 1],
+        "r": "Las opciones de almacenamiento soportadas de forma nativa por Laravel incluyen el sistema de archivos local y Amazon S3."
+    },
+    {
+        "q": "What is the artisan command to view all routes?",
+        "q_es": "¿Cuál es el comando artisan para ver todas las rutas?",
+        "o": [
+            "php artisan routes:list",
+            "php artisan route:list",
+            "php artisan list:routes",
+            "php artisan serve"
+        ],
+        "a": 1,
+        "r": "El comando para ver todas las rutas en Laravel es 'php artisan route:list'."
+    },
+    {
+        "q": "Enter the default namespace for controllers in a new Laravel application.",
+        "q_es": "Ingrese el espacio de nombres predeterminado para los controladores en una nueva aplicación Laravel.",
+        "a": "App\\Http\\Controllers",
+        "r": "El espacio de nombres predeterminado para los controladores en una nueva aplicación Laravel es 'App\\Http\\Controllers'."
+    },
+    {
+        "q": "Which command is used to start a local development server for Laravel?",
+        "q_es": "¿Qué comando se utiliza para iniciar un servidor de desarrollo local para Laravel?",
+        "o": [
+            "php artisan serve",
+            "php artisan start",
+            "npm run dev",
+            "composer serve"
+        ],
+        "a": 0,
+        "r": "El comando utilizado para iniciar un servidor de desarrollo local para Laravel es 'php artisan serve'."
+    },
+    {
+        "q": "Multi-select all the middleware features provided by Laravel.",
+        "q_es": "Seleccione múltiples todas las características de middleware proporcionadas por Laravel.",
+        "o": [
+            "Authentication",
+            "Routing",
+            "Rate limiting",
+            "Session management"
+        ],
+        "a": [0, 2],
+        "r": "Las características de middleware proporcionadas por Laravel incluyen autenticación y limitación de tasa."
+    },
+    {
+        "q": "What is the main use of Eloquent in Laravel?",
+        "q_es": "¿Cuál es el uso principal de Eloquent en Laravel?",
+        "o": [
+            "For authentication",
+            "As an ORM",
+            "For routing",
+            "As a templating engine"
+        ],
+        "a": 1,
+        "r": "El uso principal de Eloquent en Laravel es como un ORM."
+    },
+    {
+        "q": "Which Laravel service is used for authorization?",
+        "q_es": "¿Qué servicio de Laravel se utiliza para la autorización?",
+        "o": [
+            "Blade",
+            "Eloquent",
+            "Gate",
+            "Broadcast"
+        ],
+        "a": 2,
+        "r": "El servicio de Laravel utilizado para la autorización es 'Gate'."
+    },
+    {
+        "q": "What does the 'php artisan key:generate' command do?",
+        "q_es": "¿Qué hace el comando 'php artisan key:generate'?",
+        "o": [
+            "Creates a new controller",
+            "Generates a new application key",
+            "Updates Laravel version",
+            "None of the above"
+        ],
+        "a": 1,
+        "r": "El comando 'php artisan key:generate' genera una nueva clave de aplicación."
+    },
+    {
+        "q": "Which HTTP method is not natively supported by Laravel's routing system?",
+        "q_es": "¿Qué método HTTP no es soportado de forma nativa por el sistema de enrutamiento de Laravel?",
+        "o": [
+            "GET",
+            "POST",
+            "PUT",
+            "CONNECT"
+        ],
+        "a": 3,
+        "r": "El método HTTP 'CONNECT' no es soportado de forma nativa por el sistema de enrutamiento de Laravel."
+    },
+    {
+        "q": "Enter the method to get the current logged-in user's email in Laravel.",
+        "q_es": "Ingrese el método para obtener el correo electrónico del usuario actualmente conectado en Laravel.",
+        "a": "auth()->user()->email",
+        "r": "Para obtener el correo electrónico del usuario conectado en Laravel, usarías 'auth()->user()->email'."
+    },
+    {
+        "q": "What does the 'php artisan migrate:rollback' command do?",
+        "q_es": "¿Qué hace el comando 'php artisan migrate:rollback'?",
+        "o": [
+            "Deletes the database",
+            "Rolls back the last database migration",
+            "Creates a new migration",
+            "Updates the database"
+        ],
+        "a": 1,
+        "r": "El comando 'php artisan migrate:rollback' revierte la última migración de la base de datos."
+    },
+    {
+        "q": "How do you declare a named route in Laravel?",
+        "q_es": "¿Cómo declaras una ruta nombrada en Laravel?",
+        "o": [
+            "Route::name('home')->get('/home', 'HomeController@index');",
+            "Route::get('home', 'HomeController@index')->name('home');",
+            "Route::get('/home', 'HomeController@index', 'home');",
+            "Route::get('/home', 'HomeController@index')->setName('home');"
+        ],
+        "a": 1,
+        "r": "Para declarar una ruta nombrada en Laravel, usarías 'Route::get('home', 'HomeController@index')->name('home');'."
+    },
+    {
+        "q": "Select all true statements about Laravel's environment files.",
+        "q_es": "Seleccione todas las afirmaciones verdaderas sobre los archivos de entorno de Laravel.",
+        "o": [
+            "Stored in the 'env' directory",
+            "Can be specific to environments",
+            "Never tracked by version control",
+            "All environment variables are required"
+        ],
+        "a": [1, 2],
+        "r": "Los archivos de entorno de Laravel pueden ser específicos para entornos y nunca deben ser rastreados por el control de versiones."
+    }
+]

@@ -1,0 +1,702 @@
+[
+    {
+        "q": "What command is used to create a new Laravel project?",
+        "q_es": "¿Qué comando se utiliza para crear un nuevo proyecto de Laravel?",
+        "o": ["laravel new project", "composer create-project --prefer-dist laravel/laravel", "npm install laravel", "laravel install new"],
+        "a": 1,
+        "r": "Se utiliza el comando 'composer create-project --prefer-dist laravel/laravel' para crear un nuevo proyecto de Laravel."
+    },
+    {
+        "q": "Which method is used to listen for an event in Laravel?",
+        "q_es": "¿Qué método se utiliza para escuchar un evento en Laravel?",
+        "o": ["Event::listen()", "Event::fire()", "Event::broadcast()", "Event::trigger()"],
+        "a": 0,
+        "r": "Se utiliza el método 'Event::listen()' para escuchar eventos en Laravel."
+    },
+    {
+        "q": "What is the primary function of middleware in Laravel?",
+        "q_es": "¿Cuál es la función principal del middleware en Laravel?",
+        "o": ["Routing requests", "Performing authentication", "Transforming responses", "Intercepting and filtering HTTP requests before they reach the application"],
+        "a": 3,
+        "r": "El middleware en Laravel intercepta y filtra las solicitudes HTTP antes de que lleguen a la aplicación."
+    },
+    {
+        "q": "How do you rollback the last database migration?",
+        "q_es": "¿Cómo se revierte la última migración de la base de datos?",
+        "o": ["php artisan migrate", "php artisan migrate:rollback", "php artisan db:rollback", "php artisan rollback"],
+        "a": 1,
+        "r": "Se utiliza 'php artisan migrate:rollback' para revertir la última migración de la base de datos."
+    },
+    {
+        "q": "In which file are service providers registered in Laravel?",
+        "q_es": "¿En qué archivo se registran los proveedores de servicios en Laravel?",
+        "o": ["app.php", "services.php", "providers.php", "config.php"],
+        "a": 0,
+        "r": "Los proveedores de servicios se registran en el archivo 'app.php' en Laravel."
+    },
+    {
+        "q": "What Laravel feature allows queued jobs to be processed?",
+        "q_es": "¿Qué característica de Laravel permite procesar trabajos en cola?",
+        "o": ["Task Scheduling", "Event Broadcasting", "Job Dispatching", "Queue Workers"],
+        "a": 3,
+        "r": "Los 'Queue Workers' permiten procesar trabajos en cola en Laravel."
+    },
+    {
+        "q": "How are named routes defined in Laravel?",
+        "q_es": "¿Cómo se definen las rutas nombradas en Laravel?",
+        "o": ["Route::name()", "Route::get()->name()", "Route::define()", "Route::get()->withName()"],
+        "a": 1,
+        "r": "Las rutas nombradas se definen usando 'Route::get()->name()' en Laravel."
+    },
+    {
+        "q": "Which Artisan command generates a controller in Laravel?",
+        "q_es": "¿Qué comando de Artisan genera un controlador en Laravel?",
+        "o": ["php artisan make:controller", "php artisan create:controller", "php artisan generate:controller", "php artisan controller:make"],
+        "a": 0,
+        "r": "El comando 'php artisan make:controller' genera un controlador en Laravel."
+    },
+    {
+        "q": "What does the 'fillable' array in a model prevent?",
+        "q_es": "¿Qué previene el arreglo 'fillable' en un modelo?",
+        "o": ["SQL injection", "Mass assignment", "Data corruption", "Over-posting"],
+        "a": 1,
+        "r": "El arreglo 'fillable' previene la asignación masiva en un modelo de Laravel."
+    },
+    {
+        "q": "How is email sent in Laravel?",
+        "q_es": "¿Cómo se envía un correo electrónico en Laravel?",
+        "o": ["Using the Mail facade with send()", "Directly using SMTP", "Via third-party packages", "Through API calls"],
+        "a": 0,
+        "r": "Se utiliza la fachada Mail con la función send() para enviar correos electrónicos en Laravel."
+    },
+    {
+        "q": "Which file stores the database connection settings in Laravel?",
+        "q_es": "¿En qué archivo se almacenan las configuraciones de conexión a la base de datos en Laravel?",
+        "o": ["database.php", "config.php", "services.php", "env.php"],
+        "a": 3,
+        "r": "Las configuraciones de conexión a la base de datos se almacenan en el archivo 'env.php' en Laravel."
+    },
+    {
+        "q": "What is the purpose of the Eloquent ORM in Laravel?",
+        "q_es": "¿Cuál es el propósito del ORM Eloquent en Laravel?",
+        "o": ["To write raw SQL queries", "To provide database migrations", "To interact with the database using an object-oriented syntax", "To handle routing mechanisms"],
+        "a": 2,
+        "r": "El ORM Eloquent se utiliza para interactuar con la base de datos utilizando una sintaxis orientada a objetos."
+    },
+    {
+        "q": "Which Laravel feature is used to schedule periodic tasks?",
+        "q_es": "¿Qué característica de Laravel se utiliza para programar tareas periódicas?",
+        "o": ["Task Scheduler", "Command Scheduler", "Event Scheduler", "Cron Jobs"],
+        "a": 0,
+        "r": "El 'Task Scheduler' se utiliza para programar tareas periódicas en Laravel."
+    },
+    {
+        "q": "What Laravel helper function redirects to a named route?",
+        "q_es": "¿Qué función auxiliar de Laravel redirige a una ruta nombrada?",
+        "o": ["back()", "redirect()", "route()", "goto()"],
+        "a": 2,
+        "r": "La función auxiliar 'route()' redirige a una ruta nombrada en Laravel."
+    },
+    {
+        "q": "Which HTTP method is not natively supported by HTML forms and requires a Laravel workaround?",
+        "q_es": "¿Qué método HTTP no es soportado de forma nativa por los formularios HTML y requiere una solución alternativa en Laravel?",
+        "o": ["GET", "POST", "DELETE", "PUT"],
+        "a": [2, 3],
+        "r": "Los métodos HTTP 'DELETE' y 'PUT' no son soportados de forma nativa por los formularios HTML y requieren soluciones alternativas en Laravel."
+    },
+    {
+        "q": "What is the Laravel service container?",
+        "q_es": "¿Qué es el contenedor de servicios de Laravel?",
+        "o": ["A tool for managing class dependencies", "A database management system", "A template engine", "A routing library"],
+        "a": 0,
+        "r": "El contenedor de servicios de Laravel es una herramienta para gestionar las dependencias de clases."
+    },
+    {
+        "q": "Which command line tool is included with Laravel for running tasks?",
+        "q_es": "¿Qué herramienta de línea de comandos se incluye con Laravel para ejecutar tareas?",
+        "o": ["Laravel Runner", "Artisan", "Craftsman", "Builder"],
+        "a": 1,
+        "r": "Artisan es la herramienta de línea de comandos incluida con Laravel para ejecutar tareas."
+    },
+    {
+        "q": "In MVC architecture, what does 'C' stand for?",
+        "q_es": "En la arquitectura MVC, ¿qué significa la 'C'?",
+        "o": ["Component", "Container", "Controller", "Compiler"],
+        "a": 2,
+        "r": "En la arquitectura MVC, la 'C' significa 'Controller'."
+    },
+    {
+        "q": "What function do you use to validate incoming request data in a controller?",
+        "q_es": "¿Qué función utilizas para validar los datos de una solicitud entrante en un controlador?",
+        "o": ["validate()", "check()", "verify()", "inspect()"],
+        "a": 0,
+        "r": "Se utiliza la función 'validate()' para validar los datos de las solicitudes entrantes en un controlador."
+    },
+    {
+        "q": "Which middleware is included with Laravel that verifies the user of the application is authenticated?",
+        "q_es": "¿Qué middleware incluye Laravel que verifica si el usuario de la aplicación está autenticado?",
+        "o": ["auth", "user", "verify", "check"],
+        "a": 0,
+        "r": "El middleware 'auth' está incluido con Laravel y verifica que el usuario de la aplicación esté autenticado."
+    },
+    {
+        "q": "What file type is typically used for database migrations in Laravel?",
+        "q_es": "¿Qué tipo de archivo se utiliza típicamente para las migraciones de bases de datos en Laravel?",
+        "o": ["SQL files", "PHP files", "ENV files", "Config files"],
+        "a": 1,
+        "r": "Los archivos PHP son típicamente utilizados para las migraciones de bases de datos en Laravel."
+    },
+    {
+        "q": "How can you add a column to an existing table using Laravel migrations?",
+        "q_es": "¿Cómo puedes añadir una columna a una tabla existente usando migraciones de Laravel?",
+        "o": ["php artisan make:migration", "php artisan table:add", "php artisan migrate:add", "php artisan migrate"],
+        "a": 0,
+        "r": "Usando 'php artisan make:migration', puedes añadir una columna a una tabla existente en Laravel."
+    },
+    {
+        "q": "What method would you use to send an email with an attached file in Laravel?",
+        "q_es": "¿Qué método usarías para enviar un correo electrónico con un archivo adjunto en Laravel?",
+        "o": ["Mail::send()", "Mail::attach()", "Mail::to()->send()", "Mail::to()->attach()"],
+        "a": 2,
+        "r": "Usarías 'Mail::to()->send()' para enviar un correo electrónico con un archivo adjunto en Laravel."
+    },
+    {
+        "q": "Which of the following is a Laravel event broadcasting driver?",
+        "q_es": "¿Cuál de los siguientes es un controlador de difusión de eventos de Laravel?",
+        "o": ["Redis", "Log", "S3", "SMTP"],
+        "a": 0,
+        "r": "Redis es un controlador de difusión de eventos de Laravel."
+    },
+    {
+        "q": "What Laravel feature automates the creation of test data?",
+        "q_es": "¿Qué característica de Laravel automatiza la creación de datos de prueba?",
+        "o": ["Data Factories", "Test Bench", "Seeder Classes", "Mockery"],
+        "a": 0,
+        "r": "Las 'Data Factories' automatizan la creación de datos de prueba en Laravel."
+    },
+    {
+        "q": "Which Artisan command updates the Laravel framework version?",
+        "q_es": "¿Qué comando de Artisan actualiza la versión del framework de Laravel?",
+        "o": ["php artisan update", "php artisan upgrade", "composer update", "npm update"],
+        "a": 2,
+        "r": "El comando 'composer update' actualiza la versión del framework de Laravel."
+    },
+    {
+        "q": "How is CSRF protection handled in Laravel?",
+        "q_es": "¿Cómo se maneja la protección CSRF en Laravel?",
+        "o": ["Using a CSRF token", "Via SSL certificates", "Through user authentication", "With API keys"],
+        "a": 0,
+        "r": "La protección CSRF en Laravel se maneja utilizando un token CSRF."
+    },
+    {
+        "q": "What Laravel feature helps to handle and log errors?",
+        "q_es": "¿Qué característica de Laravel ayuda a manejar y registrar errores?",
+        "o": ["Logging", "Exception Handling", "Debugging", "Auditing"],
+        "a": 1,
+        "r": "El manejo de excepciones ayuda a manejar y registrar errores en Laravel."
+    },
+    {
+        "q": "Which file in Laravel is responsible for loading environment variables?",
+        "q_es": "¿Qué archivo en Laravel es responsable de cargar las variables de entorno?",
+        "o": [".env", "bootstrap.php", "web.php", "app.php"],
+        "a": 0,
+        "r": "El archivo '.env' es responsable de cargar las variables de entorno en Laravel."
+    },
+    {
+        "q": "What is the correct syntax to declare a new middleware in Laravel?",
+        "q_es": "¿Cuál es la sintaxis correcta para declarar un nuevo middleware en Laravel?",
+        "o": ["php artisan make:middleware", "php artisan create:middleware", "php artisan add:middleware", "php artisan generate:middleware"],
+        "a": 0,
+        "r": "La sintaxis correcta es 'php artisan make:middleware' para declarar un nuevo middleware en Laravel."
+    },
+    {
+        "q": "Which Laravel function is used to retrieve a configuration value?",
+        "q_es": "¿Qué función de Laravel se utiliza para recuperar un valor de configuración?",
+        "o": ["config()", "getConfig()", "setting()", "env()"],
+        "a": 0,
+        "r": "La función 'config()' se utiliza para recuperar valores de configuración en Laravel."
+    },
+    {
+        "q": "What Laravel feature uses templates to send emails?",
+        "q_es": "¿Qué característica de Laravel utiliza plantillas para enviar correos electrónicos?",
+        "o": ["Blade Email", "Mail Templates", "Mailables", "Email Views"],
+        "a": 2,
+        "r": "Los 'Mailables' utilizan plantillas para enviar correos electrónicos en Laravel."
+    },
+    {
+        "q": "In Laravel, what is the default directory for views?",
+        "q_es": "En Laravel, ¿cuál es el directorio predeterminado para las vistas?",
+        "o": ["resources/views", "app/views", "storage/views", "public/views"],
+        "a": 0,
+        "r": "El directorio predeterminado para las vistas en Laravel es 'resources/views'."
+    },
+    {
+        "q": "Which Laravel component is used for dependency injection?",
+        "q_es": "¿Qué componente de Laravel se utiliza para la inyección de dependencias?",
+        "o": ["Service Container", "App Binder", "Service Provider", "Class Injector"],
+        "a": 0,
+        "r": "El 'Service Container' se utiliza para la inyección de dependencias en Laravel."
+    },
+    {
+        "q": "How do you generate a model, controller, and migration at the same time in Laravel?",
+        "q_es": "¿Cómo generas un modelo, un controlador y una migración al mismo tiempo en Laravel?",
+        "o": ["php artisan make:model -m -c", "php artisan make:all", "php artisan create:model-controller", "php artisan setup:model"],
+        "a": 0,
+        "r": "Se utiliza 'php artisan make:model -m -c' para generar un modelo, un controlador y una migración al mismo tiempo en Laravel."
+    },
+    {
+        "q": "Which Laravel command clears the application cache?",
+        "q_es": "¿Qué comando de Laravel limpia la caché de la aplicación?",
+        "o": ["php artisan cache:clear", "php artisan clear:cache", "php artisan cache:clean", "php artisan clean:cache"],
+        "a": 0,
+        "r": "El comando 'php artisan cache:clear' limpia la caché de la aplicación en Laravel."
+    },
+    {
+        "q": "What does the 'tinker' Artisan command do in Laravel?",
+        "q_es": "¿Qué hace el comando Artisan 'tinker' en Laravel?",
+        "o": ["Performs database migrations", "Runs unit tests", "Interacts with the application from the command line", "Generates code templates"],
+        "a": 2,
+        "r": "'Tinker' permite interactuar con la aplicación desde la línea de comandos en Laravel."
+    },
+    {
+        "q": "Which file is used to define middleware groups in Laravel?",
+        "q_es": "¿En qué archivo se definen los grupos de middleware en Laravel?",
+        "o": ["Kernel.php", "RouteServiceProvider.php", "Middleware.php", "AppServiceProvider.php"],
+        "a": 0,
+        "r": "Los grupos de middleware se definen en el archivo 'Kernel.php' en Laravel."
+    },
+    {
+        "q": "What is the recommended way to store images in Laravel?",
+        "q_es": "¿Cuál es la manera recomendada de almacenar imágenes en Laravel?",
+        "o": ["In the database", "In the public directory", "Using the storage facade", "Directly in the resources folder"],
+        "a": 2,
+        "r": "La manera recomendada de almacenar imágenes en Laravel es utilizando la fachada de almacenamiento."
+    },
+    {
+        "q": "How is database seeding accomplished in Laravel?",
+        "q_es": "¿Cómo se realiza el llenado de la base de datos en Laravel?",
+        "o": ["Using the Seeder class", "Via the Tinker tool", "Through the Eloquent model", "By running SQL scripts"],
+        "a": 0,
+        "r": "El llenado de la base de datos se realiza utilizando la clase Seeder en Laravel."
+    },
+    {
+        "q": "What Laravel method is used to retrieve all request data?",
+        "q_es": "¿Qué método de Laravel se utiliza para recuperar todos los datos de la solicitud?",
+        "o": ["request()->all()", "request()->get()", "request()->data()", "request()->input()"],
+        "a": 0,
+        "r": "El método 'request()->all()' se utiliza para recuperar todos los datos de la solicitud en Laravel."
+    },
+    {
+        "q": "Which Laravel directive outputs data in a Blade template?",
+        "q_es": "¿Qué directiva de Laravel muestra datos en una plantilla Blade?",
+        "o": ["@data", "@output", "@print", "@{{ }}"],
+        "a": 3,
+        "r": "La directiva '@{{ }}' se utiliza para mostrar datos en una plantilla Blade en Laravel."
+    },
+    {
+        "q": "What is the primary purpose of Laravel Passport?",
+        "q_es": "¿Cuál es el propósito principal de Laravel Passport?",
+        "o": ["Database management", "Routing", "Authentication via API tokens", "Compiling assets"],
+        "a": 2,
+        "r": "Laravel Passport se utiliza principalmente para la autenticación mediante tokens de API."
+    },
+    {
+        "q": "Which Laravel helper function starts a session?",
+        "q_es": "¿Qué función auxiliar de Laravel inicia una sesión?",
+        "o": ["session()", "start()", "begin()", "initSession()"],
+        "a": 0,
+        "r": "La función auxiliar 'session()' inicia una sesión en Laravel."
+    },
+    {
+        "q": "What Laravel function retrieves an environment variable value?",
+        "q_es": "¿Qué función de Laravel recupera el valor de una variable de entorno?",
+        "o": ["getenv()", "env()", "config()", "appEnv()"],
+        "a": 1,
+        "r": "La función 'env()' recupera el valor de una variable de entorno en Laravel."
+    },
+    {
+        "q": "Which Artisan command generates a new event class in Laravel?",
+        "q_es": "¿Qué comando de Artisan genera una nueva clase de evento en Laravel?",
+        "o": ["php artisan make:event", "php artisan event:generate", "php artisan create:event", "php artisan add:event"],
+        "a": 0,
+        "r": "El comando 'php artisan make:event' genera una nueva clase de evento en Laravel."
+    },
+    {
+        "q": "What Laravel feature manages user authentication?",
+        "q_es": "¿Qué característica de Laravel gestiona la autenticación de usuarios?",
+        "o": ["Auth class", "User class", "Guard", "Auth service"],
+        "a": 0,
+        "r": "La característica 'Auth class' gestiona la autenticación de usuarios en Laravel."
+    },
+    {
+        "q": "Which method in the Query Builder is used to add a join clause?",
+        "q_es": "¿Qué método del Constructor de Consultas se utiliza para añadir una cláusula de unión?",
+        "o": ["join()", "addJoin()", "on()", "link()"],
+        "a": 0,
+        "r": "El método 'join()' se utiliza para añadir una cláusula de unión en el Constructor de Consultas de Laravel."
+    },
+    {
+        "q": "How do you create a new command in Laravel using Artisan?",
+        "q_es": "¿Cómo creas un nuevo comando en Laravel usando Artisan?",
+        "o": ["php artisan make:command", "php artisan create:command", "php artisan command:new", "php artisan generate:command"],
+        "a": 0,
+        "r": "Usas 'php artisan make:command' para crear un nuevo comando en Laravel."
+    },
+    {
+        "q": "What is the file extension for Laravel Blade templates?",
+        "q_es": "¿Cuál es la extensión de archivo para las plantillas Blade de Laravel?",
+        "o": [".blade.php", ".blade", ".laravel", ".tpl"],
+        "a": 0,
+        "r": "La extensión de archivo para las plantillas Blade de Laravel es '.blade.php'."
+    },
+    {
+        "q": "What helper function in Laravel generates a URL for an asset using the current scheme of the request?",
+        "q_es": "¿Qué función auxiliar de Laravel genera una URL para un activo usando el esquema actual de la solicitud?",
+        "o": ["asset()", "url()", "link()", "assetUrl()"],
+        "a": 0,
+        "r": "La función 'asset()' genera una URL para un activo usando el esquema actual de la solicitud en Laravel."
+    },
+    {
+        "q": "Which command is used to generate a policy in Laravel?",
+        "q_es": "¿Qué comando se utiliza para generar una política en Laravel?",
+        "o": ["php artisan make:policy", "php artisan create:policy", "php artisan generate:policy", "php artisan policy:make"],
+        "a": 0,
+        "r": "Se utiliza 'php artisan make:policy' para generar una política en Laravel."
+    },
+    {
+        "q": "In Laravel, which class is used for handling exceptions?",
+        "q_es": "En Laravel, ¿qué clase se utiliza para manejar las excepciones?",
+        "o": ["Handler", "Error", "Exception", "ExceptionHandler"],
+        "a": 0,
+        "r": "La clase 'Handler' se utiliza para manejar las excepciones en Laravel."
+    },
+    {
+        "q": "What function does the 'dd' helper in Laravel perform?",
+        "q_es": "¿Qué función realiza el auxiliar 'dd' en Laravel?",
+        "o": ["Data display", "Dump and die", "Data deletion", "Detail display"],
+        "a": 1,
+        "r": "'Dump and die' es la función que realiza el auxiliar 'dd' en Laravel."
+    },
+    {
+        "q": "How are event listeners registered in the EventServiceProvider in Laravel?",
+        "q_es": "¿Cómo se registran los oyentes de eventos en el EventServiceProvider en Laravel?",
+        "o": ["Within the listen array", "In the event config file", "Through the register method", "Using the boot method"],
+        "a": 0,
+        "r": "Los oyentes de eventos se registran dentro del arreglo 'listen' en el EventServiceProvider en Laravel."
+    },
+    {
+        "q": "Which method is used to update existing records in the database using Eloquent?",
+        "q_es": "¿Qué método se utiliza para actualizar registros existentes en la base de datos usando Eloquent?",
+        "o": ["update()", "save()", "push()", "edit()"],
+        "a": 0,
+        "r": "El método 'update()' se utiliza para actualizar registros existentes en la base de datos usando Eloquent en Laravel."
+    },
+    {
+        "q": "What is the primary role of the RouteServiceProvider in Laravel?",
+        "q_es": "¿Cuál es el papel principal del RouteServiceProvider en Laravel?",
+        "o": ["To provide routing configurations", "To register service providers", "To handle responses", "To manage route caching"],
+        "a": 0,
+        "r": "El RouteServiceProvider en Laravel proporciona configuraciones de enrutamiento."
+    },
+    {
+        "q": "Which method in Laravel queues a new job?",
+        "q_es": "¿Qué método en Laravel pone en cola un nuevo trabajo?",
+        "o": ["dispatch()", "push()", "queue()", "run()"],
+        "a": 0,
+        "r": "El método 'dispatch()' pone en cola un nuevo trabajo en Laravel."
+    },
+    {
+        "q": "What is the use of the 'with' method in Laravel query builder?",
+        "q_es": "¿Cuál es el uso del método 'with' en el constructor de consultas de Laravel?",
+        "o": ["To add conditional clauses", "To perform joins", "To specify relationships to be eager loaded", "To group query results"],
+        "a": 2,
+        "r": "El método 'with' especifica las relaciones que deben cargarse de manera anticipada en el constructor de consultas de Laravel."
+    },
+    {
+        "q": "How do you validate an array of data in Laravel?",
+        "q_es": "¿Cómo validas un arreglo de datos en Laravel?",
+        "o": ["Using the validate method with rules", "With a custom validation class", "Through a middleware", "By creating a form request"],
+        "a": 0,
+        "r": "Usas el método 'validate' con reglas para validar un arreglo de datos en Laravel."
+    },
+    {
+        "q": "What does the 'lazy' method do when retrieving records in Laravel?",
+        "q_es": "¿Qué hace el método 'lazy' al recuperar registros en Laravel?",
+        "o": ["It retrieves all records at once", "It retrieves records in chunks", "It delays retrieval until necessary", "It caches the records"],
+        "a": 1,
+        "r": "El método 'lazy' recupera registros en trozos en Laravel."
+    },
+    {
+        "q": "Which component in Laravel helps in managing and handling scheduled tasks more efficiently?",
+        "q_es": "¿Qué componente en Laravel ayuda a gestionar y manejar tareas programadas de manera más eficiente?",
+        "o": ["Task Scheduler", "Cron Manager", "Command Scheduler", "Event Scheduler"],
+        "a": 0,
+        "r": "El 'Task Scheduler' ayuda a gestionar y manejar tareas programadas de manera más eficiente en Laravel."
+    },
+    {
+        "q": "What Laravel functionality allows you to roll back the most recent database migration?",
+        "q_es": "¿Qué funcionalidad de Laravel te permite revertir la migración de base de datos más reciente?",
+        "o": ["The rollback command", "The reset method", "The refresh function", "The redo feature"],
+        "a": 0,
+        "r": "El comando 'rollback' permite revertir la migración de base de datos más reciente en Laravel."
+    },
+    {
+        "q": "Which Laravel middleware ensures that a session does not exist before allowing a request to proceed?",
+        "q_es": "¿Qué middleware de Laravel asegura que una sesión no exista antes de permitir que una solicitud proceda?",
+        "o": ["Auth", "Guest", "VerifyCsrfToken", "StartSession"],
+        "a": 1,
+        "r": "El middleware 'Guest' asegura que una sesión no exista antes de permitir que una solicitud proceda en Laravel."
+    },
+    {
+        "q": "What is the role of the 'Gate' facade in Laravel?",
+        "q_es": "¿Cuál es el papel de la fachada 'Gate' en Laravel?",
+        "o": ["Handling user authentication", "Defining authorization logic", "Routing requests", "Logging activities"],
+        "a": 1,
+        "r": "La fachada 'Gate' define la lógica de autorización en Laravel."
+    },
+    {
+        "q": "How do you add a custom attribute to a model in Laravel that isn't in the database?",
+        "q_es": "¿Cómo añades un atributo personalizado a un modelo en Laravel que no está en la base de datos?",
+        "o": ["Using the $appends property", "With the $attributes property", "Through the $hidden array", "By modifying the $casts array"],
+        "a": 0,
+        "r": "Usas la propiedad '$appends' para añadir un atributo personalizado a un modelo en Laravel que no está en la base de datos."
+    },
+    {
+        "q": "What command line tool in Laravel is used for creating and handling migrations?",
+        "q_es": "¿Qué herramienta de línea de comandos en Laravel se utiliza para crear y manejar migraciones?",
+        "o": ["Artisan", "Composer", "NPM", "Webpack"],
+        "a": 0,
+        "r": "Artisan es la herramienta de línea de comandos utilizada para crear y manejar migraciones en Laravel."
+    },
+    {
+        "q": "Which method is used to pass variables to a view in Laravel?",
+        "q_es": "¿Qué método se utiliza para pasar variables a una vista en Laravel?",
+        "o": ["with()", "compact()", "attach()", "bind()"],
+        "a": 0,
+        "r": "El método 'with()' se utiliza para pasar variables a una vista en Laravel."
+    },
+    {
+        "q": "What does the 'observe' method do in the context of Laravel Eloquent models?",
+        "q_es": "¿Qué hace el método 'observe' en el contexto de los modelos Eloquent de Laravel?",
+        "o": ["It validates model data", "It watches for model events", "It configures model relationships", "It updates model states"],
+        "a": 1,
+        "r": "El método 'observe' observa los eventos del modelo en Laravel."
+    },
+    {
+        "q": "Which Laravel feature is essential for creating RESTful APIs?",
+        "q_es": "¿Qué característica de Laravel es esencial para crear APIs RESTful?",
+        "o": ["Routes", "Eloquent", "API Resources", "Blade"],
+        "a": 2,
+        "r": "Los 'API Resources' son esenciales para crear APIs RESTful en Laravel."
+    },
+    {
+        "q": "How does Laravel's route caching improve application performance?",
+        "q_es": "¿Cómo mejora el rendimiento de la aplicación el almacenamiento en caché de rutas de Laravel?",
+        "o": ["By reducing the number of queries to the database", "By speeding up route registration", "By decreasing memory usage", "By simplifying URL parsing"],
+        "a": 1,
+        "r": "El almacenamiento en caché de rutas de Laravel acelera el registro de rutas y mejora el rendimiento de la aplicación."
+    },
+    {
+        "q": "What is the function of the 'assertDatabaseHas' method in Laravel testing?",
+        "q_es": "¿Cuál es la función del método 'assertDatabaseHas' en las pruebas de Laravel?",
+        "o": ["It asserts that the database contains a given table", "It checks the presence of a record in the database", "It verifies the integrity of database connections", "It compares expected and actual database schemas"],
+        "a": 1,
+        "r": "El método 'assertDatabaseHas' verifica la presencia de un registro en la base de datos en las pruebas de Laravel."
+    },
+    {
+        "q": "Which Laravel directive outputs a translated string?",
+        "q_es": "¿Qué directiva de Laravel muestra una cadena traducida?",
+        "o": ["@lang", "@trans", "@translate", "@text"],
+        "a": 0,
+        "r": "La directiva '@lang' se utiliza para mostrar una cadena traducida en Laravel."
+    },
+    {
+        "q": "What method do you use to create a soft delete column in a migration in Laravel?",
+        "q_es": "¿Qué método utilizas para crear una columna de eliminación suave en una migración en Laravel?",
+        "o": ["softDeletes()", "deleteSoft()", "enableSoftDelete()", "softDelete()"],
+        "a": 0,
+        "r": "El método 'softDeletes()' se utiliza para crear una columna de eliminación suave en una migración en Laravel."
+    },
+    {
+        "q": "How is a new service provider registered in a Laravel application?",
+        "q_es": "¿Cómo se registra un nuevo proveedor de servicios en una aplicación Laravel?",
+        "o": ["In the app configuration", "Within the service provider itself", "In the bootstrap file", "In the providers array of config/app.php"],
+        "a": 3,
+        "r": "Un nuevo proveedor de servicios se registra en el arreglo 'providers' de config/app.php en Laravel."
+    },
+    {
+        "q": "What function in Laravel is used to create a custom validation rule?",
+        "q_es": "¿Qué función en Laravel se utiliza para crear una regla de validación personalizada?",
+        "o": ["Validator::extend()", "Validator::create()", "Validator::new()", "Validator::addRule()"],
+        "a": 0,
+        "r": "La función 'Validator::extend()' se utiliza para crear una regla de validación personalizada en Laravel."
+    },
+    {
+        "q": "Which method in Laravel Eloquent's model is used for incrementing a value of a column?",
+        "q_es": "¿Qué método en el modelo Eloquent de Laravel se utiliza para incrementar el valor de una columna?",
+        "o": ["increase()", "add()", "increment()", "plus()"],
+        "a": 2,
+        "r": "El método 'increment()' se utiliza para incrementar el valor de una columna en un modelo Eloquent de Laravel."
+    },
+    {
+        "q": "What does the 'CSRF' token in Laravel protect against?",
+        "q_es": "¿Contra qué protege el token 'CSRF' en Laravel?",
+        "o": ["SQL Injection", "Cross-Site Request Forgery", "Session Hijacking", "DDoS Attacks"],
+        "a": 1,
+        "r": "El token 'CSRF' protege contra la falsificación de solicitudes en sitios cruzados en Laravel."
+    },
+    {
+        "q": "In Laravel, how is a new listener generated using the Artisan CLI?",
+        "q_es": "En Laravel, ¿cómo se genera un nuevo oyente utilizando la CLI de Artisan?",
+        "o": ["php artisan make:listener", "php artisan generate:listener", "php artisan listener:create", "php artisan add:listener"],
+        "a": 0,
+        "r": "Se utiliza 'php artisan make:listener' para generar un nuevo oyente en Laravel."
+    },
+    {
+        "q": "What Laravel feature allows you to execute fluent query building?",
+        "q_es": "¿Qué característica de Laravel te permite ejecutar la construcción de consultas fluidas?",
+        "o": ["Eloquent", "Query Builder", "Migrations", "Seeder"],
+        "a": 1,
+        "r": "El 'Query Builder' permite ejecutar la construcción de consultas fluidas en Laravel."
+    },
+    {
+        "q": "Which Laravel command helps in optimizing the route loading?",
+        "q_es": "¿Qué comando de Laravel ayuda en optimizar la carga de rutas?",
+        "o": ["php artisan route:cache", "php artisan optimize", "php artisan route:optimize", "php artisan route:compile"],
+        "a": 0,
+        "r": "El comando 'php artisan route:cache' ayuda en optimizar la carga de rutas en Laravel."
+    },
+    {
+        "q": "How do you create a middleware that terminates in Laravel?",
+        "q_es": "¿Cómo creas un middleware que termina en Laravel?",
+        "o": ["By implementing the Terminable interface", "By adding a terminate method", "By calling the stop method", "By using middleware groups"],
+        "a": 1,
+        "r": "Creando un método 'terminate' en el middleware puedes hacer que termine en Laravel."
+    },
+    {
+        "q": "What does the Laravel 'collect' helper function do?",
+        "q_es": "¿Qué hace la función auxiliar 'collect' de Laravel?",
+        "o": ["Starts a new database transaction", "Creates a new collection", "Generates a new config cache", "Compiles a view template"],
+        "a": 1,
+        "r": "La función auxiliar 'collect' crea una nueva colección en Laravel."
+    },
+    {
+        "q": "Which file defines broadcast channels in Laravel?",
+        "q_es": "¿En qué archivo se definen los canales de difusión en Laravel?",
+        "o": ["channels.php", "broadcasting.php", "events.php", "routes.php"],
+        "a": 0,
+        "r": "El archivo 'channels.php' define los canales de difusión en Laravel."
+    },
+    {
+        "q": "What method is used to rollback to a specific migration?",
+        "q_es": "¿Qué método se utiliza para revertir a una migración específica?",
+        "o": ["php artisan migrate:rollback --step", "php artisan migrate:reset --to", "php artisan migrate:rollback --to", "php artisan migrate:revert"],
+        "a": 0,
+        "r": "Se utiliza 'php artisan migrate:rollback --step' para revertir a una migración específica en Laravel."
+    },
+    {
+        "q": "Which interface must a Laravel job class implement to be queued?",
+        "q_es": "¿Qué interfaz debe implementar una clase de trabajo de Laravel para ser encolada?",
+        "o": ["ShouldQueue", "MustRun", "Queueable", "JobHandler"],
+        "a": 0,
+        "r": "La interfaz 'ShouldQueue' debe ser implementada por una clase de trabajo para ser encolada en Laravel."
+    },
+    {
+        "q": "What is the purpose of the 'boot' method in a Laravel service provider?",
+        "q_es": "¿Cuál es el propósito del método 'boot' en un proveedor de servicios de Laravel?",
+        "o": ["To register bindings in the service container", "To perform route model binding", "To publish package assets", "To initialize services after all providers are loaded"],
+        "a": 3,
+        "r": "El método 'boot' se utiliza para inicializar servicios después de que todos los proveedores están cargados en Laravel."
+    },
+    {
+        "q": "How can you share data with all views in Laravel?",
+        "q_es": "¿Cómo puedes compartir datos con todas las vistas en Laravel?",
+        "o": ["Using global middleware", "With a shared service provider", "By using the view composer", "Through the config files"],
+        "a": 2,
+        "r": "Puedes compartir datos con todas las vistas usando el compositor de vistas en Laravel."
+    },
+    {
+        "q": "What does the 'artisan down' command do?",
+        "q_es": "¿Qué hace el comando 'artisan down'?",
+        "o": ["Clears the application cache", "Puts the application into maintenance mode", "Stops the application server", "Rolls back the latest migration"],
+        "a": 1,
+        "r": "El comando 'artisan down' pone la aplicación en modo de mantenimiento en Laravel."
+    },
+    {
+        "q": "In Laravel, which method would you use to get a single column's value from the first result of a query?",
+        "q_es": "En Laravel, ¿qué método utilizarías para obtener el valor de una sola columna del primer resultado de una consulta?",
+        "o": ["first()", "value()", "get()", "pluck()"],
+        "a": 1,
+        "r": "Utilizarías el método 'value()' para obtener el valor de una sola columna del primer resultado de una consulta en Laravel."
+    },
+    {
+        "q": "What Laravel mechanism helps to reduce the load on the database by caching the results of queries?",
+        "q_es": "¿Qué mecanismo de Laravel ayuda a reducir la carga en la base de datos al almacenar en caché los resultados de las consultas?",
+        "o": ["Database caching", "Eloquent caching", "Query caching", "Result caching"],
+        "a": 2,
+        "r": "El almacenamiento en caché de consultas ayuda a reducir la carga en la base de datos en Laravel."
+    },
+    {
+        "q": "Which Laravel package is used for real-time data synchronization across clients?",
+        "q_es": "¿Qué paquete de Laravel se utiliza para la sincronización de datos en tiempo real entre clientes?",
+        "o": ["Echo", "Broadcast", "Horizon", "Telescope"],
+        "a": 0,
+        "r": "Echo se utiliza para la sincronización de datos en tiempo real entre clientes en Laravel."
+    },
+    {
+        "q": "What does the 'optional' helper function do?",
+        "q_es": "¿Qué hace la función auxiliar 'optional'?",
+        "o": ["It checks if the object is null before calling methods or accessing properties", "It provides default values for missing data", "It removes optional dependencies", "It configures optional routes"],
+        "a": 0,
+        "r": "'Optional' verifica si el objeto es nulo antes de llamar métodos o acceder a propiedades en Laravel."
+    },
+    {
+        "q": "How do you specify a fallback route in Laravel?",
+        "q_es": "¿Cómo especificas una ruta de reserva en Laravel?",
+        "o": ["Using the default() method", "With the fallback() method", "By defining a generic catch-all route", "Through the RouteServiceProvider"],
+        "a": 1,
+        "r": "Especificarías una ruta de reserva usando el método 'fallback()' en Laravel."
+    },
+    {
+        "q": "What is the primary use of the Laravel mix tool?",
+        "q_es": "¿Cuál es el uso principal de la herramienta Laravel mix?",
+        "o": ["Database seeding", "User authentication", "Compiling assets", "Routing requests"],
+        "a": 2,
+        "r": "Laravel Mix se utiliza principalmente para compilar activos en Laravel."
+    },
+    {
+        "q": "Which Laravel contract should be implemented for a class that sends notifications?",
+        "q_es": "¿Qué contrato de Laravel debe implementarse para una clase que envía notificaciones?",
+        "o": ["ShouldNotify", "Notifiable", "CanNotify", "Notification"],
+        "a": 1,
+        "r": "El contrato 'Notifiable' debe ser implementado por una clase que envía notificaciones en Laravel."
+    },
+    {
+        "q": "What helper function in Laravel is used to throw an exception if a model is not found?",
+        "q_es": "¿Qué función auxiliar en Laravel se utiliza para lanzar una excepción si no se encuentra un modelo?",
+        "o": ["missing()", "fails()", "throwIfNotFound()", "findOrFail()"],
+        "a": 3,
+        "r": "La función 'findOrFail()' se utiliza para lanzar una excepción si no se encuentra un modelo en Laravel."
+    },
+    {
+        "q": "Which middleware in Laravel automatically handles input data conversion to JSON?",
+        "q_es": "¿Qué middleware en Laravel maneja automáticamente la conversión de datos de entrada a JSON?",
+        "o": ["JsonMiddleware", "TransformInput", "ConvertToJson", "TrimStrings"],
+        "a": 3,
+        "r": "El middleware 'TrimStrings' maneja automáticamente la conversión de datos de entrada en Laravel, aunque no específicamente a JSON. Esto es un error en la pregunta, ya que Laravel maneja JSON automáticamente en el kernel si es necesario."
+    },
+    {
+        "q": "How do you manually authenticate users in Laravel?",
+        "q_es": "¿Cómo autenticas usuarios manualmente en Laravel?",
+        "o": ["Using the Auth facade with the attempt method", "By creating a custom Auth controller", "Through the user provider", "Employing the gate facade"],
+        "a": 0,
+        "r": "Usarías la fachada Auth con el método 'attempt' para autenticar usuarios manualmente en Laravel."
+    },
+    {
+        "q": "What Laravel feature allows you to handle actions after a response has been sent to the user?",
+        "q_es": "¿Qué característica de Laravel te permite manejar acciones después de que una respuesta ha sido enviada al usuario?",
+        "o": ["Middleware", "Terminable Middleware", "Post-response Jobs", "After Middleware"],
+        "a": 1,
+        "r": "El 'Terminable Middleware' permite manejar acciones después de que una respuesta ha sido enviada al usuario en Laravel."
+    }
+]

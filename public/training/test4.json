@@ -1,0 +1,66 @@
+[
+    {
+        "q": "What is Laravel primarily used for?",
+        "o": ["Database management", "Web application development", "Desktop application development", "Operating system development"],
+        "a": 1,
+        "r": "Laravel is a web application framework with expressive, elegant syntax."
+    },
+    {
+        "q": "Which of the following are features of Laravel mentioned in the document?",
+        "o": ["Dependency injection", "Real-time events", "Unit testing", "All of the above"],
+        "a": 3,
+        "r": "Features such as thorough dependency injection, an expressive database abstraction layer, queues and scheduled jobs, unit and integration testing."
+    },
+    {
+        "q": "What command is used to create a new Laravel project via Composer?",
+        "o": ["composer create-project laravel/laravel example-app", "laravel new project", "npm install laravel", "php laravel start"],
+        "a": 0,
+        "r": "You may create a new Laravel project via Composer's 'create-project' command."
+    },
+    {
+        "q": "Which operating systems are covered for Docker installation using Laravel Sail?",
+        "o": ["macOS only", "Windows only", "Linux only", "macOS, Windows, and Linux"],
+        "a": 3,
+        "r": "Sail on macOS, Sail on Windows, Sail on Linux."
+    },
+    {
+        "q": "What should the `.env` file at the root of your application be used for?",
+        "o": ["Committing to source control", "Defining environment-specific variables", "Storing database credentials", "Both B and C"],
+        "a": 3,
+        "r": "Many important configuration values are defined using the `.env` file that exists at the root of your application."
+    },
+    {
+        "q": "What does Laravel use to handle user authentication and authorization?",
+        "a": "Laravel Sanctum",
+        "r": "Laravel Sanctum is used for handling authentication and authorization."
+    },
+    {
+        "q": "Which of the following services can be configured in a new Laravel application's 'docker-compose.yml' file via Sail?",
+        "o": ["MySQL", "Redis", "PostgreSQL", "All of the above"],
+        "a": 3,
+        "r": "Available services include 'mysql', 'pgsql', 'redis', 'memcached'."
+    },
+    {
+        "q": "What is the minimum PHP version required for Laravel 11?",
+        "o": ["PHP 7.4", "PHP 8.0", "PHP 8.2", "PHP 8.3"],
+        "a": 2,
+        "r": "Laravel 11.x requires a minimum PHP version of 8.2."
+    },
+    {
+        "q": "Select all the true statements about Laravel Sail based on the document.",
+        "o": [
+            "It requires prior Docker experience.",
+            "It is customizable using the 'docker-compose.yml'.",
+            "It can only be used on macOS.",
+            "It simplifies Docker configuration for Laravel."
+        ],
+        "a": [1, 3],
+        "r": "Everything about Sail can be customized using the 'docker-compose.yml' file included with Laravel."
+    },
+    {
+        "q": "What type of database is set by default in the Laravel configuration?",
+        "o": ["MySQL", "PostgreSQL", "SQLite", "MongoDB"],
+        "a": 2,
+        "r": "By default, your application's `.env` configuration file specifies that Laravel will be interacting with a SQLite database."
+    }
+]

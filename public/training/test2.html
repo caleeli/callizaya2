@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laravel Knowledge Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hidden { display: none; }
+        .red { color: red; }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <h1 class="text-xl font-bold mb-4">Laravel Knowledge Test</h1>
+    <form id="laravelTest" class="space-y-4">
+        <!-- Question 1 -->
+        <div>
+            <label for="q1" class="font-semibold">What is Laravel?</label>
+            <select id="q1" class="mt-1 block w-full p-2 bg-white border">
+                <option value="">Select an option</option>
+                <option value="framework">A PHP framework</option>
+                <option value="language">A programming language</option>
+                <option value="database">A database technology</option>
+            </select>
+        </div>
+
+        <!-- Question 2 -->
+        <div>
+            <label class="font-semibold">Which of the following are features of Laravel? (Select all that apply)</label>
+            <div class="mt-1 space-y-2">
+                <label><input type="checkbox" name="q2" value="mvc"> MVC Architecture</label>
+                <label><input type="checkbox" name="q2" value="orm"> Eloquent ORM</label>
+                <label><input type="checkbox" name="q2" value="templating"> Blade Templating</label>
+                <label><input type="checkbox" name="q2" value="sockets"> WebSockets</label>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div>
+            <label for="q3" class="font-semibold">Which function do you use to start a Laravel project?</label>
+            <input type="text" id="q3" class="mt-1 block w-full p-2 bg-white border" placeholder="Enter function name">
+        </div>
+
+        <!-- Question 4 -->
+        <div>
+            <label class="font-semibold">Which versions of PHP does Laravel 11 support?</label>
+            <div class="mt-1 space-y-2">
+                <label><input type="radio" name="q4" value="7.4"> PHP 7.4</label>
+                <label><input type="radio" name="q4" value="8.0"> PHP 8.0</label>
+                <label><input type="radio" name="q4" value="8.2"> PHP 8.2</label>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div>
+            <label for="q5" class="font-semibold">What is Laravel Sail?</label>
+            <textarea id="q5" class="mt-1 block w-full p-2 bg-white border" rows="3"></textarea>
+        </div>
+
+        <!-- Submit button -->
+        <button type="button" onclick="validateForm()" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            let score = 0;
+            let total = 5;
+            let correctAnswers = {
+                q1: "framework",
+                q2: ["mvc", "orm", "templating"],
+                q3: "laravel new",
+                q4: "8.2",
+                q5: "docker"
+            };
+
+            // Validate Q1
+            let q1 = document.getElementById('q1');
+            if (q1.value === correctAnswers.q1) {
+                score++;
+                q1.classList.remove('red');
+            } else {
+                q1.classList.add('red');
+            }
+
+            // Validate Q2
+            let q2 = document.querySelectorAll('input[name="q2"]:checked');
+            let q2Values = Array.from(q2).map(input => input.value);
+            if (JSON.stringify(q2Values.sort()) === JSON.stringify(correctAnswers.q2.sort())) {
+                score++;
+                q2.forEach(input => input.parentNode.classList.remove('red'));
+            } else {
+                q2.forEach(input => input.parentNode.classList.add('red'));
+            }
+
+            // Validate Q3
+            let q3 = document.getElementById('q3');
+            if (q3.value.trim().toLowerCase() === correctAnswers.q3) {
+                score++;
+                q3.classList.remove('red');
+            } else {
+                q3.classList.add('red');
+            }
+
+            // Validate Q4
+            let q4 = document.querySelector('input[name="q4"]:checked');
+            if (q4 && q4.value === correctAnswers.q4) {
+                score++;
+                q4.parentNode.classList.remove('red');
+            } else {
+                if (q4) q4.parentNode.classList.add('red');
+            }
+
+            // Validate Q5
+            let q5 = document.getElementById('q5');
+            if (q5.value.trim().toLowerCase().includes(correctAnswers.q5)) {
+                score++;
+                q5.classList.remove('red');
+            } else {
+                q5.classList.add('red');
+            }
+
+            alert(`You scored ${score} out of ${total}`);
+        }
+    </script>
+</body>
+</html>

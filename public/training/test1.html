@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laravel Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-xl mx-auto">
+        <h1 class="text-xl font-bold text-center mb-6">Laravel Knowledge Test</h1>
+        <form id="testForm" class="space-y-6">
+            <div>
+                <label class="font-medium">1. What does Laravel use for dependency management?</label>
+                <input type="text" id="q1" class="mt-1 p-2 w-full border rounded">
+            </div>
+            <div>
+                <label class="font-medium">2. Which command is used to create a new Laravel project?</label>
+                <input type="text" id="q2" class="mt-1 p-2 w-full border rounded">
+            </div>
+            <div>
+                <label class="font-medium">3. What is Laravel Sail primarily used for?</label>
+                <input type="text" id="q3" class="mt-1 p-2 w-full border rounded">
+            </div>
+            <div>
+                <label class="font-medium">4. Name one real-time event feature provided by Laravel.</label>
+                <input type="text" id="q4" class="mt-1 p-2 w-full border rounded">
+            </div>
+            <div>
+                <label class="font-medium">5. Which PHP version is required for Laravel 11.x?</label>
+                <input type="text" id="q5" class="mt-1 p-2 w-full border rounded">
+            </div>
+            <button type="button" onclick="validateTest()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Submit Answers
+            </button>
+        </form>
+    </div>
+    <script>
+        function validateTest() {
+            const answers = {
+                q1: "composer",
+                q2: "composer create-project laravel/laravel example-app",
+                q3: "running Laravel projects using Docker",
+                q4: "broadcasting",
+                q5: "8.2"
+            };
+            let score = 0;
+            Object.keys(answers).forEach(q => {
+                const userAnswer = document.getElementById(q).value.trim().toLowerCase();
+                if(userAnswer === answers[q].toLowerCase()) {
+                    score++;
+                }
+            });
+            alert("Your score is: " + score + "/5");
+        }
+    </script>
+</body>
+</html>

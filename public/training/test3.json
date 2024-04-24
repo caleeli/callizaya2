@@ -1,0 +1,12 @@
+[
+    {"q":"What is Laravel primarily used for?","o":["Web application development","Mobile application development","Desktop software development","Embedded systems"],"a":0},
+    {"q":"Which of the following are true about Laravel\'s features?","o":["Supports dependency injection","Includes a unit testing framework","Offers scheduled jobs functionality","All of the above"],"a":3},
+    {"q":"What command is used to create a new Laravel project?","o":["laravel new project","composer create-project laravel/laravel example-app","npm install laravel","laravel install new"],"a":1},
+    {"q":"Select all the services that can be configured using Laravel Sail.","o":["MySQL","PostgreSQL","Redis","Apache"],"a":[0,1,2]},
+    {"q":"What is the minimum PHP version required for Laravel 11?","a":"8.2"},
+    {"q":"Which of the following is not a default Laravel middleware?","o":["Authenticate","VerifyCsrfToken","TrimStrings","CheckForMaintenanceMode"],"a":3},
+    {"q":"How long do security fixes last for Laravel 11?","a":"2 years"},
+    {"q":"Which environment file should not be committed to your application\'s source control?","a":".env"},
+    {"q":"Which database is set as default in Laravel\'s configuration?","o":["MySQL","SQLite","PostgreSQL","MongoDB"],"a":1},
+    {"q":"What tool is recommended for running a Laravel project using Docker?","o":["Docker Compose","Kubernetes","Laravel Sail","Laravel Vapor"],"a":2}
+]
