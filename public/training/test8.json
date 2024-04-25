@@ -72,9 +72,9 @@
     {
         "q": "Which file stores the database connection settings in Laravel?",
         "q_es": "¿En qué archivo se almacenan las configuraciones de conexión a la base de datos en Laravel?",
-        "o": ["database.php", "config.php", "services.php", "env.php"],
+        "o": ["database.php", "config.php", "services.php", ".env"],
         "a": 3,
-        "r": "Las configuraciones de conexión a la base de datos se almacenan en el archivo 'env.php' en Laravel."
+        "r": "Las configuraciones de conexión a la base de datos se almacenan en el archivo '.env' en Laravel."
     },
     {
         "q": "What is the purpose of the Eloquent ORM in Laravel?",
