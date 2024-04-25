@@ -698,5 +698,181 @@
         "o": ["Middleware", "Terminable Middleware", "Post-response Jobs", "After Middleware"],
         "a": 1,
         "r": "El 'Terminable Middleware' permite manejar acciones después de que una respuesta ha sido enviada al usuario en Laravel."
+    },
+    {
+        "q": "What Laravel function is used to generate a secure, random hash string?",
+        "q_es": "¿Qué función de Laravel se utiliza para generar una cadena hash segura y aleatoria?",
+        "o": ["hash_make()", "str_random()", "bcrypt()", "random_hash()"],
+        "a": 2,
+        "r": "La función 'bcrypt()' se utiliza para generar una cadena hash segura y aleatoria en Laravel."
+    },
+    {
+        "q": "Which method on the Request instance provides access to uploaded files in Laravel?",
+        "q_es": "¿Qué método en la instancia Request proporciona acceso a los archivos subidos en Laravel?",
+        "o": ["file()", "files()", "upload()", "getFiles()"],
+        "a": 0,
+        "r": "El método 'file()' en la instancia Request proporciona acceso a los archivos subidos en Laravel."
+    },
+    {
+        "q": "What is the name of the directory where you can store test files in a Laravel application?",
+        "q_es": "¿Cuál es el nombre del directorio donde puedes almacenar archivos de prueba en una aplicación Laravel?",
+        "o": ["tests", "testcases", "unittests", "testing"],
+        "a": 0,
+        "r": "El directorio 'tests' es donde puedes almacenar archivos de prueba en una aplicación Laravel."
+    },
+    {
+        "q": "Which Laravel package provides support for OAuth2 server implementation?",
+        "q_es": "¿Qué paquete de Laravel proporciona soporte para la implementación de un servidor OAuth2?",
+        "o": ["Passport", "Cashier", "Socialite", "Scout"],
+        "a": 0,
+        "r": "El paquete 'Passport' proporciona soporte para la implementación de un servidor OAuth2 en Laravel."
+    },
+    {
+        "q": "How do you create a custom console command in Laravel?",
+        "q_es": "¿Cómo creas un comando de consola personalizado en Laravel?",
+        "o": ["php artisan make:command", "php artisan create:command", "php artisan add:command", "php artisan new:command"],
+        "a": 0,
+        "r": "Usas 'php artisan make:command' para crear un comando de consola personalizado en Laravel."
+    },
+    {
+        "q": "In Laravel, which class would you extend to create a custom request?",
+        "q_es": "En Laravel, ¿qué clase extenderías para crear una solicitud personalizada?",
+        "o": ["Http\\Request", "FormRequest", "CustomRequest", "BaseRequest"],
+        "a": 1,
+        "r": "Extenderías la clase 'FormRequest' para crear una solicitud personalizada en Laravel."
+    },
+    {
+        "q": "What Laravel feature can be used to handle tasks after the response is sent to the browser?",
+        "q_es": "¿Qué característica de Laravel se puede utilizar para manejar tareas después de que la respuesta se envía al navegador?",
+        "o": ["Jobs", "Queues", "Events", "Middleware"],
+        "a": 1,
+        "r": "Las 'Queues' pueden ser utilizadas para manejar tareas después de que la respuesta se envía al navegador en Laravel."
+    },
+    {
+        "q": "What is the purpose of the 'touch' method in Eloquent?",
+        "q_es": "¿Cuál es el propósito del método 'touch' en Eloquent?",
+        "o": ["To delete a model instance", "To update the timestamps of a model", "To validate model attributes", "To reload a model from the database"],
+        "a": 1,
+        "r": "El método 'touch' se utiliza para actualizar los timestamps de un modelo en Eloquent de Laravel."
+    },
+    {
+        "q": "Which Laravel interface is used for authorization checks?",
+        "q_es": "¿Qué interfaz de Laravel se utiliza para las comprobaciones de autorización?",
+        "o": ["Authorizable", "Authenticatable", "CanAuthorize", "Guard"],
+        "a": 0,
+        "r": "La interfaz 'Authorizable' se utiliza para las comprobaciones de autorización en Laravel."
+    },
+    {
+        "q": "How do you define a model observer in Laravel?",
+        "q_es": "¿Cómo defines un observador de modelos en Laravel?",
+        "o": ["In the AppServiceProvider", "In the model's boot method", "In the routes file", "In a dedicated observer class"],
+        "a": 1,
+        "r": "Defines un observador de modelos en el método 'boot' del modelo en Laravel."
+    },
+    {
+        "q": "What method do you use to execute a raw SQL query in Laravel?",
+        "q_es": "¿Qué método utilizas para ejecutar una consulta SQL sin procesar en Laravel?",
+        "o": ["DB::raw()", "DB::query()", "DB::execute()", "DB::select()"],
+        "a": 0,
+        "r": "Usas 'DB::raw()' para ejecutar una consulta SQL sin procesar en Laravel."
+    },
+    {
+        "q": "What helper is used to dispatch events in Laravel?",
+        "q_es": "¿Qué ayudante se utiliza para despachar eventos en Laravel?",
+        "o": ["event()", "dispatch()", "fire()", "emit()"],
+        "a": 0,
+        "r": "El ayudante 'event()' se utiliza para despachar eventos en Laravel."
+    },
+    {
+        "q": "In Laravel, what is the purpose of the 'casts' property in a model?",
+        "q_es": "En Laravel, ¿cuál es el propósito de la propiedad 'casts' en un modelo?",
+        "o": ["To encrypt data", "To typecast attributes", "To hide attributes", "To serialize data"],
+        "a": 1,
+        "r": "La propiedad 'casts' en un modelo se utiliza para transformar los atributos en Laravel."
+    },
+    {
+        "q": "Which file is used to configure logging in Laravel?",
+        "q_es": "¿Qué archivo se utiliza para configurar el registro en Laravel?",
+        "o": ["config/logging.php", "config/log.php", "bootstrap/log.php", "app/Logging.php"],
+        "a": 0,
+        "r": "El archivo 'config/logging.php' se utiliza para configurar el registro en Laravel."
+    },
+    {
+        "q": "How can you limit the number of login attempts in Laravel?",
+        "q_es": "¿Cómo puedes limitar el número de intentos de inicio de sesión en Laravel?",
+        "o": ["Using the rate limiting feature", "By configuring the auth settings", "Through custom middleware", "With validation rules"],
+        "a": 2,
+        "r": "Puedes limitar el número de intentos de inicio de sesión a través de middleware personalizado en Laravel."
+    },
+    {
+        "q": "What does the 'chunk' method do when working with collections in Laravel?",
+        "q_es": "¿Qué hace el método 'chunk' cuando se trabaja con colecciones en Laravel?",
+        "o": ["Splits the collection into multiple smaller collections", "Combines many collections into one", "Filters the collection", "Sorts the collection"],
+        "a": 0,
+        "r": "El método 'chunk' divide la colección en múltiples colecciones más pequeñas en Laravel."
+    },
+    {
+        "q": "Which command is used to create a symbolic link in Laravel?",
+        "q_es": "¿Qué comando se utiliza para crear un enlace simbólico en Laravel?",
+        "o": ["php artisan storage:link", "php artisan make:link", "php artisan link:storage", "php artisan symlink"],
+        "a": 0,
+        "r": "Se utiliza 'php artisan storage:link' para crear un enlace simbólico en Laravel."
+    },
+    {
+        "q": "What is the function of the 'except' helper in Laravel's routing?",
+        "q_es": "¿Cuál es la función del ayudante 'except' en el enrutamiento de Laravel?",
+        "o": ["To exclude routes from CSRF verification", "To define routes that should not be cached", "To exclude methods from a resource controller", "To prevent routes from being logged"],
+        "a": 2,
+        "r": "El ayudante 'except' se utiliza para excluir métodos de un controlador de recursos en el enrutamiento de Laravel."
+    },
+    {
+        "q": "In Laravel, how is an API token authenticated using middleware?",
+        "q_es": "En Laravel, ¿cómo se autentica un token de API utilizando middleware?",
+        "o": ["Using the api_token middleware", "With the auth:api middleware", "Through the token:auth middleware", "By the api_guard middleware"],
+        "a": 1,
+        "r": "Se utiliza el middleware 'auth:api' para autenticar un token de API en Laravel."
+    },
+    {
+        "q": "What Laravel utility is used to manage assets in a Laravel application?",
+        "q_es": "¿Qué utilidad de Laravel se utiliza para gestionar los activos en una aplicación Laravel?",
+        "o": ["Laravel Mix", "Laravel Asset", "Laravel Resource", "Laravel Bundle"],
+        "a": 0,
+        "r": "Laravel Mix se utiliza para gestionar los activos en una aplicación Laravel."
+    },
+    {
+        "q": "Which Laravel method helps in redirecting to the previous location?",
+        "q_es": "¿Qué método de Laravel ayuda en redirigir a la ubicación anterior?",
+        "o": ["back()", "previous()", "returnBack()", "redirectBack()"],
+        "a": 0,
+        "r": "El método 'back()' ayuda en redirigir a la ubicación anterior en Laravel."
+    },
+    {
+        "q": "What is the function of the 'only' method in a Laravel request?",
+        "q_es": "¿Cuál es la función del método 'only' en una solicitud de Laravel?",
+        "o": ["It validates specific fields", "It retrieves only specific fields from the request data", "It filters only allowed routes", "It limits the number of requests"],
+        "a": 1,
+        "r": "El método 'only' recupera solo campos específicos de los datos de la solicitud en Laravel."
+    },
+    {
+        "q": "What does the 'assertSee' method do in Laravel's testing environment?",
+        "q_es": "¿Qué hace el método 'assertSee' en el entorno de pruebas de Laravel?",
+        "o": ["Confirms that a view is loaded", "Verifies the presence of text in a response", "Checks if a route is visible", "Ensures a controller returns a view"],
+        "a": 1,
+        "r": "El método 'assertSee' verifica la presencia de texto en una respuesta en el entorno de pruebas de Laravel."
+    },
+    {
+        "q": "How do you specify a route parameter should be a certain type in Laravel?",
+        "q_es": "¿Cómo especificas que un parámetro de ruta debe ser de un cierto tipo en Laravel?",
+        "o": ["Using route middleware", "With explicit bindings", "Through type declarations", "By using route patterns"],
+        "a": 3,
+        "r": "Especificas que un parámetro de ruta debe ser de un cierto tipo usando patrones de ruta en Laravel."
+    },
+    {
+        "q": "Which Laravel Blade directive is used to include a sub-view?",
+        "q_es": "¿Qué directiva de Blade de Laravel se utiliza para incluir una sub-vista?",
+        "o": ["@include", "@subview", "@insert", "@embed"],
+        "a": 0,
+        "r": "La directiva '@include' se utiliza para incluir una sub-vista en Blade de Laravel."
     }
 ]
+
