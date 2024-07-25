@@ -1,0 +1,101 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BlockA from '../components/BlockA.astro';
+import PetriNet from '../components/PetriNet.svelte';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BpmnDemo from '../components/BpmnDemo.svelte';
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 max-w-7xl w-full mx-auto p-4 rounded-md grid-flow-dense">
+				<BlockA className="col-span-8 md:col-span-2 row-span-1 flex items-center justify-center">
+					<img class="w-25 h-25 rounded"
+					src="https://gravatar.com/avatar/48991f8bd99c4153be9a66da52822892?size=256&cache=1721428946062"
+					alt="David Callizaya">
+				</BlockA>
+				<BlockA className="col-span-8 md:col-span-6 row-span-1 p-4 flex items-end">
+					<p>
+						Hola 👋, soy <b>David Callizaya</b>, un desarrollador de software apasionado por la tecnología y la programación.
+					</p>
+				</BlockA>
+
+				<h1 id="conocimientos" class="col-span-8 row-span-1 text-3xl pt-header">Mis conocimientos</h1>
+
+				<BlockA className="col-span-8 md:col-span-3 row-span-1">
+					<div class="text-base px-4">
+						<h2 class="text-xl">Redes de Petri</h2>
+						<p>Son una representación matemática o gráfica de un sistema a eventos discretos en el cual se puede describir la topología de un sistema distribuido, paralelo o concurrente.</p>
+						<p><i>Haz click en las transiciones (T1, T2, ...) para dispararlas. ➔</i></p>
+					</div>
+				</BlockA>
+				<BlockA className="col-span-8 md:col-span-5 row-span-1">
+					<PetriNet client:load />
+				</BlockA>
+
+				<BlockA className="col-span-8 md:col-span-5 row-span-1">
+					<div class="text-base px-4">
+						<h2 class="text-xl">BPMN</h2>
+						<p>Es un estándar de modelado de procesos de negocio que proporciona una notación gráfica fácil de entender, que permite a los participantes de diferentes áreas de una organización comprender los procesos de negocio y las actividades que los componen.</p>
+					</div>
+				</BlockA>
+				<BpmnDemo client:load />
+
+				<BlockA className="col-span-8 row-span-1 p-4 flex items-center justify-center">
+					<!-- ProcessMaker -->
+					<img
+						class="h-14 rounded p-2"
+						src="https://cdn.productivity.directory/tools/e12f9693-c109-4b31-ac97-125b4864401f"
+						alt="ProcessMaker Logo"
+					/>
+					<!-- Laravel Logo -->
+					<img
+						class="h-14 rounded p-2"
+						src="https://laravel.com/img/logomark.min.svg"
+						alt="Laravel Logo"
+					/>
+					<!-- GoLang -->
+					<img
+						class="h-14 rounded p-2"
+						src="https://go.dev/images/go-logo-blue.svg"
+						alt="GoLang Logo"
+					/>
+					<! k8s -->
+					<img
+						class="h-14 rounded p-2"
+						src="https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg"
+						alt="Kubernetes Logo"
+					/>
+					<!-- Vue Logo -->
+					<img
+						class="h-14 rounded p-2"
+						src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg"
+						alt="Vue Logo"
+					/>
+					<!-- Svelte Logo -->
+					<img
+						class="h-14 rounded p-2"
+						src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg"
+						alt="Svelte Logo"
+					/>
+					<!-- React Logo -->
+					<img
+						class="h-14 rounded p-2"
+						src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+						alt="React Logo"
+					/>
+				</BlockA>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
