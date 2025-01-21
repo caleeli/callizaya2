@@ -1,5 +1,6 @@
 !.env.example
 !.env.test
+microservices/*
 !microservices/ai
 !microservices/deploy
 !microservices/gdrive
@@ -12,7 +13,6 @@
 .vercel
 /.svelte-kit
 /build
-microservices/*
 node_modules
 Thumbs.db
 vendor/
