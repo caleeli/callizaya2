@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'success' => false,
-    'message' => 'Code input is required',
+    'success' => true,
+    'message' => 'You have send: ' . json_encode($_POST, JSON_PRETTY_PRINT),
 ];
