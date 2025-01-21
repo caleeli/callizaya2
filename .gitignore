@@ -3,6 +3,7 @@
 !microservices/ai
 !microservices/deploy
 !microservices/gdrive
+!microservices/pm4dev
 .DS_Store
 .env
 .env
