@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S3 Cost Projection & AI Services Costs</title>
+  <!-- Include Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <!-- Include Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: inline-block;
+      width: 260px;
+      vertical-align: middle;
+    }
+    input, select, span.value-display {
+      vertical-align: middle;
+    }
+    input[type="range"] {
+      width: 200px;
+    }
+    input[type="number"] {
+      width: 150px;
+    }
+    #chart-container {
+      width: 100%;
+      max-width: 900px;
+      margin-top: 30px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 900px;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>S3 12-Month Cost Projection & AI Services Costs</h1>
+
+    <!-- Sección: Proyección de costos S3 -->
+    <h2>S3 Cost Projection</h2>
+    <div class="input-group">
+      <label for="storageClass">S3 Storage Class:</label>
+      <select id="storageClass" v-model="selectedClass" @change="updateChart">
+        <option v-for="cls in storageClasses" :value="cls.key">{{ cls.name }}</option>
+      </select>
+    </div>
+
+    <!-- Parámetros de carga con sliders -->
+    <div class="input-group">
+      <label for="users">Number of users:</label>
+      <input type="range" id="users" v-model.number="users" min="1" max="1000" step="1" @input="updateChart" />
+      <span class="value-display">{{ users }}</span>
+    </div>
+    <div class="input-group">
+      <label for="filesPerUser">Files per user/month (upload):</label>
+      <input type="range" id="filesPerUser" v-model.number="filesPerUser" min="0" max="100000" step="1000" @input="updateChart" />
+      <span class="value-display">{{ filesPerUser }}</span>
+    </div>
+    <div class="input-group">
+      <label for="avgSizeKB">Avg file size (KB) upload:</label>
+      <input type="range" id="avgSizeKB" v-model.number="avgSizeKB" min="1" max="1024" step="1" @input="updateChart" />
+      <span class="value-display">{{ avgSizeKB }} KB</span>
+    </div>
+    <div v-if="selectedClass === 'standard'" class="input-group">
+      <label for="pricePerGB">Storage price (USD per GB-month):</label>
+      <input type="number" id="pricePerGB" v-model.number="storageClasses[0].pricePerGB" step="0.0001" @input="updateChart" />
+    </div>
+    <div v-if="selectedClass === 'intelligent'">
+      <div class="input-group">
+        <label for="priceFrequent">Frequent Access Price (USD/GB-month):</label>
+        <input type="number" id="priceFrequent" v-model.number="storageClasses[1].priceFrequent" step="0.0001" @input="updateChart" />
+      </div>
+      <div class="input-group">
+        <label for="priceInfrequent">Infrequent Access Price (USD/GB-month):</label>
+        <input type="number" id="priceInfrequent" v-model.number="storageClasses[1].priceInfrequent" step="0.0001" @input="updateChart" />
+      </div>
+      <div class="input-group">
+        <label for="monitorCostPerThousand">Monitoring Cost (USD per 1,000 objects):</label>
+        <input type="number" id="monitorCostPerThousand" v-model.number="storageClasses[1].monitorCostPerThousand" step="0.0001" @input="updateChart" />
+      </div>
+    </div>
+
+    <!-- Costos de request de carga con slider para reads -->
+    <div class="input-group">
+      <label for="pricePerPUT">PUT Price (USD per 1,000 requests):</label>
+      <input type="number" id="pricePerPUT" v-model.number="pricePerPUT" step="0.0001" @input="updateChart" />
+    </div>
+
+    <!-- Parámetros de lectura/descarga con sliders -->
+    <hr />
+    <h3>Read/Download Costs</h3>
+    <div class="input-group">
+      <label for="readsPerUser">Reads per user/month:</label>
+      <input type="range" id="readsPerUser" v-model.number="readsPerUser" min="0" max="50000" step="100" @input="updateChart" />
+      <span class="value-display">{{ readsPerUser }}</span>
+    </div>
+    <div class="input-group">
+      <label for="avgReadSizeKB">Avg read size (KB):</label>
+      <input type="range" id="avgReadSizeKB" v-model.number="avgReadSizeKB" min="1" max="1024" step="1" @input="updateChart" />
+      <span class="value-display">{{ avgReadSizeKB }} KB</span>
+    </div>
+    <div class="input-group">
+      <label for="pricePerGet">GET Price (USD per 1,000 requests):</label>
+      <input type="number" id="pricePerGet" v-model.number="pricePerGet" step="0.0001" @input="updateChart" />
+    </div>
+    <div class="input-group">
+      <label for="pricePerGBTransfer">Transfer OUT Price (USD per GB):</label>
+      <input type="number" id="pricePerGBTransfer" v-model.number="pricePerGBTransfer" step="0.0001" @input="updateChart" />
+    </div>
+    <div class="input-group">
+      <label for="transferDest">Transfer destination:</label>
+      <select id="transferDest" v-model="transferDest" @change="updateChart">
+        <option value="sameRegion">Same Region (free)</option>
+        <option value="internet">Internet</option>
+      </select>
+    </div>
+
+    <button @click="updateChart">Update Projection</button>
+
+    <div id="chart-container">
+      <canvas id="costChart"></canvas>
+    </div>
+
+    <!-- Sección: Costos de Servicios AI -->
+    <h2>AI Costs</h2>
+    <div class="input-group">
+      <label for="costEbsPerGB">EBS Cost per GB/month:</label>
+      <input type="number" id="costEbsPerGB" v-model.number="costEbsPerGB" step="0.01" @input="updateChart" /> USD/GB-month
+    </div>
+    <div class="input-group">
+      <label for="instanceType">OpenSearch instance type:</label>
+      <select id="instanceType" v-model="selectedInstanceType">
+        <option value="m7g.large.search">m7g.large.search</option>
+        <option value="om2.large.search">om2.large.search</option>
+        <option value="m7g.4xlarge.search">m7g.4xlarge.search</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="textPercentage">Percentage of file that is text:</label>
+      <input type="range" id="textPercentage" v-model.number="textPercentage" min="0" max="100" step="1" />
+      <span class="value-display">{{ textPercentage }}%</span>
+    </div>
+    <div class="input-group">
+      <label for="consultasPerUser">Queries per user/month:</label>
+      <input type="range" id="consultasPerUser" v-model.number="consultasPerUser" min="0" max="50000" step="100" />
+      <span class="value-display">{{ consultasPerUser }}</span>
+    </div>
+    <table>
+      <tr><th>Service</th><th>Alternative + Unit Price</th><th>Monthly Result</th></tr>
+      <tr>
+        <td>Image Classification</td>
+        <td>
+          <select v-model="selectedImageClassification">
+            <option value="detectlabels">DetectLabels</option>
+            <option value="imageproperties">ImageProperties</option>
+            <option value="rekognition">Rekognition Custom Labels</option>
+            <option value="comprehend">Comprehend Custom Classifier</option>
+          </select>
+        </td>
+        <td>{{ classificationCostImages | currency }}</td>
+      </tr>
+      <tr>
+        <td>Document Classification</td>
+        <td>
+          <select v-model="selectedDocClassification">
+            <option value="comprehend">Comprehend Custom Classifier</option>
+            <option value="topicmodel">Comprehend Topic Modeling</option>
+          </select>
+        </td>
+        <td>{{ classificationCostDocs | currency }}</td>
+      </tr>
+      <tr>
+        <td>Extraction & Indexing OpenSearch</td>
+        <td>
+          <select v-model="selectedIndexing">
+            <option value="opensearch">OpenSearch (ElasticSearch + Kibana)</option>
+            <option value="kendra">Kendra</option>
+          </select>
+        </td>
+        <td v-if="selectedIndexing==='opensearch'">
+          {{ openSearchHours.toFixed(1) }} node-hours<br>
+          ({{ openSearchCost | currency }})
+        </td>
+        <td v-else>{{ indexingCost | currency }}</td>
+      </tr>
+      <tr>
+        <td>LLM Image Queries</td>
+        <td>
+          <select v-model="selectedLLM">
+            <option value="gpt4">GPT-4</option>
+            <option value="gpt35">GPT-3.5 Turbo</option>
+            <option value="claude">Claude</option>
+            <option value="titan">Titan</option>
+          </select>
+        </td>
+        <td>{{ llmCostImages | currency }}<br>
+          {{ llmCostImages / users / consultasPerUser | currency }} per query
+        </td>
+      </tr>
+      <tr>
+        <td>LLM Document Queries</td>
+        <td>
+          <select v-model="selectedLLM">
+            <option value="gpt4">GPT-4</option>
+            <option value="gpt35">GPT-3.5 Turbo</option>
+            <option value="claude">Claude</option>
+            <option value="titan">Titan</option>
+          </select>
+        </td>
+        <td>{{ llmCostDocs | currency }}<br>
+          {{ llmCostDocs / users / consultasPerUser | currency }} per query
+        </td>
+      </tr>
+      <tr><td>EBS Storage</td><td>Estimated storage (GB): {{ ebsGB.toFixed(2) }}</td><td>{{ ebsCost | currency }}</td></tr>
+      <tr><th colspan="2">Total AI Cost</th><th>{{ totalAICost | currency }}</th></tr>
+    </table>
+
+    <div id="chart-container">
+      <canvas id="costChart"></canvas>
+    </div>
+
+  </div>
+
+  <script>
+    Vue.filter('currency', function (value) {
+      return '$' + parseFloat(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    });
+    Vue.filter('currency', value => '$' + parseFloat(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+    const IMAGE_FILES_PERCENTAGE = 1;
+    const DOC_FILES_PERCENTAGE = 1;
+
+    // Función para estimar horas OpenSearch
+    function estimarHorasOpenSearch(usuarios, filesPerUser, pDocs, docsPerSecond, consultasPerUser, pSearch, queriesPerSecond) {
+      const totalDocs = usuarios * filesPerUser * pDocs;
+      const docsPorHora = docsPerSecond * 3600;
+      const horasIndex = totalDocs / docsPorHora;
+      const totalQueries = usuarios * consultasPerUser * pSearch;
+      const queriesPorHora = queriesPerSecond * 3600;
+      const horasSearch = totalQueries / queriesPorHora;
+      return horasIndex + horasSearch;
+    }
+    // JavaScript function para calcular EBS (misma que antes)
+    function calcularEBS(nChars, fIndex, replicas, bufferPct) {
+      const tText = nChars;
+      const tIndexPrimario = tText * fIndex;
+      const tIndexConReplicas = tIndexPrimario * (1 + replicas);
+      return tIndexConReplicas * (1 + bufferPct);
+    }
+
+    new Vue({
+      el: '#app',
+      data: {
+        // S3 Projection data (unchanged)
+        users: 100,
+        filesPerUser: 83000,
+        avgSizeKB: 500,
+        textPercentage: 10,
+        consultasPerUser: 100,
+        selectedInstanceType: 'm7g.large.search',
+        costEbsPerGB: 0.10,
+        // Cost inputs (unchanged)
+        costDetectLabelsPerImage: 0.001,
+        costImagePropertiesPerImage: 0.00075,
+        costRekognitionUnit: 2880,
+        costComprehendPer100: 0.0005,
+        costRekognitionUnitDocs: 2880,
+        costComprehendPer100Docs: 0.0005,
+        costTopicModelPer100Docs: 0.0000004,
+        costOpenSearchPerFile: 0.000301,
+        costKendraPerFile: 0.005759,
+        costGPT4PerQuery: 0.09,
+        costGPT35PerQuery: 0.005,
+        costClaudePerQuery: 0.03,
+        costTitanPerQuery: 0.005,
+        // Options
+        imageClassificationOptions: [
+          { key: 'detectlabels', name: 'DetectLabels' },
+          { key: 'imageproperties', name: 'ImageProperties' },
+          { key: 'rekognition', name: 'Rekognition Custom Labels' },
+          { key: 'comprehend', name: 'Comprehend Custom Classifier' }
+        ],
+        selectedImageClassification: 'detectlabels',
+        docClassificationOptions: [
+          { key: 'comprehend', name: 'Comprehend Custom Classifier' },
+          { key: 'topicmodel', name: 'Comprehend Topic Modeling' }
+        ],
+        selectedDocClassification: 'topicmodel',
+        queriesPerUser: 100,
+        pricePerPUT: 0.005,
+        readsPerUser: 5000,
+        avgReadSizeKB: 500,
+        pricePerGet: 0.0004,
+        pricePerGBTransfer: 0.09,
+        transferDest: 'sameRegion',
+        storageClasses: [
+          { key: 'standard', name: 'S3 Standard', pricePerGB: 0.023 },
+          { key: 'intelligent', name: 'S3 Intelligent-Tiering', priceFrequent: 0.023, priceInfrequent: 0.0125, monitorCostPerThousand: 0.0025 }
+        ],
+        selectedClass: 'standard',
+        chart: null,
+        
+        // AI Services Costs data
+        classificationOptions: [
+          { key: 'rekognition', name: 'Rekognition Custom Labels', cost: 3000 },
+          { key: 'comprehend', name: 'Comprehend Custom Classifier', cost: 41500 }
+        ],
+        selectedClassification: 'rekognition',
+        indexingOptions: [
+          { key: 'opensearch', name: 'OpenSearch (Textract + OpenSearch)', cost: 6000 + 2500 },
+          { key: 'kendra', name: 'Kendra (Textract + Kendra)', cost: 6000 + 47800 }
+        ],
+        selectedIndexing: 'opensearch',
+        llmOptions: [
+          { key: 'gpt4', name: 'OpenAI GPT-4', cost: 900 },
+          { key: 'gpt35', name: 'OpenAI GPT-3.5 Turbo', cost: 50 },
+          { key: 'claude', name: 'Anthropic Claude', cost: 300 },
+          { key: 'titan', name: 'Amazon Titan (Bedrock)', cost: 50 }
+        ],
+        selectedLLM: 'gpt4'
+      },
+      computed: {
+        openSearchCost() {
+          const cpuCost = this.costPerHourNodo * this.openSearchHours;
+          const storageCost = this.ebsCost;
+          return cpuCost + storageCost;
+        },
+        filesPerMonth() { return this.users * this.filesPerUser; },
+        classificationCostImages() {
+          const imageFiles = this.filesPerMonth * IMAGE_FILES_PERCENTAGE;
+          switch(this.selectedImageClassification) {
+            case 'detectlabels': return imageFiles * this.costDetectLabelsPerImage;
+            case 'imageproperties': return imageFiles * this.costImagePropertiesPerImage;
+            case 'rekognition': { const units = Math.ceil(imageFiles / 12960000); return units * this.costRekognitionUnit; }
+            case 'comprehend': {
+              const charsPerDoc = this.avgSizeKB * 1024 * (this.textPercentage / 100);
+              const costPerDoc = (charsPerDoc / 100) * this.costComprehendPer100;
+              return imageFiles * costPerDoc;
+            }
+          }
+        },
+        classificationCostDocs() {
+          const docFiles = this.filesPerMonth * DOC_FILES_PERCENTAGE;
+          const textKB = this.avgSizeKB * (this.textPercentage / 100);
+          const charsPerDoc = textKB * 1024;
+          if (this.selectedDocClassification === 'comprehend') {
+            const costPerDoc = (charsPerDoc / 100) * this.costComprehendPer100Docs;
+            return docFiles * costPerDoc;
+          } else {
+            const costPerDoc = (charsPerDoc / 100) * this.costTopicModelPer100Docs;
+            return docFiles * costPerDoc;
+          }
+        },
+        indexingCost() {
+          const totalFiles = this.filesPerMonth;
+          const pagesPerDoc = this.avgSizeKB / 100;
+          const totalPages = totalFiles * pagesPerDoc;
+          const textractCost = totalPages <= 1000000
+            ? totalPages * 0.0015
+            : (1000000 * 0.0015 + (totalPages - 1000000) * 0.0006);
+          const indexCost = totalFiles * (this.selectedIndexing === 'opensearch'
+            ? this.costOpenSearchPerFile
+            : this.costKendraPerFile);
+          return textractCost + indexCost;
+        },
+        // Map instance types to throughput
+        docsPerSecondNodo() {
+          switch(this.selectedInstanceType) {
+            case 'm7g.large.search': return 500;
+            case 'om2.large.search': return 1000;
+            case 'm7g.4xlarge.search': return 4000;
+            default: return 500;
+          }
+        },
+        queriesPerSecondNodo() {
+          switch(this.selectedInstanceType) {
+            case 'm7g.large.search': return 100;
+            case 'om2.large.search': return 200;
+            case 'm7g.4xlarge.search': return 800;
+            default: return 100;
+          }
+        },
+        // Map instance type to cost per hour
+        costPerHourNodo() {
+          switch(this.selectedInstanceType) {
+            case 'm7g.large.search': return 0.134;  // USD/hour esempio
+            case 'om2.large.search': return 0.100;  // USD/hour esempio
+            case 'm7g.4xlarge.search': return 1.072; // USD/hour exemplo
+            default: return 0;
+          }
+        },
+        queriesPerSecondNodo() {
+          switch(this.selectedInstanceType) {
+            case 'm7g.large.search': return 100;
+            case 'om2.large.search': return 200;
+            case 'm7g.4xlarge.search': return 800;
+            default: return 100;
+          }
+        },
+        openSearchHours() {
+          if (this.selectedIndexing !== 'opensearch') return 0;
+          return estimarHorasOpenSearch(
+            this.users,
+            this.filesPerUser,
+            1, // asumimos que todos los archivos van a OpenSearch
+            this.docsPerSecondNodo,
+            this.consultasPerUser,
+            1, // asumimos que todas las consultas van a OpenSearch
+            this.queriesPerSecondNodo
+          );
+        },
+        // EBS storage estimation
+        ebsBytes() {
+          const totalDocs = this.filesPerMonth * DOC_FILES_PERCENTAGE;
+          const textKB = this.avgSizeKB * (this.textPercentage / 100);
+          const nChars = totalDocs * (textKB * 1024);
+          const fIndex = 3;
+          const replicas = 1;
+          const bufferPct = 0.3;
+          return calcularEBS(nChars, fIndex, replicas, bufferPct);
+        },
+        ebsGB() {
+          return this.ebsBytes / (1024 ** 3);
+        },
+        ebsCost() {
+          return this.ebsGB * this.costEbsPerGB;
+        },
+        llmCostImages() {
+          // consultasPerUser
+          const totalQueries = this.users * this.consultasPerUser; // * IMAGE_FILES_PERCENTAGE;
+          let costPerQuery = 0;
+          if (this.selectedLLM === 'gpt4') costPerQuery = this.costGPT4PerQuery;
+          else if (this.selectedLLM === 'gpt35') costPerQuery = this.costGPT35PerQuery;
+          else if (this.selectedLLM === 'claude') costPerQuery = this.costClaudePerQuery;
+          else if (this.selectedLLM === 'titan') costPerQuery = this.costTitanPerQuery;
+          return totalQueries * costPerQuery;
+        },
+        llmCostDocs() {
+          const totalQueries = this.users * this.consultasPerUser; // * DOC_FILES_PERCENTAGE;
+          let costPerQuery = 0;
+          if (this.selectedLLM === 'gpt4') costPerQuery = this.costGPT4PerQuery;
+          else if (this.selectedLLM === 'gpt35') costPerQuery = this.costGPT35PerQuery;
+          else if (this.selectedLLM === 'claude') costPerQuery = this.costClaudePerQuery;
+          else if (this.selectedLLM === 'titan') costPerQuery = this.costTitanPerQuery;
+          return totalQueries * costPerQuery;
+        },
+        totalAICost() {
+          return this.classificationCostImages
+               + this.classificationCostDocs
+               + this.indexingCost
+               + this.llmCostImages
+               + this.llmCostDocs;
+        }
+      },
+      methods: {
+        updateChart() {
+          const months = Array.from({ length: 12 }, (_, i) => i + 1);
+          const storageCosts = [];
+          const monitorCosts = [];
+          const putCosts = [];
+          const getCosts = [];
+          const transferCosts = [];
+          const totalCosts = [];
+          const storageSizes = [];
+
+          let accumulatedGB = 0;
+          let accumulatedObjects = 0;
+
+          for (let month = 1; month <= 12; month++) {
+            // Cálculo carga nueva
+            const newUploadObjects = this.users * this.filesPerUser;
+            const newUploadSizeKB = newUploadObjects * this.avgSizeKB;
+            const newUploadGB = newUploadSizeKB / (1024 * 1024);
+            accumulatedObjects += newUploadObjects;
+
+            // Actualizar volumen acumulado
+            accumulatedGB += newUploadGB;
+            storageSizes.push(accumulatedGB.toFixed(2));
+
+            // Costos de almacenamiento
+            let storageCost = 0;
+            if (this.selectedClass === 'standard') {
+              storageCost = accumulatedGB * this.storageClasses[0].pricePerGB;
+              monitorCosts.push(0);
+            } else {
+              // Intelligent-Tiering: datos previos en infrequent, nuevos en frequent
+              let frequentGB = newUploadGB;
+              let infrequentGB = accumulatedGB - newUploadGB;
+              storageCost = (frequentGB * this.storageClasses[1].priceFrequent) +
+                            (infrequentGB * this.storageClasses[1].priceInfrequent);
+
+              // Costo monitoreo
+              const monitorCost = (accumulatedObjects / 1000) * this.storageClasses[1].monitorCostPerThousand;
+              monitorCosts.push(monitorCost);
+            }
+            storageCosts.push(storageCost);
+
+            // Costo PUT
+            const putGroups = (this.users * this.filesPerUser) / 1000;
+            const putCost = putGroups * this.pricePerPUT;
+            putCosts.push(putCost);
+
+            // Costo GET
+            const monthlyGetRequests = this.users * this.readsPerUser;
+            const getCost = (monthlyGetRequests / 1000) * this.pricePerGet;
+            getCosts.push(getCost);
+
+            // Costo Transferencia (si es internet)
+            let transferCost = 0;
+            if (this.transferDest === 'internet') {
+              const readDataGB = (monthlyGetRequests * this.avgReadSizeKB) / (1024 * 1024);
+              transferCost = readDataGB * this.pricePerGBTransfer;
+            }
+            transferCosts.push(transferCost);
+
+            // Suma total
+            const totalMonthCost = storageCost + putCost + getCost + transferCost + ((this.selectedClass === 'intelligent') ? monitorCosts[month-1] : 0);
+            totalCosts.push(totalMonthCost.toFixed(2));
+
+            // Si no es Intelligent-Tiering, llenar monitorCosts con 0
+            if (this.selectedClass === 'standard') {
+              monitorCosts[month-1] = 0;
+            }
+          }
+
+          if (this.chart) { this.chart.destroy(); }
+          const ctx = document.getElementById('costChart').getContext('2d');
+          const datasets = [
+            { label: 'Storage Cost (USD)', data: storageCosts.map(v => v.toFixed(2)), borderColor: 'rgba(75, 192, 192, 1)', fill: false, yAxisID: 'y' },
+            { label: 'PUT Requests Cost (USD)', data: putCosts.map(v => v.toFixed(2)), borderColor: 'rgba(153, 102, 255, 1)', fill: false, yAxisID: 'y' },
+            { label: 'GET Requests Cost (USD)', data: getCosts.map(v => v.toFixed(2)), borderColor: 'rgba(54, 162, 235, 1)', fill: false, yAxisID: 'y' },
+            { label: 'Transfer OUT Cost (USD)', data: transferCosts.map(v => v.toFixed(2)), borderColor: 'rgba(255, 206, 86, 1)', fill: false, yAxisID: 'y' }
+          ];
+          if (this.selectedClass === 'intelligent') {
+            datasets.push({ label: 'Monitoring Cost (USD)', data: monitorCosts.map(v => v.toFixed(2)), borderColor: 'rgba(255, 159, 64, 1)', fill: false, yAxisID: 'y' });
+          }
+          datasets.push({ label: 'Total Cost (USD)', data: totalCosts, borderColor: 'rgba(255, 99, 132, 1)', fill: false, yAxisID: 'y' });
+          datasets.push({ label: 'Storage Used (GB)', data: storageSizes.map(v => parseFloat(v)), borderColor: 'rgba(0, 0, 0, 0.7)', borderDash: [5, 5], fill: false, yAxisID: 'y1' });
+
+          this.chart = new Chart(ctx, {
+            type: 'line',
+            data: { labels: months.map(m => `Month ${m}`), datasets: datasets },
+            options: {
+              responsive: true,
+              scales: {
+                y: { type: 'linear', position: 'left', title: { display: true, text: 'Cost (USD)' }, beginAtZero: true },
+                y1: { type: 'linear', position: 'right', title: { display: true, text: 'Storage (GB)' }, grid: { drawOnChartArea: false }, beginAtZero: true }
+              }
+            }
+          });
+        }
+      },
+      mounted() {
+        this.updateChart();
+      }
+    });
+  </script>
+</body>
+</html>
