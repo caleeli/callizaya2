@@ -377,7 +377,7 @@
             ? totalPages * 0.0015
             : (1000000 * 0.0015 + (totalPages - 1000000) * 0.0006);
           const indexCost = totalFiles * (this.selectedIndexing === 'opensearch'
-            ? this.costOpenSearchPerFile
+            ? this.openSearchCost
             : this.costKendraPerFile);
           return textractCost + indexCost;
         },
@@ -465,7 +465,7 @@
         totalAICost() {
           return this.classificationCostImages
                + this.classificationCostDocs
-               + this.indexingCost
+               + (this.selectedIndexing==='opensearch' ? this.openSearchCost : this.indexingCost)
                + this.llmCostImages
                + this.llmCostDocs;
         }
