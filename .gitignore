@@ -5,6 +5,7 @@ microservices/*
 !microservices/deploy
 !microservices/gdrive
 !microservices/pm4dev
+!microservices/upload
 .DS_Store
 .env
 .env
