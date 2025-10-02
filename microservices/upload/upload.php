@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivo'])) {
     if (move_uploaded_file($file['tmp_name'], $target)) {
         $server = $_SERVER['HTTP_HOST'];
         $url = $server . '/storage/' . $filename;
-        echo "✅ Archivo recibido y guardado como: $filename";
+        echo "✅ Archivo recibido y guardado en: $url";
     } else {
         echo "❌ Error al mover el archivo";
     }
