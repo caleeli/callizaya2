@@ -1,5 +1,5 @@
 <?php
-$upload_dir = __DIR__ . '/../../storage/';
+$upload_dir = __DIR__ . '/../../public/storage/';
 
 // Crear el directorio si no existe
 if (!file_exists($upload_dir)) {
