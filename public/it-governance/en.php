@@ -1077,7 +1077,7 @@
 </style>
 <style>html,body,#root{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}html,body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Helvetica Neue,Arial,sans-serif!important}button,input,textarea,select{font-family:inherit}</style></head>
   <body>
-    <div id="root"><div data-source-pos="370:4-440:10" data-source-name="div" class="min-h-screen w-full bg-gradient-to-b from-slate-50 to-white text-slate-900 p-6"><div data-source-pos="371:6-439:12" data-source-name="div" class="max-w-5xl mx-auto space-y-6"><header data-source-pos="372:8-383:17" data-source-name="header" class="flex items-center justify-between"><div data-source-pos="373:10-378:16" data-source-name="div"><h1 data-source-pos="374:12-376:17" data-source-name="h1" class="text-2xl font-bold tracking-tight flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check w-6 h-6" aria-hidden="true" data-source-pos="375:14-375:49" data-source-name="ShieldCheck"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg> Governance Challenge: Proyecto ERP</h1><p data-source-pos="377:12-377:112" data-source-name="p" class="text-sm text-slate-600">Juego corto para practicar decisiones de Gobernanza de TI.</p></div><div data-source-pos="379:10-382:16" data-source-name="div" class="flex items-center gap-3"><div class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs" data-source-pos="380:12-380:79" data-source-name="Badge">Versión demo</div><button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 gap-2" data-source-pos="381:12-381:124" data-source-name="Button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw w-4 h-4" aria-hidden="true" data-source-pos="381:72-381:105" data-source-name="RefreshCcw"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 16h5v5"></path></svg> Reiniciar</button></div></header><div class="rounded-lg border bg-card text-card-foreground shadow-sm border-slate-200" data-source-pos="385:8-400:15" data-source-name="Card"><div class="flex flex-col space-y-1.5 p-6 pb-2" data-source-pos="386:10-396:23" data-source-name="CardHeader"><div data-source-pos="387:12-395:18" data-source-name="div" class="flex items-center justify-between"><div class="font-semibold tracking-tight text-lg" data-source-pos="388:14-388:65" data-source-name="CardTitle">Progreso</div><div data-source-pos="389:14-394:20" data-source-name="div" class="flex gap-3 text-xs text-slate-600"><span data-source-pos="390:16-390:137" data-source-name="span" class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-4 h-4" aria-hidden="true" data-source-pos="390:58-390:86" data-source-name="Clock"><path d="M12 6v6l4 2"></path><circle cx="12" cy="12" r="10"></circle></svg> Tiempo: <strong data-source-pos="390:95-390:130" data-source-name="strong">50</strong></span><span data-source-pos="391:16-391:147" data-source-name="span" class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins w-4 h-4" aria-hidden="true" data-source-pos="391:58-391:86" data-source-name="Coins"><circle cx="8" cy="8" r="6"></circle><path d="M18.09 10.37A6 6 0 1 1 10.34 18"></path><path d="M7 6h1v4"></path><path d="m16.71 13.88.7.71-2.82 2.82"></path></svg> Presupuesto: <strong data-source-pos="391:100-391:140" data-source-name="strong">50</strong></span><span data-source-pos="392:16-392:143" data-source-name="span" class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-4 h-4" aria-hidden="true" data-source-pos="392:58-392:86" data-source-name="Users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg> Confianza: <strong data-source-pos="392:98-392:136" data-source-name="strong">50</strong></span><span data-source-pos="393:16-393:133" data-source-name="span" class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert w-4 h-4" aria-hidden="true" data-source-pos="393:58-393:92" data-source-name="CircleAlert"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg> Riesgo: <strong data-source-pos="393:101-393:126" data-source-name="strong">20</strong></span></div></div></div><div class="p-6 pt-0" data-source-pos="397:10-399:24" data-source-name="CardContent"><div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate" data-max="100" class="relative w-full overflow-hidden rounded-full bg-secondary h-2" data-source-pos="398:12-398:69" data-source-name="Progress"><div data-state="indeterminate" data-max="100" class="h-full w-full flex-1 bg-primary transition-all" style="transform: translateX(-100%);"></div></div></div></div><div class="rounded-lg border bg-card text-card-foreground shadow-sm border-slate-200" data-source-pos="404:12-432:19" data-source-name="Card"><div class="flex flex-col space-y-1.5 p-6" data-source-pos="405:14-413:27" data-source-name="CardHeader"><div data-source-pos="406:16-412:22" data-source-name="div" class="flex items-center justify-between gap-4"><div data-source-pos="407:18-410:24" data-source-name="div"><div class="font-semibold tracking-tight text-xl" data-source-pos="408:20-408:78" data-source-name="CardTitle">Fase 1 – Planificación</div><p data-source-pos="409:20-409:92" data-source-name="p" class="text-sm text-slate-600">Principio: Alineamiento estratégico y gestión de riesgos</p></div><div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80" data-source-pos="411:18-411:113" data-source-name="Badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-text w-4 h-4 mr-1" aria-hidden="true" data-source-pos="411:25-411:65" data-source-name="BookOpenText"><path d="M12 7v14"></path><path d="M16 12h2"></path><path d="M16 8h2"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path><path d="M6 12h2"></path><path d="M6 8h2"></path></svg> Fase 1 / 5</div></div></div><div class="p-6 pt-0 space-y-4" data-source-pos="414:14-431:28" data-source-name="CardContent"><p data-source-pos="415:16-415:67" data-source-name="p" class="text-slate-700">Se va a implementar un ERP para una entidad pública. Debes preparar el marco de gobernanza inicial, el plan y la estructura de roles.</p><div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-[1px] w-full" data-source-pos="416:16-416:28" data-source-name="Separator"></div><div data-source-pos="417:16-430:22" data-source-name="div" class="grid md:grid-cols-3 gap-4"><div class="rounded-lg border bg-card text-card-foreground shadow-sm border-slate-200" data-source-pos="419:20-428:27" data-source-name="Card"><div class="flex flex-col space-y-1.5 p-6 pb-2" data-source-pos="420:22-422:35" data-source-name="CardHeader"><div class="font-semibold tracking-tight text-base" data-source-pos="421:24-421:80" data-source-name="CardTitle">Establecer comité de gobernanza y matriz RACI</div></div><div class="p-6 pt-0 space-y-3" data-source-pos="423:22-427:36" data-source-name="CardContent"><p data-source-pos="424:24-424:83" data-source-name="p" class="text-sm text-slate-700">Define roles claros (patrocinador, PMO, auditoría interna). Sesiones de kickoff con stakeholders clave.</p><div data-source-pos="425:24-425:130" data-source-name="div" class="text-xs text-slate-600 bg-slate-50 rounded-xl p-2">Impacto: Tiempo -5 | Presupuesto -5 | Confianza +8 | Riesgo -8</div><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 w-full" data-source-pos="426:24-426:96" data-source-name="Button">Elegir</button></div></div><div class="rounded-lg border bg-card text-card-foreground shadow-sm border-slate-200" data-source-pos="419:20-428:27" data-source-name="Card"><div class="flex flex-col space-y-1.5 p-6 pb-2" data-source-pos="420:22-422:35" data-source-name="CardHeader"><div class="font-semibold tracking-tight text-base" data-source-pos="421:24-421:80" data-source-name="CardTitle">Plan mínimo viable, arranque rápido</div></div><div class="p-6 pt-0 space-y-3" data-source-pos="423:22-427:36" data-source-name="CardContent"><p data-source-pos="424:24-424:83" data-source-name="p" class="text-sm text-slate-700">Reducir el arranque formal para ganar velocidad. Documentación ligera y decisiones ad-hoc.</p><div data-source-pos="425:24-425:130" data-source-name="div" class="text-xs text-slate-600 bg-slate-50 rounded-xl p-2">Impacto: Tiempo +5 | Confianza -4 | Riesgo +8</div><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 w-full" data-source-pos="426:24-426:96" data-source-name="Button">Elegir</button></div></div><div class="rounded-lg border bg-card text-card-foreground shadow-sm border-slate-200" data-source-pos="419:20-428:27" data-source-name="Card"><div class="flex flex-col space-y-1.5 p-6 pb-2" data-source-pos="420:22-422:35" data-source-name="CardHeader"><div class="font-semibold tracking-tight text-base" data-source-pos="421:24-421:80" data-source-name="CardTitle">Consultoría breve para evaluación de riesgos</div></div><div class="p-6 pt-0 space-y-3" data-source-pos="423:22-427:36" data-source-name="CardContent"><p data-source-pos="424:24-424:83" data-source-name="p" class="text-sm text-slate-700">Traer un tercero para mapa de riesgos temprano (ciber, procesos, adopción).</p><div data-source-pos="425:24-425:130" data-source-name="div" class="text-xs text-slate-600 bg-slate-50 rounded-xl p-2">Impacto: Tiempo -3 | Presupuesto -8 | Confianza +3 | Riesgo -10</div><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 w-full" data-source-pos="426:24-426:96" data-source-name="Button">Elegir</button></div></div></div></div></div></div></div></div>
+    <div id="root"><div data-source-pos="370:4-440:10" data-source-name="div" class="min-h-screen w-full bg-gradient-to-b from-slate-50 to-white text-slate-900 p-6"><div data-source-pos="371:6-439:12" data-source-name="div" class="max-w-5xl mx-auto space-y-6"><header data-source-pos="372:8-383:17" data-source-name="header" class="flex items-center justify-between"><div data-source-pos="373:10-378:16" data-source-name="div"><h1 data-source-pos="374:12-376:17" data-source-name="h1" class="text-2xl font-bold tracking-tight flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check w-6 h-6" aria-hidden="true" data-source-pos="375:14-375:49" data-source-name="ShieldCheck"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg> Governance Challenge: ERP Project</h1><p data-source-pos="377:12-377:112" data-source-name="p" class="text-sm text-slate-600">Short game to practice IT Governance decisions.</p></div><div data-source-pos="379:10-382:16" data-source-name="div" class="flex items-center gap-3"><div class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs" data-source-pos="380:12-380:79" data-source-name="Badge">Demo version</div><button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 gap-2" data-source-pos="381:12-381:124" data-source-name="Button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw w-4 h-4" aria-hidden="true" data-source-pos="381:72-381:105" data-source-name="RefreshCcw"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 16h5v5"></path></svg> Restart</button></div></header><div class="rounded-lg border bg-card text-card-foreground shadow-sm border-slate-200" data-source-pos="385:8-400:15" data-source-name="Card"><div class="flex flex-col space-y-1.5 p-6 pb-2" data-source-pos="386:10-396:23" data-source-name="CardHeader"><div data-source-pos="387:12-395:18" data-source-name="div" class="flex items-center justify-between"><div class="font-semibold tracking-tight text-lg" data-source-pos="388:14-388:65" data-source-name="CardTitle">Progress</div><div data-source-pos="389:14-394:20" data-source-name="div" class="flex gap-3 text-xs text-slate-600"><span data-source-pos="390:16-390:137" data-source-name="span" class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-4 h-4" aria-hidden="true" data-source-pos="390:58-390:86" data-source-name="Clock"><path d="M12 6v6l4 2"></path><circle cx="12" cy="12" r="10"></circle></svg> Time: <strong data-source-pos="390:95-390:130" data-source-name="strong">50</strong></span><span data-source-pos="391:16-391:147" data-source-name="span" class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins w-4 h-4" aria-hidden="true" data-source-pos="391:58-391:86" data-source-name="Coins"><circle cx="8" cy="8" r="6"></circle><path d="M18.09 10.37A6 6 0 1 1 10.34 18"></path><path d="M7 6h1v4"></path><path d="m16.71 13.88.7.71-2.82 2.82"></path></svg> Budget: <strong data-source-pos="391:100-391:140" data-source-name="strong">50</strong></span><span data-source-pos="392:16-392:143" data-source-name="span" class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-4 h-4" aria-hidden="true" data-source-pos="392:58-392:86" data-source-name="Users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg> Confidence: <strong data-source-pos="392:98-392:136" data-source-name="strong">50</strong></span><span data-source-pos="393:16-393:133" data-source-name="span" class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert w-4 h-4" aria-hidden="true" data-source-pos="393:58-393:92" data-source-name="CircleAlert"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg> Risk: <strong data-source-pos="393:101-393:126" data-source-name="strong">20</strong></span></div></div></div><div class="p-6 pt-0" data-source-pos="397:10-399:24" data-source-name="CardContent"><div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate" data-max="100" class="relative w-full overflow-hidden rounded-full bg-secondary h-2" data-source-pos="398:12-398:69" data-source-name="Progress"><div data-state="indeterminate" data-max="100" class="h-full w-full flex-1 bg-primary transition-all" style="transform: translateX(-100%);"></div></div></div></div><div class="rounded-lg border bg-card text-card-foreground shadow-sm border-slate-200" data-source-pos="404:12-432:19" data-source-name="Card"><div class="flex flex-col space-y-1.5 p-6" data-source-pos="405:14-413:27" data-source-name="CardHeader"><div data-source-pos="406:16-412:22" data-source-name="div" class="flex items-center justify-between gap-4"><div data-source-pos="407:18-410:24" data-source-name="div"><div class="font-semibold tracking-tight text-xl" data-source-pos="408:20-408:78" data-source-name="CardTitle">Phase 1 – Planificación</div><p data-source-pos="409:20-409:92" data-source-name="p" class="text-sm text-slate-600">Principle: Alineamiento estratégico y gestión de riesgos</p></div><div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80" data-source-pos="411:18-411:113" data-source-name="Badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-text w-4 h-4 mr-1" aria-hidden="true" data-source-pos="411:25-411:65" data-source-name="BookOpenText"><path d="M12 7v14"></path><path d="M16 12h2"></path><path d="M16 8h2"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path><path d="M6 12h2"></path><path d="M6 8h2"></path></svg> Phase 1 / 5</div></div></div><div class="p-6 pt-0 space-y-4" data-source-pos="414:14-431:28" data-source-name="CardContent"><p data-source-pos="415:16-415:67" data-source-name="p" class="text-slate-700">Se va a implementar un ERP para una entidad pública. Debes preparar el marco de gobernanza inicial, el plan y la estructura de roles.</p><div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-[1px] w-full" data-source-pos="416:16-416:28" data-source-name="Separator"></div><div data-source-pos="417:16-430:22" data-source-name="div" class="grid md:grid-cols-3 gap-4"><div class="rounded-lg border bg-card text-card-foreground shadow-sm border-slate-200" data-source-pos="419:20-428:27" data-source-name="Card"><div class="flex flex-col space-y-1.5 p-6 pb-2" data-source-pos="420:22-422:35" data-source-name="CardHeader"><div class="font-semibold tracking-tight text-base" data-source-pos="421:24-421:80" data-source-name="CardTitle">Establecer comité de gobernanza y matriz RACI</div></div><div class="p-6 pt-0 space-y-3" data-source-pos="423:22-427:36" data-source-name="CardContent"><p data-source-pos="424:24-424:83" data-source-name="p" class="text-sm text-slate-700">Define roles claros (patrocinador, PMO, auditoría interna). Sesiones de kickoff con stakeholders clave.</p><div data-source-pos="425:24-425:130" data-source-name="div" class="text-xs text-slate-600 bg-slate-50 rounded-xl p-2">Impacto: Time -5 | Budget -5 | Confidence +8 | Risk -8</div><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 w-full" data-source-pos="426:24-426:96" data-source-name="Button">Choose</button></div></div><div class="rounded-lg border bg-card text-card-foreground shadow-sm border-slate-200" data-source-pos="419:20-428:27" data-source-name="Card"><div class="flex flex-col space-y-1.5 p-6 pb-2" data-source-pos="420:22-422:35" data-source-name="CardHeader"><div class="font-semibold tracking-tight text-base" data-source-pos="421:24-421:80" data-source-name="CardTitle">Plan mínimo viable, arranque rápido</div></div><div class="p-6 pt-0 space-y-3" data-source-pos="423:22-427:36" data-source-name="CardContent"><p data-source-pos="424:24-424:83" data-source-name="p" class="text-sm text-slate-700">Reducir el arranque formal para ganar velocidad. Documentación ligera y decisiones ad-hoc.</p><div data-source-pos="425:24-425:130" data-source-name="div" class="text-xs text-slate-600 bg-slate-50 rounded-xl p-2">Impacto: Time +5 | Confidence -4 | Risk +8</div><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 w-full" data-source-pos="426:24-426:96" data-source-name="Button">Choose</button></div></div><div class="rounded-lg border bg-card text-card-foreground shadow-sm border-slate-200" data-source-pos="419:20-428:27" data-source-name="Card"><div class="flex flex-col space-y-1.5 p-6 pb-2" data-source-pos="420:22-422:35" data-source-name="CardHeader"><div class="font-semibold tracking-tight text-base" data-source-pos="421:24-421:80" data-source-name="CardTitle">Consultoría breve para evaluación de riesgos</div></div><div class="p-6 pt-0 space-y-3" data-source-pos="423:22-427:36" data-source-name="CardContent"><p data-source-pos="424:24-424:83" data-source-name="p" class="text-sm text-slate-700">Traer un tercero para mapa de riesgos temprano (ciber, procesos, adopción).</p><div data-source-pos="425:24-425:130" data-source-name="div" class="text-xs text-slate-600 bg-slate-50 rounded-xl p-2">Impacto: Time -3 | Budget -8 | Confidence +3 | Risk -10</div><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 w-full" data-source-pos="426:24-426:96" data-source-name="Button">Choose</button></div></div></div></div></div></div></div></div>
     <script type="module">// external:https://cdn.jsdelivr.net/npm/react@18.3.1/+esm
 var e = { exports: {} };
 var t = {};
@@ -2847,7 +2847,7 @@ function gt(e10) {
 }
 var vt = { eventPhase: 0, bubbles: 0, cancelable: 0, timeStamp: function(e10) {
   return e10.timeStamp || Date.now();
-}, defaultPrevented: 0, isTrusted: 0 };
+}, defaultPrevented: 0, isConfidenceed: 0 };
 var yt = gt(vt);
 var bt = A2({}, vt, { view: 0, detail: 0 });
 var kt = gt(bt);
@@ -8921,267 +8921,7 @@ var h6 = ((o21, i19) => {
 })("trophy", n13);
 
 // internal:user-component.js
-var PHASES = [{
-  id: "plan",
-  title: "Fase 1 \u2013 Planificaci\xF3n",
-  principle: "Alineamiento estrat\xE9gico y gesti\xF3n de riesgos",
-  context: "Se va a implementar un ERP para una entidad p\xFAblica. Debes preparar el marco de gobernanza inicial, el plan y la estructura de roles.",
-  options: [{
-    id: "plan-a",
-    label: "Establecer comit\xE9 de gobernanza y matriz RACI",
-    description: "Define roles claros (patrocinador, PMO, auditor\xEDa interna). Sesiones de kickoff con stakeholders clave.",
-    delta: {
-      tiempo: -5,
-      presupuesto: -5,
-      confianza: 8,
-      riesgo: -8,
-      tags: ["good-roles", "stakeholders"],
-      lesson: "Roles y responsabilidad claros reducen riesgos."
-    }
-  }, {
-    id: "plan-b",
-    label: "Plan m\xEDnimo viable, arranque r\xE1pido",
-    description: "Reducir el arranque formal para ganar velocidad. Documentaci\xF3n ligera y decisiones ad-hoc.",
-    delta: {
-      tiempo: 5,
-      presupuesto: 0,
-      confianza: -4,
-      riesgo: 8,
-      tags: ["fast-start", "weak-governance"],
-      lesson: "La velocidad sin gobernanza aumenta el riesgo."
-    }
-  }, {
-    id: "plan-c",
-    label: "Consultor\xEDa breve para evaluaci\xF3n de riesgos",
-    description: "Traer un tercero para mapa de riesgos temprano (ciber, procesos, adopci\xF3n).",
-    delta: {
-      tiempo: -3,
-      presupuesto: -8,
-      confianza: 3,
-      riesgo: -10,
-      tags: ["risk-assessment"],
-      lesson: "Una evaluaci\xF3n de riesgos temprana evita sorpresas."
-    }
-  }]
-}, {
-  id: "diseno",
-  title: "Fase 2 \u2013 Dise\xF1o y Alcance",
-  principle: "Estandarizaci\xF3n vs. personalizaci\xF3n; control de cambios",
-  context: "Debes definir el alcance funcional y el nivel de personalizaci\xF3n del ERP frente a best practices del producto.",
-  options: [{
-    id: "design-a",
-    label: "Adoptar procesos est\xE1ndar del ERP (low-code)",
-    description: "Minimizar personalizaciones y adaptar el proceso al sistema.",
-    delta: {
-      tiempo: -5,
-      presupuesto: -5,
-      confianza: 5,
-      riesgo: -6,
-      tags: ["std-process"],
-      lesson: "Adoptar est\xE1ndares reduce complejidad y riesgo."
-    }
-  }, {
-    id: "design-b",
-    label: "Personalizaci\xF3n moderada aprobada por comit\xE9",
-    description: "Customs s\xF3lo donde hay claro ROI y con control de cambios.",
-    delta: {
-      tiempo: 0,
-      presupuesto: -8,
-      confianza: 2,
-      riesgo: -2,
-      tags: ["custom-governed"],
-      lesson: "La personalizaci\xF3n controlada puede aportar valor."
-    }
-  }, {
-    id: "design-c",
-    label: "Personalizaci\xF3n amplia para calzar procesos actuales",
-    description: "Se decide replicar procesos legados para evitar resistencia.",
-    delta: {
-      tiempo: 8,
-      presupuesto: -12,
-      confianza: -3,
-      riesgo: 12,
-      tags: ["custom-heavy"],
-      lesson: "Las personalizaciones extensas elevan costos y fallas."
-    }
-  }]
-}, {
-  id: "ejec",
-  title: "Fase 3 \u2013 Ejecuci\xF3n (Desarrollo & Integraciones)",
-  principle: "Control, auditor\xEDa y seguridad; gesti\xF3n de proveedores",
-  context: "Se implementan m\xF3dulos e integraciones clave. Debes elegir el enfoque de control y seguimiento.",
-  options: [{
-    id: "exec-a",
-    label: "Controles y auditor\xEDas por hitos",
-    description: "Revisiones QA independientes, auditor\xEDa de cambios y seguridad.",
-    delta: {
-      tiempo: -3,
-      presupuesto: -6,
-      confianza: 6,
-      riesgo: -8,
-      tags: ["qa", "audit"],
-      lesson: "Los controles por hitos mejoran la calidad y reducen riesgo."
-    }
-  }, {
-    id: "exec-b",
-    label: "Sprints en fast-track con reportes semanales",
-    description: "Se prioriza velocidad con reporting b\xE1sico.",
-    delta: {
-      tiempo: -6,
-      presupuesto: -2,
-      confianza: 0,
-      riesgo: 4,
-      tags: ["fast-track"],
-      lesson: "Fast-track acelera, pero puede ocultar problemas."
-    }
-  }, {
-    id: "exec-c",
-    label: "Delegar control al proveedor principal",
-    description: "Menos sobrecarga interna, m\xE1s dependencia del vendor.",
-    delta: {
-      tiempo: -4,
-      presupuesto: -4,
-      confianza: -2,
-      riesgo: 6,
-      tags: ["vendor-led"],
-      lesson: "Exceso de dependencia del proveedor eleva el riesgo residual."
-    }
-  }]
-}, {
-  id: "pruebas",
-  title: "Fase 4 \u2013 Pruebas y Gesti\xF3n del Cambio",
-  principle: "Calidad, adopci\xF3n y comunicaciones",
-  context: "Se acerca el go-live. Hay que decidir el enfoque de pruebas y de preparaci\xF3n de usuarios.",
-  options: [{
-    id: "test-a",
-    label: "Pruebas integrales + pilotos en \xE1reas cr\xEDticas",
-    description: "Casos de negocio end-to-end, UAT formal y piloto controlado.",
-    delta: {
-      tiempo: -5,
-      presupuesto: -7,
-      confianza: 6,
-      riesgo: -10,
-      tags: ["uat", "pilot"],
-      lesson: "UAT fuerte y piloto reducen fallas en producci\xF3n."
-    }
-  }, {
-    id: "test-b",
-    label: "Pruebas funcionales b\xE1sicas + manuales",
-    description: "Comprobaciones principales, sin piloto.",
-    delta: {
-      tiempo: -3,
-      presupuesto: -3,
-      confianza: 0,
-      riesgo: 4,
-      tags: ["basic-test"],
-      lesson: "Pruebas b\xE1sicas pueden dejar brechas ocultas."
-    }
-  }, {
-    id: "test-c",
-    label: "Enfoque m\xEDnimo para no retrasar",
-    description: "Se reduce UAT para cumplir fecha p\xFAblica.",
-    delta: {
-      tiempo: 0,
-      presupuesto: -1,
-      confianza: -4,
-      riesgo: 10,
-      tags: ["min-test"],
-      lesson: "Reducir UAT por tiempo suele salir caro en producci\xF3n."
-    }
-  }]
-}, {
-  id: "golive",
-  title: "Fase 5 \u2013 Puesta en Marcha",
-  principle: "Monitoreo, escalamiento y continuidad",
-  context: "Se decide el plan de go-live y soporte inicial.",
-  options: [{
-    id: "go-a",
-    label: "Go-live gradual con soporte extendido",
-    description: "Rollout por oleadas, mesa de ayuda 24/7 y tablero de incidentes.",
-    delta: {
-      tiempo: -2,
-      presupuesto: -6,
-      confianza: 6,
-      riesgo: -6,
-      tags: ["phased", "support"],
-      lesson: "Despliegue gradual y soporte robusto estabilizan el sistema."
-    }
-  }, {
-    id: "go-b",
-    label: "Big-bang con war room",
-    description: "Salida \xFAnica, equipo de respuesta inmediata.",
-    delta: {
-      tiempo: -1,
-      presupuesto: -4,
-      confianza: 1,
-      riesgo: 2,
-      tags: ["big-bang"],
-      lesson: "Big-bang puede funcionar, pero es fr\xE1gil ante sorpresas."
-    }
-  }, {
-    id: "go-c",
-    label: "Go-live forzado por presi\xF3n pol\xEDtica",
-    description: "Se sale sin checklist completo.",
-    delta: {
-      tiempo: 0,
-      presupuesto: -1,
-      confianza: -6,
-      riesgo: 12,
-      tags: ["forced-go"],
-      lesson: "Forzar salida sin checklist eleva fallas y costos reputacionales."
-    }
-  }]
-}];
-var RANDOM_EVENTS = [{
-  id: "stakeholder-pushback",
-  title: "Resistencia de stakeholders",
-  description: "Un \xE1rea clave siente poca participaci\xF3n y bloquea decisiones.",
-  triggerChance: 0.35,
-  effect: {
-    confianza: -6,
-    riesgo: 4,
-    tags: ["low-comm"],
-    lesson: "Involucrar stakeholders y comunicar pronto evita bloqueos."
-  },
-  principle: "Participaci\xF3n y transparencia"
-}, {
-  id: "scope-creep",
-  title: "Scope creep",
-  description: "Surgen requerimientos no planificados tras ver primeros avances.",
-  triggerChance: 0.3,
-  effect: {
-    tiempo: 4,
-    presupuesto: -6,
-    riesgo: 5,
-    tags: ["change-control"],
-    lesson: "Control de cambios protege cronograma y costo."
-  },
-  principle: "Control de cambios"
-}, {
-  id: "vendor-delay",
-  title: "Demora del proveedor",
-  description: "El proveedor clave reprograma entregables por carga de trabajo.",
-  triggerChance: 0.25,
-  effect: {
-    tiempo: 5,
-    riesgo: 3,
-    tags: ["vendor-risk"],
-    lesson: "Gestionar proveedores cr\xEDticos y SLA."
-  },
-  principle: "Gesti\xF3n de proveedores"
-}, {
-  id: "security-gap",
-  title: "Hallazgo de brecha de seguridad",
-  description: "Auditor\xEDa detecta configuraci\xF3n insegura en un m\xF3dulo.",
-  triggerChance: 0.2,
-  effect: {
-    presupuesto: -5,
-    riesgo: 6,
-    tags: ["security"],
-    lesson: "Seguridad by-design y hardening temprano."
-  },
-  principle: "Seguridad y cumplimiento"
-}];
+var PHASES = <?php include 'phases-en.js'; ?>;
 function clamp(n14, min, max) {
   return Math.max(min, Math.min(max, n14));
 }
@@ -9199,7 +8939,7 @@ function GovernanceChallenge() {
     confianza: 50
     // percepción de stakeholders
   });
-  const [riesgo, setRiesgo] = _e(20);
+  const [riesgo, setRisk] = _e(20);
   const [log, setLog] = _e([]);
   const [tags, setTags] = _e([]);
   const [lessons, setLessons] = _e([]);
@@ -9215,29 +8955,29 @@ function GovernanceChallenge() {
     if (d6.confianza) nr2.confianza = clamp(nr2.confianza + d6.confianza, 0, 100);
     const newRisk = clamp(riesgo + (d6.riesgo || 0), 0, 100);
     setResources(nr2);
-    setRiesgo(newRisk);
+    setRisk(newRisk);
     if (d6.tags && d6.tags.length) setTags((t18) => Array.from(/* @__PURE__ */ new Set([...t18, ...d6.tags])));
     if (d6.lesson) setLessons((ls2) => Array.from(/* @__PURE__ */ new Set([...ls2, d6.lesson])));
     setLog((l12) => [...l12, `${title}: ${formatDelta(d6)}`]);
   }
   function formatDelta(d6) {
     const parts = [];
-    if (d6.tiempo) parts.push(`Tiempo ${signed(d6.tiempo)}`);
-    if (d6.presupuesto) parts.push(`Presupuesto ${signed(d6.presupuesto)}`);
-    if (d6.confianza) parts.push(`Confianza ${signed(d6.confianza)}`);
-    if (d6.riesgo) parts.push(`Riesgo ${signed(d6.riesgo)}`);
+    if (d6.tiempo) parts.push(`Time ${signed(d6.tiempo)}`);
+    if (d6.presupuesto) parts.push(`Budget ${signed(d6.presupuesto)}`);
+    if (d6.confianza) parts.push(`Confidence ${signed(d6.confianza)}`);
+    if (d6.riesgo) parts.push(`Risk ${signed(d6.riesgo)}`);
     return parts.join(" | ");
   }
   function signed(n14) {
     return n14 > 0 ? `+${n14}` : `${n14}`;
   }
   function onChoose(option) {
-    applyDelta(option.delta, `Decisi\xF3n: ${option.label}`);
+    applyDelta(option.delta, `Decision: ${option.label}`);
     const maybe = RANDOM_EVENTS.filter(() => rand() < 0.9);
     const candidate = maybe.find((e10) => rand() < e10.triggerChance);
     if (candidate) {
       setEventsFired((ev) => [...ev, candidate]);
-      applyDelta(candidate.effect, `Evento: ${candidate.title}`);
+      applyDelta(candidate.effect, `Event: ${candidate.title}`);
     }
     const next = phaseIndex + 1;
     if (next < PHASES.length) {
@@ -9254,7 +8994,7 @@ function GovernanceChallenge() {
       presupuesto: 50,
       confianza: 50
     });
-    setRiesgo(20);
+    setRisk(20);
     setLog([]);
     setTags([]);
     setLessons([]);
@@ -9273,10 +9013,10 @@ function GovernanceChallenge() {
     if (tags.includes("forced-go")) adjust -= 10;
     const total = clamp(Math.round(base / 4 + adjust), 0, 100);
     let rank;
-    if (total >= 80) rank = "Exitoso";
-    else if (total >= 60) rank = "Aceptable";
-    else if (total >= 40) rank = "Complicado";
-    else rank = "Fracaso";
+    if (total >= 80) rank = "Successful";
+    else if (total >= 60) rank = "Acceptable";
+    else if (total >= 40) rank = "Complicated";
+    else rank = "Failure";
     return {
       total,
       rank
@@ -9288,40 +9028,40 @@ function GovernanceChallenge() {
       /* @__PURE__ */ m5("div", { "data-source-pos": "373:10-378:16", "data-source-name": "div", children: [
         /* @__PURE__ */ m5("h1", { "data-source-pos": "374:12-376:17", "data-source-name": "h1", className: "text-2xl font-bold tracking-tight flex items-center gap-2", children: [
           /* @__PURE__ */ y5(n9, { "data-source-pos": "375:14-375:49", "data-source-name": "ShieldCheck", className: "w-6 h-6" }),
-          " Governance Challenge: Proyecto ERP"
+          " Governance Challenge: ERP Project"
         ] }),
-        /* @__PURE__ */ y5("p", { "data-source-pos": "377:12-377:112", "data-source-name": "p", className: "text-sm text-slate-600", children: "Juego corto para practicar decisiones de Gobernanza de TI." })
+        /* @__PURE__ */ y5("p", { "data-source-pos": "377:12-377:112", "data-source-name": "p", className: "text-sm text-slate-600", children: "Short game to practice IT Governance decisions." })
       ] }),
       /* @__PURE__ */ m5("div", { "data-source-pos": "379:10-382:16", "data-source-name": "div", className: "flex items-center gap-3", children: [
-        /* @__PURE__ */ y5(Badge, { "data-source-pos": "380:12-380:79", "data-source-name": "Badge", variant: "secondary", className: "text-xs", children: "Versi\xF3n demo" }),
+        /* @__PURE__ */ y5(Badge, { "data-source-pos": "380:12-380:79", "data-source-name": "Badge", variant: "secondary", className: "text-xs", children: "Demo version" }),
         /* @__PURE__ */ m5(Button, { "data-source-pos": "381:12-381:124", "data-source-name": "Button", variant: "outline", onClick: reset, className: "gap-2", children: [
           /* @__PURE__ */ y5(c14, { "data-source-pos": "381:72-381:105", "data-source-name": "RefreshCcw", className: "w-4 h-4" }),
-          " Reiniciar"
+          " Restart"
         ] })
       ] })
     ] }),
     /* @__PURE__ */ m5(Card, { "data-source-pos": "385:8-400:15", "data-source-name": "Card", className: "border-slate-200", children: [
       /* @__PURE__ */ y5(CardHeader, { "data-source-pos": "386:10-396:23", "data-source-name": "CardHeader", className: "pb-2", children: /* @__PURE__ */ m5("div", { "data-source-pos": "387:12-395:18", "data-source-name": "div", className: "flex items-center justify-between", children: [
-        /* @__PURE__ */ y5(CardTitle, { "data-source-pos": "388:14-388:65", "data-source-name": "CardTitle", className: "text-lg", children: "Progreso" }),
+        /* @__PURE__ */ y5(CardTitle, { "data-source-pos": "388:14-388:65", "data-source-name": "CardTitle", className: "text-lg", children: "Progress" }),
         /* @__PURE__ */ m5("div", { "data-source-pos": "389:14-394:20", "data-source-name": "div", className: "flex gap-3 text-xs text-slate-600", children: [
           /* @__PURE__ */ m5("span", { "data-source-pos": "390:16-390:137", "data-source-name": "span", className: "flex items-center gap-1", children: [
             /* @__PURE__ */ y5(l10, { "data-source-pos": "390:58-390:86", "data-source-name": "Clock", className: "w-4 h-4" }),
-            " Tiempo: ",
+            " Time: ",
             /* @__PURE__ */ y5("strong", { "data-source-pos": "390:95-390:130", "data-source-name": "strong", children: resources.tiempo })
           ] }),
           /* @__PURE__ */ m5("span", { "data-source-pos": "391:16-391:147", "data-source-name": "span", className: "flex items-center gap-1", children: [
             /* @__PURE__ */ y5(n8, { "data-source-pos": "391:58-391:86", "data-source-name": "Coins", className: "w-4 h-4" }),
-            " Presupuesto: ",
+            " Budget: ",
             /* @__PURE__ */ y5("strong", { "data-source-pos": "391:100-391:140", "data-source-name": "strong", children: resources.presupuesto })
           ] }),
           /* @__PURE__ */ m5("span", { "data-source-pos": "392:16-392:143", "data-source-name": "span", className: "flex items-center gap-1", children: [
             /* @__PURE__ */ y5(c13, { "data-source-pos": "392:58-392:86", "data-source-name": "Users", className: "w-4 h-4" }),
-            " Confianza: ",
+            " Confidence: ",
             /* @__PURE__ */ y5("strong", { "data-source-pos": "392:98-392:136", "data-source-name": "strong", children: resources.confianza })
           ] }),
           /* @__PURE__ */ m5("span", { "data-source-pos": "393:16-393:133", "data-source-name": "span", className: "flex items-center gap-1", children: [
             /* @__PURE__ */ y5(l9, { "data-source-pos": "393:58-393:92", "data-source-name": "CircleAlert", className: "w-4 h-4" }),
-            " Riesgo: ",
+            " Risk: ",
             /* @__PURE__ */ y5("strong", { "data-source-pos": "393:101-393:126", "data-source-name": "strong", children: riesgo })
           ] })
         ] })
@@ -9334,13 +9074,13 @@ function GovernanceChallenge() {
           /* @__PURE__ */ m5("div", { "data-source-pos": "407:18-410:24", "data-source-name": "div", children: [
             /* @__PURE__ */ y5(CardTitle, { "data-source-pos": "408:20-408:78", "data-source-name": "CardTitle", className: "text-xl", children: current.title }),
             /* @__PURE__ */ m5("p", { "data-source-pos": "409:20-409:92", "data-source-name": "p", className: "text-sm text-slate-600", children: [
-              "Principio: ",
+              "Principle: ",
               current.principle
             ] })
           ] }),
           /* @__PURE__ */ m5(Badge, { "data-source-pos": "411:18-411:113", "data-source-name": "Badge", children: [
             /* @__PURE__ */ y5(h5, { "data-source-pos": "411:25-411:65", "data-source-name": "BookOpenText", className: "w-4 h-4 mr-1" }),
-            " Fase ",
+            " Phase ",
             phaseIndex + 1,
             " / ",
             PHASES.length
@@ -9357,7 +9097,7 @@ function GovernanceChallenge() {
                 "Impacto: ",
                 formatDelta(opt.delta)
               ] }),
-              /* @__PURE__ */ y5(Button, { "data-source-pos": "426:24-426:96", "data-source-name": "Button", onClick: () => onChoose(opt), className: "w-full", children: "Elegir" })
+              /* @__PURE__ */ y5(Button, { "data-source-pos": "426:24-426:96", "data-source-name": "Button", onClick: () => onChoose(opt), className: "w-full", children: "Choose" })
             ] })
           ] }, opt.id)) })
         ] })
@@ -9371,7 +9111,7 @@ function LogPanel({
 }) {
   if (!log.length) return null;
   return /* @__PURE__ */ m5(Card, { "data-source-pos": "447:4-456:11", "data-source-name": "Card", className: "border-slate-200", children: [
-    /* @__PURE__ */ y5(CardHeader, { "data-source-pos": "448:6-450:19", "data-source-name": "CardHeader", children: /* @__PURE__ */ y5(CardTitle, { "data-source-pos": "449:8-449:59", "data-source-name": "CardTitle", className: "text-lg", children: "Bit\xE1cora" }) }),
+    /* @__PURE__ */ y5(CardHeader, { "data-source-pos": "448:6-450:19", "data-source-name": "CardHeader", children: /* @__PURE__ */ y5(CardTitle, { "data-source-pos": "449:8-449:59", "data-source-name": "CardTitle", className: "text-lg", children: "Binnacle" }) }),
     /* @__PURE__ */ y5(CardContent, { "data-source-pos": "451:6-455:20", "data-source-name": "CardContent", className: "space-y-2", children: log.slice().reverse().map((l12, i19) => /* @__PURE__ */ m5("div", { "data-source-pos": "453:10-453:69", "data-source-name": "div", className: "text-sm text-slate-700", children: [
       "\u2022 ",
       l12
@@ -9391,7 +9131,7 @@ function FinalReport({
     /* @__PURE__ */ m5(Alert, { "data-source-pos": "479:6-490:14", "data-source-name": "Alert", children: [
       /* @__PURE__ */ y5(h6, { "data-source-pos": "480:8-480:38", "data-source-name": "Trophy", className: "h-5 w-5" }),
       /* @__PURE__ */ m5(AlertTitle, { "data-source-pos": "481:8-481:192", "data-source-name": "AlertTitle", className: "flex items-center gap-2", children: [
-        "Resultado: ",
+        "Result: ",
         /* @__PURE__ */ y5("span", { "data-source-pos": "481:67-481:118", "data-source-name": "span", className: "font-semibold", children: score.rank }),
         " ",
         /* @__PURE__ */ m5(Badge, { "data-source-pos": "481:119-481:179", "data-source-name": "Badge", variant: "secondary", children: [
@@ -9401,10 +9141,10 @@ function FinalReport({
         ] })
       ] }),
       /* @__PURE__ */ y5(AlertDescription, { "data-source-pos": "482:8-489:27", "data-source-name": "AlertDescription", className: "text-slate-700", children: /* @__PURE__ */ m5("div", { "data-source-pos": "483:10-488:16", "data-source-name": "div", className: "mt-2 grid md:grid-cols-4 gap-3", children: [
-        /* @__PURE__ */ y5(KPI, { "data-source-pos": "484:12-484:95", "data-source-name": "KPI", label: "Tiempo", value: resources.tiempo, icon: /* @__PURE__ */ y5(l10, { "data-source-pos": "484:63-484:91", "data-source-name": "Clock", className: "w-4 h-4" }) }),
-        /* @__PURE__ */ y5(KPI, { "data-source-pos": "485:12-485:105", "data-source-name": "KPI", label: "Presupuesto", value: resources.presupuesto, icon: /* @__PURE__ */ y5(n8, { "data-source-pos": "485:73-485:101", "data-source-name": "Coins", className: "w-4 h-4" }) }),
-        /* @__PURE__ */ y5(KPI, { "data-source-pos": "486:12-486:101", "data-source-name": "KPI", label: "Confianza", value: resources.confianza, icon: /* @__PURE__ */ y5(c13, { "data-source-pos": "486:69-486:97", "data-source-name": "Users", className: "w-4 h-4" }) }),
-        /* @__PURE__ */ y5(KPI, { "data-source-pos": "487:12-487:107", "data-source-name": "KPI", label: "Riesgo (\u2193 mejor)", value: 100 - riesgo, icon: /* @__PURE__ */ y5(n9, { "data-source-pos": "487:69-487:103", "data-source-name": "ShieldCheck", className: "w-4 h-4" }) })
+        /* @__PURE__ */ y5(KPI, { "data-source-pos": "484:12-484:95", "data-source-name": "KPI", label: "Time", value: resources.tiempo, icon: /* @__PURE__ */ y5(l10, { "data-source-pos": "484:63-484:91", "data-source-name": "Clock", className: "w-4 h-4" }) }),
+        /* @__PURE__ */ y5(KPI, { "data-source-pos": "485:12-485:105", "data-source-name": "KPI", label: "Budget", value: resources.presupuesto, icon: /* @__PURE__ */ y5(n8, { "data-source-pos": "485:73-485:101", "data-source-name": "Coins", className: "w-4 h-4" }) }),
+        /* @__PURE__ */ y5(KPI, { "data-source-pos": "486:12-486:101", "data-source-name": "KPI", label: "Confidence", value: resources.confianza, icon: /* @__PURE__ */ y5(c13, { "data-source-pos": "486:69-486:97", "data-source-name": "Users", className: "w-4 h-4" }) }),
+        /* @__PURE__ */ y5(KPI, { "data-source-pos": "487:12-487:107", "data-source-name": "KPI", label: "Risk (\u2193 mejor)", value: 100 - riesgo, icon: /* @__PURE__ */ y5(n9, { "data-source-pos": "487:69-487:103", "data-source-name": "ShieldCheck", className: "w-4 h-4" }) })
       ] }) })
     ] }),
     /* @__PURE__ */ m5(Card, { "data-source-pos": "492:6-513:13", "data-source-name": "Card", className: "border-slate-200", children: [
@@ -9417,14 +9157,14 @@ function FinalReport({
         tags.length > 0 && /* @__PURE__ */ y5("div", { "data-source-pos": "503:12-507:18", "data-source-name": "div", className: "pt-3 flex flex-wrap gap-2", children: tags.map((t18) => /* @__PURE__ */ y5(Badge, { "data-source-pos": "505:16-505:60", "data-source-name": "Badge", variant: "outline", children: t18 }, t18)) }),
         /* @__PURE__ */ y5("div", { "data-source-pos": "509:10-511:16", "data-source-name": "div", className: "pt-4", children: /* @__PURE__ */ m5(Button, { "data-source-pos": "510:12-510:118", "data-source-name": "Button", onClick: onRestart, className: "gap-2", children: [
           /* @__PURE__ */ y5(c14, { "data-source-pos": "510:58-510:91", "data-source-name": "RefreshCcw", className: "w-4 h-4" }),
-          " Volver a intentar"
+          " Try again"
         ] }) })
       ] })
     ] }),
     events.length > 0 && /* @__PURE__ */ m5(Card, { "data-source-pos": "516:8-529:15", "data-source-name": "Card", className: "border-slate-200", children: [
       /* @__PURE__ */ y5(CardHeader, { "data-source-pos": "517:10-519:23", "data-source-name": "CardHeader", children: /* @__PURE__ */ m5(CardTitle, { "data-source-pos": "518:12-518:131", "data-source-name": "CardTitle", className: "text-lg flex items-center gap-2", children: [
         /* @__PURE__ */ y5(l9, { "data-source-pos": "518:67-518:101", "data-source-name": "CircleAlert", className: "w-5 h-5" }),
-        " Eventos ocurridos"
+        " Events occurred"
       ] }) }),
       /* @__PURE__ */ y5(CardContent, { "data-source-pos": "520:10-528:24", "data-source-name": "CardContent", className: "space-y-3", children: events.map((e10) => /* @__PURE__ */ m5("div", { "data-source-pos": "522:14-526:20", "data-source-name": "div", className: "p-3 rounded-xl bg-slate-50", children: [
         /* @__PURE__ */ m5("div", { "data-source-pos": "523:16-523:126", "data-source-name": "div", className: "font-medium", children: [
@@ -9442,13 +9182,13 @@ function FinalReport({
     /* @__PURE__ */ m5(Card, { "data-source-pos": "532:6-544:13", "data-source-name": "Card", className: "border-slate-200", children: [
       /* @__PURE__ */ y5(CardHeader, { "data-source-pos": "533:8-535:21", "data-source-name": "CardHeader", children: /* @__PURE__ */ m5(CardTitle, { "data-source-pos": "534:10-534:141", "data-source-name": "CardTitle", className: "text-lg flex items-center gap-2", children: [
         /* @__PURE__ */ y5(c8, { "data-source-pos": "534:65-534:100", "data-source-name": "CheckCircle2", className: "w-5 h-5" }),
-        " C\xF3mo evaluar en clase/taller"
+        " How to evaluate in class/workshop"
       ] }) }),
       /* @__PURE__ */ y5(CardContent, { "data-source-pos": "536:8-543:22", "data-source-name": "CardContent", className: "space-y-3 text-slate-700", children: /* @__PURE__ */ m5("ol", { "data-source-pos": "537:10-542:15", "data-source-name": "ol", className: "list-decimal pl-6 space-y-2", children: [
-        /* @__PURE__ */ y5("li", { "data-source-pos": "538:12-538:81", "data-source-name": "li", children: "Pedir a cada participante un pantallazo de su reporte final." }),
-        /* @__PURE__ */ y5("li", { "data-source-pos": "539:12-539:84", "data-source-name": "li", children: "Discutir 2\u20133 decisiones clave y c\xF3mo afectaron riesgo/recursos." }),
-        /* @__PURE__ */ y5("li", { "data-source-pos": "540:12-540:137", "data-source-name": "li", children: "Relacionar cada lecci\xF3n con un principio de gobernanza (roles, riesgos, control de cambios, QA, seguridad, soporte)." }),
-        /* @__PURE__ */ y5("li", { "data-source-pos": "541:12-541:77", "data-source-name": "li", children: "Conectar con el caso real: \xBFqu\xE9 habr\xEDa evitado la falla?" })
+        /* @__PURE__ */ y5("li", { "data-source-pos": "538:12-538:81", "data-source-name": "li", children: "Ask each participant for a screenshot of their final report." }),
+        /* @__PURE__ */ y5("li", { "data-source-pos": "539:12-539:84", "data-source-name": "li", children: "Discuss 2-3 key decisions and how they affected risk/resources." }),
+        /* @__PURE__ */ y5("li", { "data-source-pos": "540:12-540:137", "data-source-name": "li", children: "Relate each lesson to a governance principle (roles, risks, change control, QA, security, support)." }),
+        /* @__PURE__ */ y5("li", { "data-source-pos": "541:12-541:77", "data-source-name": "li", children: "Connect with the real case: what would have prevented the failure?" })
       ] }) })
     ] })
   ] });
@@ -9469,25 +9209,25 @@ function KPI({
 }
 function formatQuickDelta(d6) {
   const out = [];
-  if (d6.tiempo) out.push(`Tiempo ${d6.tiempo > 0 ? "+" : ""}${d6.tiempo}`);
-  if (d6.presupuesto) out.push(`Presupuesto ${d6.presupuesto > 0 ? "+" : ""}${d6.presupuesto}`);
-  if (d6.confianza) out.push(`Confianza ${d6.confianza > 0 ? "+" : ""}${d6.confianza}`);
-  if (d6.riesgo) out.push(`Riesgo ${d6.riesgo > 0 ? "+" : ""}${d6.riesgo}`);
+  if (d6.tiempo) out.push(`Time ${d6.tiempo > 0 ? "+" : ""}${d6.tiempo}`);
+  if (d6.presupuesto) out.push(`Budget ${d6.presupuesto > 0 ? "+" : ""}${d6.presupuesto}`);
+  if (d6.confianza) out.push(`Confidence ${d6.confianza > 0 ? "+" : ""}${d6.confianza}`);
+  if (d6.riesgo) out.push(`Risk ${d6.riesgo > 0 ? "+" : ""}${d6.riesgo}`);
   return out.join(" | ");
 }
 function buildRecommendations(resources, riesgo, tags, lessons) {
   const recs = [];
-  if (resources.tiempo < 40) recs.push("Refuerza la gesti\xF3n del cronograma: prioriza est\xE1ndares del ERP y controla cambios para evitar retrasos.");
-  if (resources.presupuesto < 40) recs.push("Mejora el control financiero y de alcance: limita personalizaciones, usa aprobaciones por comit\xE9.");
-  if (resources.confianza < 40) recs.push("Aumenta la transparencia: rituales de comunicaci\xF3n, demos peri\xF3dicas y participaci\xF3n de stakeholders.");
-  if (riesgo > 50) recs.push("Implementa evaluaci\xF3n de riesgos continua, auditor\xEDas por hitos y pruebas UAT robustas.");
-  if (tags.includes("custom-heavy")) recs.push("Reduce personalizaciones y alinea procesos al est\xE1ndar del ERP (fit-to-standard).");
-  if (tags.includes("min-test")) recs.push("Fortalece QA: UAT formal y pilotos antes del go-live.");
-  if (tags.includes("weak-governance")) recs.push("Define un marco de gobernanza claro (RACI, comit\xE9s, escalamiento).");
-  if (tags.includes("forced-go")) recs.push("No fuerces fechas sin checklist: usa criterios de salida y plan de soporte.");
-  if (tags.includes("low-comm")) recs.push("Involucra temprano a las \xE1reas afectadas y mant\xE9n comunicaci\xF3n bidireccional.");
-  if (tags.includes("security")) recs.push("Integra seguridad by-design y hardening desde las primeras fases.");
-  if (tags.includes("vendor-risk")) recs.push("Gestiona proveedores con SLA, penalidades y planes de contingencia.");
+  if (resources.tiempo < 40) recs.push("Strengthen schedule management: prioritize ERP standards and control changes to avoid delays.");
+  if (resources.presupuesto < 40) recs.push("Improve financial and scope control: limit customizations, use committee approvals.");
+  if (resources.confianza < 40) recs.push("Increase transparency: communication rituals, periodic demos and stakeholder participation.");
+  if (riesgo > 50) recs.push("Implement continuous risk assessment, milestone audits and robust UAT testing.");
+  if (tags.includes("custom-heavy")) recs.push("Reduce customizations and align processes to ERP standard (fit-to-standard).");
+  if (tags.includes("min-test")) recs.push("Strengthen QA: formal UAT and pilots before go-live.");
+  if (tags.includes("weak-governance")) recs.push("Define a clear governance framework (RACI, committees, escalation).");
+  if (tags.includes("forced-go")) recs.push("Don't force dates without checklist: use exit criteria and support plan.");
+  if (tags.includes("low-comm")) recs.push("Involve affected areas early and maintain bidirectional communication.");
+  if (tags.includes("security")) recs.push("Integrate security by-design and hardening from the first phases.");
+  if (tags.includes("vendor-risk")) recs.push("Manage suppliers with SLA, penalties and contingency plans.");
   for (const l12 of lessons) recs.push(l12);
   return Array.from(new Set(recs));
 }
