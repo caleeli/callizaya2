@@ -9135,7 +9135,7 @@ function FinalReport({
         /* @__PURE__ */ y5("span", { "data-source-pos": "481:67-481:118", "data-source-name": "span", className: "font-semibold", children: score.rank }),
         " ",
         /* @__PURE__ */ m5(Badge, { "data-source-pos": "481:119-481:179", "data-source-name": "Badge", variant: "secondary", children: [
-          "Puntaje ",
+          "Score ",
           score.total,
           "/100"
         ] })
@@ -9144,13 +9144,13 @@ function FinalReport({
         /* @__PURE__ */ y5(KPI, { "data-source-pos": "484:12-484:95", "data-source-name": "KPI", label: "Time", value: resources.tiempo, icon: /* @__PURE__ */ y5(l10, { "data-source-pos": "484:63-484:91", "data-source-name": "Clock", className: "w-4 h-4" }) }),
         /* @__PURE__ */ y5(KPI, { "data-source-pos": "485:12-485:105", "data-source-name": "KPI", label: "Budget", value: resources.presupuesto, icon: /* @__PURE__ */ y5(n8, { "data-source-pos": "485:73-485:101", "data-source-name": "Coins", className: "w-4 h-4" }) }),
         /* @__PURE__ */ y5(KPI, { "data-source-pos": "486:12-486:101", "data-source-name": "KPI", label: "Confidence", value: resources.confianza, icon: /* @__PURE__ */ y5(c13, { "data-source-pos": "486:69-486:97", "data-source-name": "Users", className: "w-4 h-4" }) }),
-        /* @__PURE__ */ y5(KPI, { "data-source-pos": "487:12-487:107", "data-source-name": "KPI", label: "Risk (\u2193 mejor)", value: 100 - riesgo, icon: /* @__PURE__ */ y5(n9, { "data-source-pos": "487:69-487:103", "data-source-name": "ShieldCheck", className: "w-4 h-4" }) })
+        /* @__PURE__ */ y5(KPI, { "data-source-pos": "487:12-487:107", "data-source-name": "KPI", label: "Risk (\u2193 better)", value: 100 - riesgo, icon: /* @__PURE__ */ y5(n9, { "data-source-pos": "487:69-487:103", "data-source-name": "ShieldCheck", className: "w-4 h-4" }) })
       ] }) })
     ] }),
     /* @__PURE__ */ m5(Card, { "data-source-pos": "492:6-513:13", "data-source-name": "Card", className: "border-slate-200", children: [
       /* @__PURE__ */ y5(CardHeader, { "data-source-pos": "493:8-495:21", "data-source-name": "CardHeader", children: /* @__PURE__ */ m5(CardTitle, { "data-source-pos": "494:10-494:134", "data-source-name": "CardTitle", className: "text-lg flex items-center gap-2", children: [
         /* @__PURE__ */ y5(l11, { "data-source-pos": "494:65-494:94", "data-source-name": "Target", className: "w-5 h-5" }),
-        " Recomendaciones y lecciones"
+        " Recommendations and lessons"
       ] }) }),
       /* @__PURE__ */ m5(CardContent, { "data-source-pos": "496:8-512:22", "data-source-name": "CardContent", className: "space-y-3", children: [
         /* @__PURE__ */ y5("ul", { "data-source-pos": "497:10-501:15", "data-source-name": "ul", className: "list-disc pl-6 text-slate-700", children: recommendations.map((r10, i19) => /* @__PURE__ */ y5("li", { "data-source-pos": "499:14-499:34", "data-source-name": "li", children: r10 }, i19)) }),
