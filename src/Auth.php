@@ -108,7 +108,7 @@ final class Auth
         }
         // Check Content-Type header changed to text/html
         $headersSent = headers_list();
-        $sentContentTypeHtmlOrJavascript = array_find($headersSent, function ($header) {
+        $sentContentTypeHtmlOrJavascript = array_filter($headersSent, function ($header) {
             return stripos($header, 'Content-Type:') === 0 && (
                 stripos($header, 'text/html') !== false
                 || stripos($header, 'text/javascript') !== false
