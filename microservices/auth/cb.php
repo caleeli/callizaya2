@@ -5,7 +5,7 @@
  */
 
 use Google\Client;
-use Google\Service\Drive;
+use Google\Service\Oauth2;
 
 $base = dirname($_SERVER['SCRIPT_URI']);
 
@@ -14,7 +14,6 @@ $client = new Client();
 $client->setAuthConfig($configJsonPath);
 $client->useApplicationDefaultCredentials();
 $client->setRedirectUri($base . '/auth/cb');
-//$client->addScope(Drive::DRIVE);
 
 $response = $client->fetchAccessTokenWithAuthCode($_GET['code']);
 $token = $client->getAccessToken();
@@ -23,5 +22,15 @@ if (!$token) {
     print_r($response);
     exit;
 }
-$token = json_encode($token);
-file_put_contents('token.json', $token);
+
+// Get user email and profile info
+$oauth2 = new Oauth2($client);
+$userInfo = $oauth2->userinfo->get();
+$token['email'] = $userInfo->email;
+$token['name'] = $userInfo->name;
+$token['picture'] = $userInfo->picture;
+$token['id'] = $userInfo->id;
+
+$jwt = Auth::create_token($token);
+
+return $token;
