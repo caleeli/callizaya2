@@ -36,5 +36,9 @@ $token['id'] = $userInfo->id;
 
 $jwt = Auth::create_token($token);
 
-print_r($token);
-print_r($jwt);
+?>
+<script>
+    // For debugging purposes display the token and JWT
+    console.log('Token:', <?php echo json_encode($token); ?>);
+    console.log('JWT:', <?php echo json_encode($jwt); ?>);
+</script>
