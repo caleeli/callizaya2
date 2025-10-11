@@ -23,10 +23,8 @@ if (!$token) {
     exit;
 }
 
-$client = new Client();
-$client->setAuthConfig(getenv('GOOGLE_APPLICATION_CREDENTIALS'));
-$client->setScopes(['openid', 'email', 'profile']);
-$client->setAccessToken($token);
+// Get a Google Client from the token and scopes
+$client = Auth::googleClient($token, ['openid', 'email', 'profile']);
 
 // Get user email and profile info
 $oauth2 = new Oauth2($client);

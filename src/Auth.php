@@ -1,6 +1,7 @@
 <?php
 
 use App\Resources\JsonApiResource;
+use Google\Client;
 use PHPMailer\PHPMailer\PHPMailer;
 use ReallySimpleJWT\Token;
 
@@ -224,5 +225,23 @@ final class Auth
         $mail->Subject = $subject;
         $mail->Body = $body;
         $mail->send();
+    }
+
+    /**
+     * Get a Google Client from a token and scopes
+     *
+     * @param array|string $token
+     * @param array $scopes
+     * @return Client
+     * @throws InvalidArgumentException
+     * @throws LogicException
+     */
+    public static function googleClient(array|string $token, array $scopes)
+    {
+        $client = new Client();
+        $client->setAuthConfig(getenv('GOOGLE_APPLICATION_CREDENTIALS'));
+        $client->setScopes($scopes);
+        $client->setAccessToken($token);
+        return $client;
     }
 }
