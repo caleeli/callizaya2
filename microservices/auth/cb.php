@@ -23,8 +23,8 @@ if (!$token) {
     exit;
 }
 
-$client = new Client();
-$client->setAuthConfig(getenv('GOOGLE_APPLICATION_CREDENTIALS'));
+//$client = new Client();
+//$client->setAuthConfig(getenv('GOOGLE_APPLICATION_CREDENTIALS'));
 $client->setScopes(['openid', 'email', 'profile']);
 $client->setAccessToken(json_encode($token));
 
