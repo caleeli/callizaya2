@@ -23,10 +23,10 @@ if (!$token) {
     exit;
 }
 
-//$client = new Client();
-//$client->setAuthConfig(getenv('GOOGLE_APPLICATION_CREDENTIALS'));
+$client = new Client();
+$client->setAuthConfig(getenv('GOOGLE_APPLICATION_CREDENTIALS'));
 $client->setScopes(['openid', 'email', 'profile']);
-$client->setAccessToken(json_encode($token));
+$client->setAccessToken($token);
 
 // Get user email and profile info
 $oauth2 = new Oauth2($client);
