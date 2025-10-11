@@ -41,9 +41,6 @@ $jwt = Auth::create_token([
 
 ?>
 <script>
-    // For debugging purposes display the token and JWT
-    console.log('User Info:', <?php echo json_encode($userInfo); ?>);
-    console.log('JWT:', <?php echo json_encode($jwt); ?>);
     // Sent message to opener window and close this popup
     if (window.opener) {
         window.opener.postMessage({ user: <?php echo json_encode($userInfo); ?>, jwt: <?php echo json_encode($jwt); ?> }, '*');
