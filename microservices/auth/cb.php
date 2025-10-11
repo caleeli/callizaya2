@@ -31,16 +31,25 @@ $client = Auth::googleClient($token, ['openid', 'email', 'profile']);
 // Get user email and profile info
 $oauth2 = new Oauth2($client);
 $userInfo = $oauth2->userinfo->get();
-$token['email'] = $userInfo->email;
-$token['name'] = $userInfo->name;
-$token['picture'] = $userInfo->picture;
-$token['id'] = $userInfo->id;
 
-$jwt = Auth::create_token($token);
+$jwt = Auth::create_token([
+    'email' => $userInfo->email,
+    'name' => $userInfo->name,
+    'picture' => $userInfo->picture,
+    'token' => $token,
+]);
 
 ?>
 <script>
     // For debugging purposes display the token and JWT
-    console.log('Token:', <?php echo json_encode($token); ?>);
+    console.log('User Info:', <?php echo json_encode($userInfo); ?>);
     console.log('JWT:', <?php echo json_encode($jwt); ?>);
+    // Sent message to opener window and close this popup
+    if (window.opener) {
+        window.opener.postMessage({ user: <?php echo json_encode($userInfo); ?>, jwt: <?php echo json_encode($jwt); ?> }, '*');
+        window.close();
+    }
 </script>
+<?php
+
+return '';
