@@ -7,6 +7,8 @@
 use Google\Client;
 use Google\Service\Oauth2;
 
+header('Content-Type: text/html');
+
 $base = dirname($_SERVER['SCRIPT_URI']);
 
 $configJsonPath = realpath(getenv('GOOGLE_APPLICATION_CREDENTIALS'));
