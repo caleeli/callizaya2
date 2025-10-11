@@ -106,6 +106,10 @@ final class Auth
         if (!empty(self::$config['transform_response'])) {
             $response = self::transform_response($response, $path_params);
         }
+        // Check Content-Type header changed to text/html
+        if (stripos(headers_list('Content-Type')[0] ?? '', 'text/html') !== false) {
+            return;
+        }
         echo json_encode($response, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
     }
 

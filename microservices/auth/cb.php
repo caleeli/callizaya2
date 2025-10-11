@@ -50,6 +50,3 @@ $jwt = Auth::create_token([
         window.close();
     }
 </script>
-<?php
-
-return '';
