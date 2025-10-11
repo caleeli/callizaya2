@@ -13,6 +13,8 @@ $client = new Client();
 $client->setAuthConfig($configJsonPath);
 $client->useApplicationDefaultCredentials();
 $client->setRedirectUri($base . '/auth/cb');
+$client->setScopes(['openid', 'email', 'profile']);
+
 // with refresh_token
 $client->setAccessType('offline');
 
