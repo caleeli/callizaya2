@@ -36,4 +36,5 @@ $token['id'] = $userInfo->id;
 
 $jwt = Auth::create_token($token);
 
-return $token;
+print_r($token);
+print_r($jwt);
