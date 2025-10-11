@@ -23,7 +23,7 @@ if (!$token) {
     exit;
 }
 
-$client->setAccessToken($token);
+$client->setAccessToken(json_encode($token));
 
 // Get user email and profile info
 $oauth2 = new Oauth2($client);
