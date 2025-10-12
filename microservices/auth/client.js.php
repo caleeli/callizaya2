@@ -2,7 +2,7 @@
 header('Content-Type: text/javascript');
 ?>
 console.log('Hello from client.js');
-window.authLogin = () => {
+export function authLogin() {
     const width = 500;
     const height = 600;
     const left = (screen.width / 2) - (width / 2);
