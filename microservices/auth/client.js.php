@@ -16,13 +16,11 @@ export function authLogin() {
 
 // listen for messages from the popup
 window.addEventListener('message', (event) => {
-    console.log('Received message:', event);
-    if (event.origin !== window.location.origin) {
+    if (event.origin !== 'https://callizaya.com') {
         // Ignore messages from unknown origins
         return;
     }
     const { user, jwt } = event.data;
     console.log('User info:', user);
     console.log('JWT:', jwt);
-    // You can now use the user info and JWT as needed
 });
