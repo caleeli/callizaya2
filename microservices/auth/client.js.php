@@ -2,7 +2,7 @@
 header('Content-Type: text/javascript');
 ?>
 console.log('Hello from client.js');
-export function authLogin() {
+export function openLogin() {
     const width = 500;
     const height = 600;
     const left = (screen.width / 2) - (width / 2);
@@ -14,13 +14,22 @@ export function authLogin() {
     );
 };
 
+const listeners = [];
+// Register listener for login resolution
+export function onLogin(callback) {
+    listeners.push(callback);
+}
+
+function resolveLogin(data) {
+    listeners.forEach((callback) => callback(data));
+}
+
 // listen for messages from the popup
 window.addEventListener('message', (event) => {
     if (event.origin !== 'https://callizaya.com') {
         // Ignore messages from unknown origins
         return;
     }
-    const { user, jwt } = event.data;
-    console.log('User info:', user);
-    console.log('JWT:', jwt);
+
+    resolveLogin(event.data);
 });
