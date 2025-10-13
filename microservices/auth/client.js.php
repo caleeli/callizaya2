@@ -1,7 +1,6 @@
 <?php
 header('Content-Type: text/javascript');
 ?>
-console.log('Hello from client.js');
 export function openLogin() {
     const width = 500;
     const height = 600;
