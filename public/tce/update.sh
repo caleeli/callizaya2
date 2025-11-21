@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
+BRANCH=$1
+
 cd /opt/processmaker/vendor/processmaker/package-plg
+
+if [ -n "$BRANCH" ]; then
+  git fetch origin
+  git checkout "$BRANCH"
+fi
+
 git pull
 
 cd /opt/processmaker
