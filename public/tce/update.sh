@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e  # hace que el script falle ante el primer error
+set -e
 
 cd /opt/processmaker/vendor/processmaker/package-plg
 git pull
