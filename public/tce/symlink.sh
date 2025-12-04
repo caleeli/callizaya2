@@ -3,10 +3,14 @@ BRANCH=$1
 
 cd /opt/packages
 
-if [ -n "$BRANCH" ]; then
-  git clone -b "$BRANCH" https://github.com/ProcessMaker/package-plg.git
+if [ -d "package-plg" ]; then
+  echo "package-plg already exists, skipping clone"
 else
-  git clone https://github.com/ProcessMaker/package-plg.git
+  if [ -n "$BRANCH" ]; then
+    git clone -b "$BRANCH" https://github.com/ProcessMaker/package-plg.git
+  else
+    git clone https://github.com/ProcessMaker/package-plg.git
+  fi
 fi
 
 cd /opt/processmaker/vendor/processmaker/
