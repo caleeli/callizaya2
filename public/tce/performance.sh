@@ -18,6 +18,11 @@ if ! grep -q "^PRODUCT_ANALYTICS_INTERCOM_ENABLED=false" .env; then
   echo "PRODUCT_ANALYTICS_INTERCOM_ENABLED must be false"
 fi
 
+# Review PRODUCT_ANALYTICS_LOGROCKET_ENABLED=false at .env
+if ! grep -q "^PRODUCT_ANALYTICS_LOGROCKET_ENABLED=false" .env; then
+  echo "PRODUCT_ANALYTICS_LOGROCKET_ENABLED must be false"
+fi
+
 # review at /etc/php83/php-fpm.d/processmaker.conf
 # pm.start_servers = 8
 # pm.min_spare_servers = 4
