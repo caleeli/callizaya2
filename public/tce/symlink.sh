@@ -18,6 +18,8 @@ rm -Rf package-plg
 ln -s /opt/packages/package-plg package-plg
 
 cd /opt/processmaker
+php artisan config:clear
+php artisan config:cache
 php artisan package-plg:install
 APP_RUNNING_IN_CONSOLE=false php artisan route:clear
 APP_RUNNING_IN_CONSOLE=false php artisan route:cache
