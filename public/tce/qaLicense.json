@@ -1,0 +1,47 @@
+{
+    "expires_at": "2030-12-31",
+    "version": "Version v4.15.4",
+    "product": {
+        "name": "tce",
+        "license_type": "dev qa license",
+        "features": [
+        ]
+    },
+    "packages": [
+        "connector-idp",
+        "connector-pdf-print",
+        "connector-send-email",
+        "docker-executor-node-ssr",
+        "docker-executor-java",
+        "docker-executor-python",
+        "docker-executor-csharp",
+        "package-advanced-user-manager",
+        "package-ai",
+        "package-analytics-reporting",
+        "package-auth",
+        "package-collections",
+        "package-comments",
+        "package-data-sources",
+        "package-decision-engine",
+        "package-dynamic-ui",
+        "package-files",
+        "package-pm-blocks",
+        "package-process-documenter",
+        "package-product-analytics",
+        "package-projects",
+        "package-savedsearch",
+        "package-translations",
+        "package-versions",
+        "package-vocabularies",
+        "package-webentry",
+        "package-ab-testing",
+        "package-slideshow",
+        "package-rpa",
+        "package-variable-finder",
+        "package-proservice-tools",
+        "package-banner-sync",
+        "package-plg",
+        "package-tce",
+        "package-email-start-event"
+    ]
+}
