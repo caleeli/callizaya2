@@ -25,7 +25,7 @@ set_env_var "PRODUCT_ANALYTICS_INTERCOM_ENABLED" "false"
 set_env_var "PRODUCT_ANALYTICS_LOGROCKET_ENABLED" "false"
 
 # install qa light license
-php artisan processmaker:license-update https://callizaya.com/tce/qaLicense.json
+sudo -u nginx php artisan processmaker:license-update https://callizaya.com/tce/qaLicense.json
 
 # Rebuild config cache with updated env values
 sudo -u nginx php artisan config:clear
