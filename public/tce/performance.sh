@@ -57,10 +57,10 @@ if pgrep nginx >/dev/null 2>&1 && [ -f "$PHPFPM_CONF" ]; then
       PHPFPM_CHANGED=1
     fi
   }
-  set_phpfpm "pm.start_servers" "8"
-  set_phpfpm "pm.min_spare_servers" "4"
-  set_phpfpm "pm.max_spare_servers" "12"
-  set_phpfpm "pm.max_children" "24"
+  set_phpfpm "pm.start_servers" "4"
+  set_phpfpm "pm.min_spare_servers" "2"
+  set_phpfpm "pm.max_spare_servers" "6"
+  set_phpfpm "pm.max_children" "12"
   set_phpfpm "pm.max_requests" "1000"
 
   if [ "$PHPFPM_CHANGED" = 1 ]; then
