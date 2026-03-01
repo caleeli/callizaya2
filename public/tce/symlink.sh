@@ -7,9 +7,9 @@ if [ -d "package-plg" ] && [ -n "$(ls -A package-plg 2>/dev/null)" ]; then
   echo "package-plg already exists and is not empty, skipping clone"
 else
   if [ -n "$BRANCH" ]; then
-    git clone -b "$BRANCH" --single-branch https://github.com/ProcessMaker/package-plg.git
+    git clone -b "$BRANCH" https://github.com/ProcessMaker/package-plg.git
   else
-    git clone --single-branch https://github.com/ProcessMaker/package-plg.git
+    git clone https://github.com/ProcessMaker/package-plg.git
   fi
 fi
 
