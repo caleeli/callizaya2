@@ -17,7 +17,10 @@ cd /opt/processmaker/vendor/processmaker/
 rm -Rf package-plg
 ln -s /opt/packages/package-plg package-plg
 
+composer config repositories.package-plg path "/opt/packages/package-plg"
+
 cd /opt/processmaker
+composer require processmaker/package-plg
 php artisan config:clear
 php artisan config:cache
 php artisan package-plg:install

@@ -12,7 +12,10 @@ fi
 
 git pull
 
+composer config repositories.package-plg path "/opt/packages/package-plg"
+
 cd /opt/processmaker
+composer require processmaker/package-plg
 php artisan config:clear
 php artisan config:cache
 php artisan package-plg:install
