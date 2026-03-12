@@ -28,6 +28,7 @@
         "package-translations",
         "package-versions",
         "package-vocabularies",
+        "package-ab-testing",
         "package-testing",
         "package-webentry",
         "package-rpa",
