@@ -10,6 +10,7 @@
     "packages": [
         "connector-pdf-print",
         "connector-send-email",
+        "connector-slack",
         "docker-executor-node-ssr",
         "docker-executor-java",
         "docker-executor-python",
