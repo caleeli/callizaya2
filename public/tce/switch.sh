@@ -10,5 +10,6 @@ if [[ ! -f composer.json.backup ]]; then cp composer.json composer.json.backup; 
 if [[ ! -f composer.lock.backup ]]; then cp composer.lock composer.lock.backup; fi
 git restore composer.json composer.lock
 git checkout "$BRANCH"
+git pull
 cp composer.json.backup composer.json
 cp composer.lock.backup composer.lock
