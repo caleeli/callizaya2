@@ -161,6 +161,13 @@ composer config --global --auth http-basic.processmaker.repo.packagist.com token
 composer require justinrainbow/json-schema:^6.5
 php artisan package-savedsearch:install
 
+# Cache and other things
+APP_RUNNING_IN_CONSOLE=false php artisan route:clear
+APP_RUNNING_IN_CONSOLE=false php artisan route:cache
+php artisan config:clear
+php artisan config:cache
+
+# Show current status
 cd /opt/processmaker/vendor/processmaker/package-savedsearch
 current_package_branch=$(git rev-parse --abbrev-ref HEAD)
 cd /opt/processmaker
