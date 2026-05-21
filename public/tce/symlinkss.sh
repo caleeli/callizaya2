@@ -103,7 +103,10 @@ cd /opt/processmaker
 [ -f storage/composer.json.bak ] || cp composer.json storage/composer.json.bak
 [ -f storage/composer.lock.bak ] || cp composer.lock storage/composer.lock.bak
 
-# Restore files
+# Clean untracked files in resources (case-insensitive for Logs/logs folders)
+git clean -fd resources/
+
+# Restore tracked files
 git restore composer.json composer.lock \
     resources/*
 
