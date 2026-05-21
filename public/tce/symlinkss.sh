@@ -171,14 +171,14 @@ php artisan config:cache
 # Show current status
 cd /opt/processmaker/vendor/processmaker/package-savedsearch
 current_package_branch=$(git rev-parse --abbrev-ref HEAD)
+current_package_last_commit_message=$(git log -1 --pretty=%B)
 cd /opt/processmaker
 current_core_branch=$(git rev-parse --abbrev-ref HEAD)
-current_package_last_commit_message=$(git log -1 --pretty=%B)
 
 echo ""
 echo "===================================="
 echo "Setup complete!"
 echo "Core: $current_core_branch"
 echo "Package: $current_package_branch"
-echo "package-savedsearch: $current_package_version_last_commit"
+echo "package-savedsearch: $current_package_last_commit_message"
 echo "===================================="
