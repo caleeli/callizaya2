@@ -8,7 +8,7 @@ get_current_branch() {
 # Function to list remote branches
 list_remote_branches() {
     git fetch --quiet 2>/dev/null
-    git branch -r | grep -v HEAD | sed 's/origin\///' | sort -u
+    #git branch -r | grep -v HEAD | sed 's/origin\///' | sort -u
 }
 
 # Function to prompt user for branch selection
