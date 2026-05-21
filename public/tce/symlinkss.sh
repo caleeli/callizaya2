@@ -157,6 +157,7 @@ else
 fi
 
 # Install package-savedsearch
+cd /opt/processmaker
 composer config --global --auth http-basic.processmaker.repo.packagist.com token 0df7b369d295c842dae46a40f7b694399e9f5d1b45d167e807afdb26424d
 composer require justinrainbow/json-schema:^6.5
 php artisan package-savedsearch:install
