@@ -105,9 +105,7 @@ cd /opt/processmaker
 
 # Restore files
 git restore composer.json composer.lock \
-    resources/js/requests/components/RequestScreens.vue \
-    resources/js/requests/components/screenDetail.vue \
-    resources/jscomposition/cases/casesDetail/components/DisplayForm.vue
+    resources/*
 
 # Fetch and checkout
 git fetch
