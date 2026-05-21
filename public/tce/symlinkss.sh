@@ -113,6 +113,7 @@ git restore composer.json composer.lock \
 # Fetch and checkout
 git fetch
 git checkout "$BRANCH_CORE"
+git pull
 
 # Restore composer files from backup
 cp storage/composer.json.bak composer.json
@@ -138,8 +139,8 @@ if [ -d package-savedsearch ]; then
         git checkout "$BRANCH_PACKAGE"
     else
         echo "Package already on branch $BRANCH_PACKAGE"
-        git pull
     fi
+    git pull
 else
     echo "Cloning package-savedsearch..."
     git clone --branch "$BRANCH_PACKAGE" https://github.com/ProcessMaker/package-savedsearch.git
@@ -160,7 +161,16 @@ composer config --global --auth http-basic.processmaker.repo.packagist.com token
 composer require justinrainbow/json-schema:^6.5
 php artisan package-savedsearch:install
 
+cd /opt/processmaker/vendor/processmaker/package-savedsearch
+current_package_branch=$(git rev-parse --abbrev-ref HEAD)
+cd /opt/processmaker
+current_core_branch=$(git rev-parse --abbrev-ref HEAD)
+current_package_version=$(composer show processmaker/package-savedsearch | grep version)
+
 echo ""
 echo "===================================="
 echo "Setup complete!"
+echo "Core: $current_core_branch"
+echo "Package: $current_package_branch"
+echo "package-savedsearch $current_package_version"
 echo "===================================="
