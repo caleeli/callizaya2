@@ -1,5 +1,5 @@
-#!/bin/bash
-set -euo pipefail
+#!/bin/sh
+set -eu
 
 # Octane + FrankenPHP — ProcessMaker (un solo script)
 #   sudo ./setup-octane-server.sh           # all
@@ -18,7 +18,7 @@ HOST="${OCTANE_HOST:-127.0.0.1}"
 NGINX="${NGINX_SITE_CONF:-/etc/nginx/http.d/processmaker.conf}"
 SUP="${SUPERVISOR_INI:-/etc/supervisor.d/octane.ini}"
 
-run()  { sudo -u "$PM_USER" bash -lc "cd '$PM_HOME' && $*"; }
+run()  { sudo -u "$PM_USER" sh -lc "cd '$PM_HOME' && $*"; }
 root() { [ "$(id -u)" = 0 ] || { echo "Use sudo." >&2; exit 1; }; }
 
 patch_nginx_conf() {
