@@ -48,11 +48,15 @@ select_branch() {
 }
 
 # Check if running non-interactively (with command-line args)
+# Usage:
+#   ./symlinkss.sh                         # interactive
+#   ./symlinkss.sh <core> <package>        # update core + package
+#   ./symlinkss.sh "" <package>            # skip core branch change; only update/link package
 BRANCH_CORE="$1"
 BRANCH_PACKAGE="$2"
 
 # If no args provided, run in interactive mode
-if [ -z "$BRANCH_CORE" ] || [ -z "$BRANCH_PACKAGE" ]; then
+if [ $# -eq 0 ]; then
     echo "===================================="
     echo "ProcessMaker Development Setup Tool"
     echo "===================================="
@@ -92,35 +96,48 @@ if [ -z "$BRANCH_CORE" ] || [ -z "$BRANCH_PACKAGE" ]; then
     fi
 fi
 
+if [ -z "$BRANCH_PACKAGE" ]; then
+    echo "Error: BRANCH_PACKAGE is required."
+    echo "Usage: $0 [BRANCH_CORE] BRANCH_PACKAGE"
+    echo "  Pass an empty BRANCH_CORE to skip changing /opt/processmaker branch."
+    exit 1
+fi
+
 # ============ CORE SETUP ============
 
-echo ""
-echo ">>> Setting up ProcessMaker Core on branch: $BRANCH_CORE"
+if [ -n "$BRANCH_CORE" ]; then
+    echo ""
+    echo ">>> Setting up ProcessMaker Core on branch: $BRANCH_CORE"
 
-cd /opt/processmaker
+    cd /opt/processmaker
 
-# Backup composer files
-[ -f storage/composer.json.bak ] || cp composer.json storage/composer.json.bak
-[ -f storage/composer.lock.bak ] || cp composer.lock storage/composer.lock.bak
+    # Backup composer files
+    [ -f storage/composer.json.bak ] || cp composer.json storage/composer.json.bak
+    [ -f storage/composer.lock.bak ] || cp composer.lock storage/composer.lock.bak
 
-# Clean untracked files in resources (case-insensitive for Logs/logs folders)
-git clean -fd resources/
+    # Clean untracked files in resources (case-insensitive for Logs/logs folders)
+    git clean -fd resources/
 
-# Restore tracked files
-git restore composer.json composer.lock \
-    resources/*
+    # Restore tracked files
+    git restore composer.json composer.lock \
+        resources/*
 
-# Fetch and checkout
-git fetch
-git checkout "$BRANCH_CORE"
-git pull
+    # Fetch and checkout
+    git fetch
+    git checkout "$BRANCH_CORE"
+    git pull
 
-# Restore composer files from backup
-cp storage/composer.json.bak composer.json
-cp storage/composer.lock.bak composer.lock
+    # Restore composer files from backup
+    cp storage/composer.json.bak composer.json
+    cp storage/composer.lock.bak composer.lock
 
-# Show current status
-git branch
+    # Show current status
+    git branch
+else
+    echo ""
+    echo ">>> BRANCH_CORE is empty — skipping ProcessMaker Core branch change"
+    echo ">>> Keeping current branch in /opt/processmaker"
+fi
 
 # ============ PACKAGE SETUP ============
 
@@ -158,8 +175,21 @@ fi
 
 # Install package-savedsearch
 cd /opt/processmaker
-composer config --global --auth http-basic.processmaker.repo.packagist.com token 0df7b369d295c842dae46a40f7b694399e9f5d1b45d167e807afdb26424d
-composer require justinrainbow/json-schema:^6.5
+
+# Check if the token is already set before configuring it
+if ! composer config --global http-basic.processmaker.repo.packagist.com 2>/dev/null | grep -q "0df7b369d295c842dae46a40f7b694399e9f5d1b45d167e807afdb26424d"; then
+    composer config --global --auth http-basic.processmaker.repo.packagist.com token 0df7b369d295c842dae46a40f7b694399e9f5d1b45d167e807afdb26424d
+else
+    echo "Composer token for processmaker.repo.packagist.com is already set, skipping..."
+fi
+
+# Check if justinrainbow/json-schema is already installed before requiring it
+if ! composer show justinrainbow/json-schema >/dev/null 2>&1; then
+    composer require justinrainbow/json-schema:^6.5
+else
+    echo "Package justinrainbow/json-schema is already installed, skipping..."
+fi
+
 php artisan package-savedsearch:install
 
 # Cache and other things
