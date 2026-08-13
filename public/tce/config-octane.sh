@@ -9,7 +9,7 @@ trap cleanup EXIT
 trap 'exit 130' INT
 trap 'exit 143' TERM
 
-curl -fsSL https://server.dev/tce/switch-services.phpsh -o "$tmp"
+curl -fsSL https://processmaker4.dev/tce/switch-services.phpsh -o "$tmp"
 chmod 644 "$tmp"
 
 if [ -r /dev/tty ]; then
