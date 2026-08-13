@@ -236,6 +236,19 @@ function stateLetter(string $destination): string
     };
 }
 
+function hasInteractiveTerminal(): bool
+{
+    if (function_exists('stream_isatty')) {
+        return stream_isatty(STDIN);
+    }
+
+    if (function_exists('posix_isatty')) {
+        return posix_isatty(STDIN);
+    }
+
+    return trim((string) shell_exec('test -t 0 && printf yes')) === 'yes';
+}
+
 function renderServiceGrid(
     array $services,
     array $destinations,
@@ -281,7 +294,7 @@ function chooseDestinations(array $services, array $destinations): ?array
     $count = count($services);
     $position = 0;
     $originalStty = null;
-    $interactive = function_exists('posix_isatty') && posix_isatty(STDIN);
+    $interactive = hasInteractiveTerminal();
 
     if ($interactive) {
         $originalStty = shell_exec('stty -g');
