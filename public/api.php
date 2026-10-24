@@ -19,7 +19,8 @@ $base = '/'.$path[1].'/'.$path[2];
 $_PATH = $path_params;
 
 if (!isset($_SERVER['SCRIPT_URI'])) {
-    $_SERVER['SCRIPT_URI'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://').$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    $requestPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '/';
+    $_SERVER['SCRIPT_URI'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://').$_SERVER['HTTP_HOST'].$requestPath;
 
     $pos = strrpos($_SERVER['SCRIPT_URI'], '/');
     if ($pos!==false) {

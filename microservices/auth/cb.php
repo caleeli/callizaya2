@@ -9,13 +9,11 @@ use Google\Service\Oauth2;
 
 header('Content-Type: text/html');
 
-$base = dirname($_SERVER['SCRIPT_URI']);
-
 $configJsonPath = realpath(getenv('GOOGLE_APPLICATION_CREDENTIALS'));
 $client = new Client();
 $client->setAuthConfig($configJsonPath);
 $client->useApplicationDefaultCredentials();
-$client->setRedirectUri($base . '/auth/cb');
+$client->setRedirectUri(Auth::googleRedirectUri());
 
 $response = $client->fetchAccessTokenWithAuthCode($_GET['code']);
 $token = $client->getAccessToken();

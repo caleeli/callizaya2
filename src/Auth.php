@@ -255,4 +255,15 @@ final class Auth
         $client->setAccessToken($token);
         return $client;
     }
+
+    /**
+     * Get the fixed Google OAuth callback URI.
+     *
+     * @return string
+     */
+    public static function googleRedirectUri(): string
+    {
+        $redirectUri = getenv('GOOGLE_REDIRECT_URI');
+        return $redirectUri;
+    }
 }
